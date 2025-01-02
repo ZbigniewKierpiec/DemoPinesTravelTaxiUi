@@ -1,0 +1,12 @@
+
+<div *ngIf="isActiveMap"   [classList]="isActiveMap ?'box animate__animated animate__fadeInLeft':'box'" class="box">
+
+
+  <google-map [zoom]="zoom" [width]="mapWidth" [height]="mapHeight"              >
+    <map-directions-renderer
+      *ngIf="directionResult"
+      [directions]="directionResult"
+    ></map-directions-renderer>
+  </google-map>
+
+</div>

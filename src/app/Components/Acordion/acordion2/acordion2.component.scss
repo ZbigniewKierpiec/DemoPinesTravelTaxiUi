@@ -1,0 +1,157 @@
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media only screen and (max-width: 37.5em) {
+      @content;
+    } // 600px - phones
+  }
+
+  @if $breakpoint == tab-port {
+    @media only screen and (max-width: 56.25em) {
+      @content;
+    } // 900px - portrait tablets
+  }
+
+  @if $breakpoint == tab-land {
+    @media only screen and (max-width: 75em) {
+      @content;
+    } // 1200px - landscape tablets
+  }
+
+  @if $breakpoint == tab-port-portrait {
+    @media only screen and (max-width: 56.25em) and (orientation: portrait) {
+      @content;
+    } // Portrait tablets (900px or less, portrait mode)
+  }
+
+  @if $breakpoint == tab-port-landscape {
+    @media only screen and (max-width: 56.25em) and (orientation: landscape) {
+      @content;
+    } // Portrait tablets (900px or less, landscape mode)
+  }
+
+  @if $breakpoint == i-pad {
+    @media only screen and (max-width: 103em) {
+      @content;
+    } // 1648px - larger devices like large tablets and small desktops
+  }
+
+  @if $breakpoint == big-desktop {
+    @media only screen and (min-width: 112.5em) {
+      @content;
+    } // 1800px - large desktop screens
+  }
+
+  @if $breakpoint == ipad-2 {
+    @media only screen and (max-width: 135em) {
+      @content;
+    } // 2160px - very large screens, huge desktops
+  }
+
+  // Additional breakpoint for very small devices like old phones
+  @if $breakpoint == xs {
+    @media only screen and (max-width: 20em) {
+      @content;
+    } // 320px - extremely small screens (older phones)
+  }
+
+  // Additional breakpoint for larger tablet sizes
+  @if $breakpoint == tab-xl {
+    @media only screen and (min-width: 90em) and (max-width: 112.5em) {
+      @content;
+    } // 1440px - large tablets or smaller laptops
+  }
+
+  // Additional breakpoint for larger mobile devices
+  @if $breakpoint == phone-xl {
+    @media only screen and (min-width: 40em) and (max-width: 60.5em) {
+      @content;
+    } // 648px - larger phones or small tablets
+  }
+}
+
+.accordion {
+  width: 50%; /* Set your desired width */
+  width: 100%;
+
+  background-color: #f1f1f1;
+  background-color: #8eb98f !important;
+  border-radius: 1.3rem;
+  padding: 1rem 3rem;
+
+  @include respond(tab-port) {
+    // height: 50vh;
+  }
+}
+
+.accordion-section {
+  width: 100%;
+  position: relative;
+  background-color: #f1f1f1;
+  background-color: #8eb98f !important;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 12 !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom: 1px solid rgba(0, 0, 0, 0.323);
+
+  height: 10rem;
+
+  padding: 0 2rem;
+
+  @include respond(tab-port) {
+    height: 5rem;
+  }
+
+  &.active {
+    background-color: rgb(234, 225, 225);
+  }
+  &:hover {
+    background-color: rgb(234, 225, 225);
+  }
+  p {
+    text-wrap: pretty;
+    font-size: 1.7rem;
+  }
+  i {
+    color: rgb(106, 101, 101);
+    transition: all 0.3s linear;
+    font-size: 1.7rem;
+    &.active {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.accordion-content {
+  background-color: #f1f1f1;
+  background-color: #8eb98f !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-weight: bolder;
+  padding: 0 2rem;
+
+  cursor: pointer;
+
+  @include respond(tab-port) {
+    justify-content: center;
+    align-items: center;
+  }
+  p {
+    font-size: 1.7rem;
+    text-wrap: pretty;
+    margin-top: 2rem;
+    @include respond(tab-port) {
+      margin-top: 1rem;
+
+      // margin-bottom: 1.9rem;
+    }
+  }
+}
+.custom-class {
+  border-top: 1px solid rgba(0, 0, 0, 0.323);
+}

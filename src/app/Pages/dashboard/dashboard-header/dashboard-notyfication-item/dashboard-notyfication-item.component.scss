@@ -1,0 +1,59 @@
+.box {
+  height: 6rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.306);
+  display: grid;
+  grid-template-columns: 0.3fr 1fr 0.14fr;
+  grid-template-rows: 1fr;
+  cursor: pointer;
+  &:hover{
+    background-color: rgba(211, 211, 211, 0.389);
+  }
+  &__left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &__box {
+      position: relative;
+      width: 3.5rem;
+      height: 3.5rem;
+      background-color: rgb(180, 176, 176);
+      border-radius: 0.5rem;
+      &__dot {
+        position: absolute !important;
+        right: 0;
+        bottom: 0;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: white;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &__cover {
+          position: absolute;
+          width: 8px;
+          height: 8px;
+          background-color: #19b159;
+          border-radius: 50%;
+          z-index: 1 !important;
+        }
+      }
+    }
+  }
+  &__middle {
+    padding: 0.5rem 0;
+    text-transform: capitalize;
+    span {
+      display: inline-block;
+    }
+  }
+  &__right {
+    display: flex;
+    align-items: center;
+
+    color: grey;
+    font-size: 1.4rem;
+    cursor: pointer;
+  }
+}

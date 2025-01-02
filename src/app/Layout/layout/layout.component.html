@@ -1,0 +1,23 @@
+<div class="full-layout">
+  <!-- Header -->
+  <app-header></app-header>
+<!-- <app-header2></app-header2> -->
+  <main>
+    <!-- <router-outlet></router-outlet> -->
+
+<div [@routeTransition]="animateRoute ? 'animate' : 'noAnimate'"   style="display: contents; position: relative;">
+  <router-outlet></router-outlet>
+</div>
+
+
+
+
+
+    <app-to-top></app-to-top>
+    <app-social></app-social>
+
+  <app-book-now-mobile></app-book-now-mobile>
+    <app-footer></app-footer>
+
+  </main>
+</div>

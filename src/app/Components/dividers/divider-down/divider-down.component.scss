@@ -1,0 +1,29 @@
+.divider {
+  --border-color: black;
+  width: 100%;
+  position: relative;
+  // margin-top: 90px;
+  height: 1px;
+
+  // margin-bottom: 3rem;
+  margin: 3rem 0;
+  background-color: black;
+}
+
+.div-point-downward:after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: -4px;
+  left: calc(50% - 7px);
+
+  width: 0.95rem;
+
+  height: 0.95rem;
+  transform: rotate(45deg);
+  background-color: white;
+  background-color: #8eb98f;
+  border-bottom: 1px solid var(--border-color);
+
+  border-right: 1px solid var(--border-color);
+}

@@ -1,0 +1,18 @@
+<div [class.active]="isActive" class="box">
+  <div (click)="close()" class="box__close">
+    <i class="fa-solid fa-xmark"></i>
+  </div>
+  <div class="box__text">
+    <h1>
+      Thank you <strong>{{ name }}</strong> for choosing our taxi service
+    </h1>
+    <h3>
+      Your reservation has been successfully confirmed, and a confirmation email
+      will be sent to the <strong> {{ email }}</strong> provided during the
+      booking process.
+    </h3>
+  </div>
+  <div class="box__logo">
+    <img src="/assets/Precious Stones eBay Logo.png" alt="" />
+  </div>
+</div>

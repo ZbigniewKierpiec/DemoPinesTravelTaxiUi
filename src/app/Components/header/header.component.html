@@ -1,0 +1,202 @@
+<header class="header">
+  <div class="header__flag header__flag--left">
+    <img
+      src="assets/220px-Roundel_of_Poland_(1921–1993).svg.png"
+      alt="Roundel of Poland (1921–1993) on the left"
+    />
+  </div>
+
+  <div class="header__contact">
+    <div class="header__contact__phone">
+      <a class="mainHeader__contact__a" href="tel:07960186334">
+        <p>
+          <span>
+            <i class="fa fa-phone" aria-hidden="true"></i>
+            07960186334
+          </span>
+        </p>
+      </a>
+    </div>
+
+    <div class="header__contact__email">
+      <a class="mainHeader__mail__a" href="mailto:zbigniewkierpiec@gmail.com">
+        <p>
+          <span>
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+            bookingtaxi.online
+          </span>
+        </p>
+      </a>
+    </div>
+  </div>
+
+  <!-- *ngIf="user !== undefined && (user?.roles?.includes('Writer') || user?.roles?.includes('Reader'))"  -->
+
+  <ng-container      >
+    <div [attr.data-content]="dotContent"         class="dot">  <i class="fas fa-calendar-check"></i>   </div>
+    <a   [routerLink]="['bracknellTaxis/user/dashboard']"         style="display: flex; justify-content: center; align-items: center;" class="dashboard">Dashboard</a>
+  </ng-container>
+
+  <div class="header__social">
+    <ul class="mainHeader__social__list">
+      <li class="soc zorro mainHeader__social__list__items">
+        <i class="fab fa-facebook-f zorro"></i>
+      </li>
+      <li class="soc mainHeader__social__list__items">
+        <i class="fab fa-linkedin-in"></i>
+      </li>
+      <li class="soc mainHeader__social__list__items">
+        <i class="fab fa-twitter"></i>
+      </li>
+    </ul>
+  </div>
+
+  <div class="header__flag header__flag--right">
+    <img
+      src="assets/220px-Roundel_of_Poland_(1921–1993).svg.png"
+      alt="Roundel of Poland (1921–1993) on the right"
+    />
+  </div>
+</header>
+<nav #navBar [ngClass]="{ fixed: isFixed }" class="nav">
+  <div class="nav__logo">
+    <img
+      class="nav__logo__img"
+      src="/assets/PinesTree.png"
+      alt="Bracknell Executive Travel Logo"
+    />
+    <span>pines executive travel</span>
+  </div>
+  <div class="nav__menu">
+    <ul class="nav__menu__list">
+      <li #listItem (click)="selectLi(0)" class="nav__menu__list__item">
+        <a [routerLink]="['/bracknellTaxis/home']">{{
+          "Nav_Home" | translate
+        }}</a>
+      </li>
+      <li #listItem (click)="selectLi(1)" class="nav__menu__list__item">
+        <a [routerLink]="['/bracknellTaxis/airportTransfer']">{{
+          "Nav_Airport" | translate
+        }}</a>
+      </li>
+      <!-- <li #listItem (click)="selectLi(2)" class="nav__menu__list__item">
+        <a>{{ "Nav_Testimonials" | translate }}</a>
+      </li> -->
+      <ng-container
+        *ngIf="user !== undefined && user?.roles?.includes('Writer')"
+      >
+        <li #listItem (click)="selectLi(2)" class="nav__menu__list__item">
+          <a [routerLink]="['bracknellTaxis/booking/admin/list']"
+            >Booking List</a
+          >
+        </li>
+      </ng-container>
+
+      <li #listItem (click)="selectLi(3)" class="nav__menu__list__item">
+        <a [routerLink]="['/bracknellTaxis/booking']">{{
+          "Nav_Book" | translate
+        }}</a>
+      </li>
+      <li #listItem (click)="selectLi(4)" class="nav__menu__list__item">
+        <a>{{ "Nav_Contact" | translate }}</a>
+      </li>
+      <div
+        [ngStyle]="{ 'width.px': markerWidth }"
+        #segmentedControl
+        #marker
+        class="slide"
+      ></div>
+    </ul>
+  </div>
+  <div class="nav__badge">
+    <span>24</span>
+    <img src="/assets/mercedes.png" alt="Mercedes Logo" />
+    <span>7</span>
+  </div>
+
+  <ng-container *ngIf="user === undefined; else showLogout">
+    <button class="btn__log">
+      <a [routerLink]="['/bracknellTaxis/login']" style="display: block"
+        >login</a
+      >
+    </button>
+  </ng-container>
+
+  <ng-template #showLogout>
+    <span class="name">{{ user?.email }}</span>
+    <button (click)="logOut()" class="btn__log">
+      <a [routerLink]="['/bracknellTaxis/login']" style="display: block"
+        >logout</a
+      >
+    </button>
+  </ng-template>
+
+  <div class="nav__board">
+    <div (click)="onCountrySelection()" class="nav__board__country-selection">
+      <div class="nav__board__country-selection__flag">
+        <img class="rounded-circle" src="{{ languages }}" alt="" />
+      </div>
+    </div>
+  </div>
+
+  <div [class.active]="isActiveList" class="nav__lang-menu">
+    <ul class="header-country-list">
+      <ng-container *ngFor="let item of country">
+        <li
+          class="d-flex align-items-center"
+          [class.active]="isSame === item.id"
+          (click)="choseCountry(item)"
+        >
+          <img
+            class="ml-large mr-extra-large rounded-circle"
+            src="{{ item.flag }}"
+            alt="{{ item.name }}"
+          />
+          <span>{{ item.name }}</span>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+
+  <div class="header-contact-mobile">
+    <app-header-mobile-contact></app-header-mobile-contact>
+  </div>
+
+  <div class="nav__hamburger">
+    <app-hamburger (menuToggled)="onMenuToggle()"></app-hamburger>
+  </div>
+
+  <section
+    [classList]="isActive ? 'active mobile      ' : 'mobile'"
+    class="mobile"
+  >
+    <ul class="mobile__list">
+      <li [routerLinkActive]="'active'" class="active">
+        <a [routerLink]="['/bracknellTaxis/home']">{{
+          "Nav_Home" | translate
+        }}</a>
+      </li>
+      <li [routerLinkActive]="'active'">
+        <a [routerLink]="['/bracknellTaxis/airportTransfer']"
+          >{{ "Nav_Airport" | translate }}
+        </a>
+      </li>
+      <!-- <li>
+        <a>{{ "Nav_Testimonials" | translate }} </a>
+      </li> -->
+
+      <li [routerLinkActive]="'active'">
+        <a [routerLink]="['/bracknellTaxis/booking/list']">Bookings List</a>
+      </li>
+
+      <li>
+        <a [routerLink]="['/bracknellTaxis/booking']">{{
+          "Nav_Book" | translate
+        }}</a>
+      </li>
+      <li>
+        <a>{{ "Nav_Contact" | translate }}</a>
+      </li>
+    </ul>
+  </section>
+</nav>

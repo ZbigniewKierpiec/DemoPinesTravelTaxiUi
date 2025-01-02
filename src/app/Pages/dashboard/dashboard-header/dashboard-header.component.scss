@@ -1,0 +1,187 @@
+.header {
+  position: relative !important;
+  height: 7rem;
+  background-color: rgb(41, 41, 41);
+  display: grid;
+  justify-content: space-between;
+  grid-template-columns: 10rem 30rem;
+  grid-template-rows: 1fr;
+  &__left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__right {
+    padding: 0 2rem;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    div {
+      color: white;
+      width: 3.5rem;
+      height: 3.5rem;
+
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.8rem;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #cccccc5e;
+      }
+    }
+    &__notyfications {
+      position: relative;
+
+      .notifications--item {
+        position: absolute;
+        top: -7px;
+        right: -1px;
+        display: block;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2;
+        background-color: #f1388b;
+        color: white;
+        font-size: 1.4rem;
+        font-weight: bold;
+        &:hover {
+          background-color: #f1388b;
+        }
+        &::after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          top: 50%;
+          left: 50%;
+          width: 0;
+          height: 0;
+          background: rgba(255, 255, 255, 0.3);
+          border-radius: 50%;
+          transform: translate(-50%, -50%);
+          pointer-events: none;
+          z-index: -1;
+          opacity: 0;
+          animation: ripple 2s infinite ease-out;
+          &:hover {
+            background-color: #f1388b;
+          }
+        }
+      }
+    }
+  }
+  &__notyfications {
+    position: absolute;
+    right: 10rem;
+    top: 7rem;
+    width: 35rem;
+    //  height: auto;
+    // min-height: 200px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    //  max-height: fit-content;
+    // display: grid;
+    // grid-template-columns: 1fr;
+    // grid-template-rows: 6rem minmax(100px, 60%) 7rem;
+
+    border: 1px solid rgba(0, 0, 0, 0.127);
+    background-color: yellow;
+
+    &__top {
+      background-color: rgb(235, 232, 232);
+      height: 5rem;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.306);
+      h3 {
+        font-size: 1.3rem;
+        font-weight: bolder;
+      }
+      small {
+        width: 5.5rem;
+        height: 22px;
+        background-color: #f1388b;
+        border-radius: 10px 10px 10px 10px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        font-weight: bolder;
+        color: white;
+        font-size: 0.9rem;
+      }
+    }
+    &__middle {
+      // background-color: seagreen;
+      overflow-y: scroll;
+      // min-height: 5rem;
+    }
+    &__bottom {
+      display: grid;
+      grid-template-columns: 90%;
+      grid-template-rows: 50%;
+      justify-content: center;
+      align-content: center;
+
+      button {
+        border: none;
+        outline: none;
+        background-color: #6259ca;
+        color: white;
+        text-transform: capitalize;
+      }
+    }
+
+    &__no-notifi {
+      position: absolute;
+      top: 6rem;
+      width: 100%;
+      height: 200px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      grid-gap: 1rem;
+      p {
+        font-size: 1.7rem;
+        font-weight: bolder;
+      }
+      &__circle {
+        width: 7rem;
+        height: 7rem;
+        border-radius: 50%;
+        background-color: #feebf3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+        color: #f1388b;
+      }
+    }
+  }
+}
+
+@keyframes ripple {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 1;
+    background-color: #f1388b;
+  }
+
+  100% {
+    width: 200%;
+    height: 200%;
+    background-color: #f1388b;
+    opacity: 0;
+  }
+}

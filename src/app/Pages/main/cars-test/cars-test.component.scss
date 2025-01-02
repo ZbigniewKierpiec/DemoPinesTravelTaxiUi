@@ -1,0 +1,313 @@
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media only screen and (max-width: 37.5em) {
+      @content;
+    } // 600px - phones
+  }
+
+  @if $breakpoint == tab-port {
+    @media only screen and (max-width: 56.25em) {
+      @content;
+    } // 900px - portrait tablets
+  }
+
+  @if $breakpoint == tab-land {
+    @media only screen and (max-width: 75em) {
+      @content;
+    } // 1200px - landscape tablets
+  }
+
+  @if $breakpoint == tab-port-portrait {
+    @media only screen and (max-width: 56.25em) and (orientation: portrait) {
+      @content;
+    } // Portrait tablets (900px or less, portrait mode)
+  }
+
+  @if $breakpoint == tab-port-landscape {
+    @media only screen and (max-width: 56.25em) and (orientation: landscape) {
+      @content;
+    } // Portrait tablets (900px or less, landscape mode)
+  }
+
+  @if $breakpoint == i-pad {
+    @media only screen and (max-width: 103em) {
+      @content;
+    } // 1648px - larger devices like large tablets and small desktops
+  }
+
+  @if $breakpoint == big-desktop {
+    @media only screen and (min-width: 112.5em) {
+      @content;
+    } // 1800px - large desktop screens
+  }
+
+  @if $breakpoint == ipad-2 {
+    @media only screen and (max-width: 135em) {
+      @content;
+    } // 2160px - very large screens, huge desktops
+  }
+
+  // Additional breakpoint for very small devices like old phones
+  @if $breakpoint == xs {
+    @media only screen and (max-width: 20em) {
+      @content;
+    } // 320px - extremely small screens (older phones)
+  }
+
+  // Additional breakpoint for larger tablet sizes
+  @if $breakpoint == tab-xl {
+    @media only screen and (min-width: 90em) and (max-width: 112.5em) {
+      @content;
+    } // 1440px - large tablets or smaller laptops
+  }
+
+  // Additional breakpoint for larger mobile devices
+  @if $breakpoint == phone-xl {
+    @media only screen and (min-width: 40em) and (max-width: 60.5em) {
+      @content;
+    } // 648px - larger phones or small tablets
+  }
+}
+// @include respond(tab-port) {
+img {
+  width: 2rem;
+}
+
+.cars {
+  width: 100%;
+  // min-height: 50vh;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+
+  background-image: linear-gradient(
+    to right top,
+    #cad283,
+    #cad282,
+    #c9d281,
+    #c9d180,
+    #c9d17f,
+    #c9d282,
+    #c9d285,
+    #c9d388,
+    #c9d590,
+    #cad698,
+    #cbd89f,
+    #ccd9a7
+  );
+
+  &__mercedes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+
+    padding: 4rem 3rem;
+    @include respond(tab-port) {
+      grid-template-columns: 1fr;
+      grid-template-rows: 30rem 1fr;
+      padding: 1rem 1rem;
+    }
+    &__photo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        display: block;
+        object-fit: cover;
+        width: 50%;
+        @include respond(tab-port) {
+          width: 60%;
+        }
+      }
+    }
+    &__text {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      @include respond(tab-port) {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 3rem;
+      }
+
+      h1 {
+        font-size: 3rem;
+        margin-bottom: 2rem;
+        font-family: "Roboto Slab", serif;
+        @include respond(tab-port) {
+          font-size: 2.2rem;
+
+          display: block;
+          text-align: center;
+          margin-bottom: 3rem;
+          text-wrap: pretty;
+        }
+      }
+      h2 {
+        font-size: 2.5rem;
+        font-family: "Roboto Slab", serif;
+        line-height: 3.9rem;
+
+        @include respond(tab-port) {
+          padding: 0 20px;
+          font-size: 1.9rem;
+          font-family: "Roboto Slab", serif;
+          word-spacing: 0.25rem;
+          line-height: 1.9em;
+          text-wrap: pretty;
+        }
+      }
+    }
+  }
+  &__hyundai {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 4rem 3rem;
+    @include respond(tab-port) {
+      grid-template-columns: 1fr;
+      grid-template-rows: 30rem 1fr;
+      padding: 1rem 1rem;
+    }
+
+    &__photo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      order: 2;
+      @include respond(tab-port) {
+        order: 1;
+      }
+      img {
+        display: block;
+        object-fit: cover;
+        width: 50%;
+        @include respond(tab-port) {
+          width: 60%;
+        }
+      }
+    }
+
+    &__text {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 3rem;
+      order: 1;
+      h1 {
+        font-size: 3rem;
+        font-family: "Roboto Slab", serif;
+        display: block;
+        text-align: center;
+        margin-bottom: 2rem;
+        text-wrap: pretty;
+        @include respond(tab-port) {
+          font-size: 2.2rem;
+
+          display: block;
+          text-align: center;
+          margin-bottom: 3rem;
+          text-wrap: pretty;
+        }
+      }
+      h2 {
+        font-size: 2.5rem;
+        font-family: "Roboto Slab", serif;
+        line-height: 3.9rem;
+        @include respond(tab-port) {
+          padding: 0 20px;
+          font-size: 1.9rem;
+          font-family: "Roboto Slab", serif;
+          word-spacing: 0.25rem;
+          line-height: 1.9em;
+          text-wrap: pretty;
+        }
+      }
+    }
+  }
+  &__vito {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 4rem 3rem;
+    @include respond(tab-port) {
+      grid-template-columns: 1fr;
+      grid-template-rows: 30rem 1fr;
+      padding: 1rem 1rem;
+    }
+
+    &__photo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        display: block;
+        object-fit: cover;
+        width: 50%;
+        @include respond(tab-port) {
+          width: 60%;
+        }
+      }
+    }
+
+    &__text {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 3rem;
+      @include respond(tab-port) {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 3rem;
+      }
+
+      h1 {
+        font-size: 3rem;
+        margin-bottom: 2rem;
+        font-family: "Roboto Slab", serif;
+        @include respond(tab-port) {
+          font-size: 2.2rem;
+
+          display: block;
+          text-align: center;
+          margin-bottom: 3rem;
+          text-wrap: pretty;
+        }
+      }
+      h2 {
+        font-size: 2.5rem;
+        font-family: "Roboto Slab", serif;
+        line-height: 3.9rem;
+
+        @include respond(tab-port) {
+          padding: 0 20px;
+          font-size: 1.9rem;
+          font-family: "Roboto Slab", serif;
+          word-spacing: 0.25rem;
+          line-height: 1.9em;
+          text-wrap: pretty;
+        }
+      }
+    }
+  }
+}
+
+.line {
+  height: 1px;
+  border: 0;
+
+  box-shadow: 0px -4px 201px 200px rgba(0, 172, 250, 0.7);
+  -webkit-box-shadow: 0px -4px 201px 200px rgba(0, 172, 250, 0.7);
+  -moz-box-shadow: 0px -4px 201px 200px rgba(0, 172, 250, 0.7);
+
+  @include respond(tab-port) {
+    display: none;
+  }
+}

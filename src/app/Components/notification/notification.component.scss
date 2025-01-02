@@ -1,0 +1,175 @@
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media only screen and (max-width: 37.5em) {
+      @content;
+    } // 600px - phones
+  }
+
+  @if $breakpoint == tab-port {
+    @media only screen and (max-width: 56.25em) {
+      @content;
+    } // 900px - portrait tablets
+  }
+
+  @if $breakpoint == tab-land {
+    @media only screen and (max-width: 75em) {
+      @content;
+    } // 1200px - landscape tablets
+  }
+
+  @if $breakpoint == tab-port-portrait {
+    @media only screen and (max-width: 56.25em) and (orientation: portrait) {
+      @content;
+    } // Portrait tablets (900px or less, portrait mode)
+  }
+
+  @if $breakpoint == tab-port-landscape {
+    @media only screen and (max-width: 56.25em) and (orientation: landscape) {
+      @content;
+    } // Portrait tablets (900px or less, landscape mode)
+  }
+
+  @if $breakpoint == i-pad {
+    @media only screen and (max-width: 103em) {
+      @content;
+    } // 1648px - larger devices like large tablets and small desktops
+  }
+
+  @if $breakpoint == big-desktop {
+    @media only screen and (min-width: 112.5em) {
+      @content;
+    } // 1800px - large desktop screens
+  }
+
+  @if $breakpoint == ipad-2 {
+    @media only screen and (max-width: 135em) {
+      @content;
+    } // 2160px - very large screens, huge desktops
+  }
+
+  // Additional breakpoint for very small devices like old phones
+  @if $breakpoint == xs {
+    @media only screen and (max-width: 20em) {
+      @content;
+    } // 320px - extremely small screens (older phones)
+  }
+
+  // Additional breakpoint for larger tablet sizes
+  @if $breakpoint == tab-xl {
+    @media only screen and (min-width: 90em) and (max-width: 112.5em) {
+      @content;
+    } // 1440px - large tablets or smaller laptops
+  }
+
+  // Additional breakpoint for larger mobile devices
+  @if $breakpoint == phone-xl {
+    @media only screen and (min-width: 40em) and (max-width: 60.5em) {
+      @content;
+    } // 648px - larger phones or small tablets
+  }
+}
+
+
+
+.box {
+  position: fixed;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30rem;
+height: max-content;
+  transition: all 0.4s linear;
+  z-index: 9999999999999999999999999999999999999999999999999999999999 !important;
+}
+button {
+  position: relative;
+  padding: 0.4rem 1rem;
+  text-transform: uppercase;
+  border: none;
+  outline: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.notification {
+  position: relative;
+  transition: transform 0.4s linear;
+  width: 100%;
+  padding: 2rem;
+  background: rgba(243, 226, 199, 1);
+  background: -moz-linear-gradient(
+    left,
+    rgba(243, 226, 199, 1) 0%,
+    rgba(193, 158, 103, 1) 0%,
+    rgba(233, 212, 179, 1) 100%
+  );
+  background: -webkit-gradient(
+    left top,
+    right top,
+    color-stop(0%, rgba(243, 226, 199, 1)),
+    color-stop(0%, rgba(193, 158, 103, 1)),
+    color-stop(100%, rgba(233, 212, 179, 1))
+  );
+  background: -webkit-linear-gradient(
+    left,
+    rgba(243, 226, 199, 1) 0%,
+    rgba(193, 158, 103, 1) 0%,
+    rgba(233, 212, 179, 1) 100%
+  );
+  background: -o-linear-gradient(
+    left,
+    rgba(243, 226, 199, 1) 0%,
+    rgba(193, 158, 103, 1) 0%,
+    rgba(233, 212, 179, 1) 100%
+  );
+  background: -ms-linear-gradient(
+    left,
+    rgba(243, 226, 199, 1) 0%,
+    rgba(193, 158, 103, 1) 0%,
+    rgba(233, 212, 179, 1) 100%
+  );
+  background: linear-gradient(
+    to right,
+    rgba(243, 226, 199, 1) 0%,
+    rgba(193, 158, 103, 1) 0%,
+    rgba(233, 212, 179, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3e2c7', endColorstr='#e9d4b3', GradientType=1 );
+  margin-bottom: 2rem;
+  font-family: monospace;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.3rem;
+  border-radius: 0.4rem;
+  color:black;
+  color:#4E3B26 ;
+  font-weight: bolder;
+  -webkit-box-shadow: 10px 10px 13px -10px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 13px -10px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 13px -10px rgba(0, 0, 0, 0.75);
+  @include respond(tab-port) {
+    font-size: 1.5rem;
+    text-wrap: pretty;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    top: -18px;
+    left: 34px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 17px 21px 17px;
+    border-color: transparent transparent #c5a36f transparent;
+  }
+}
+
+.length {
+  width: 4rem;
+  height: 4rem;
+  background-color: black;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

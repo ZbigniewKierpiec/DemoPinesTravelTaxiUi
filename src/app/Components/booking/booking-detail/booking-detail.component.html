@@ -1,0 +1,57 @@
+<section [class.active]="active" class="booking">
+  <div class="booking__detail">
+    <div class="booking__detail__tittle">passenger details</div>
+    <div class="booking__detail__quote">
+      <div class="booking__detail__quote__left">
+        <div class="booking__detail__quote__left__label">
+          <!-- <p>pickup:</p>
+          <p>via</p>
+          <p>drop off:</p>
+          <p>date & time:</p> -->
+
+          <p>passengers:</p>
+          <p>louggages</p>
+          <p>greet:</p>
+        <p>zee</p>
+        </div>
+        <div class="booking__detail__quote__left__details">
+          <p>{{ pickup }}</p>
+          <p>{{ via }}</p>
+          <p>{{ destination }}</p>
+          <p>{{ data | date : "fullDate" }} {{ data | date : "shortTime" }}</p>
+
+          <p>{{ passengers }}</p>
+          <p>{{ luggages }}</p>
+          <p [textContent]="greet ? 'Yes' : 'no'"></p>
+        </div>
+      </div>
+      <div class="booking__detail__quote__right">
+        <app-car-detail-price></app-car-detail-price>
+        <!-- <div style="visibility: hidden;" class="booking__detail__quote__right__edit">edit journey</div> -->
+      </div>
+    </div>
+    <div class="booking__detail__info">
+      <div class="booking__detail__info__name">
+        <input placeholder="Full Name:" type="text" />
+      </div>
+      <div class="booking__detail__info__mobile">
+        <input
+          placeholder="Mobile No:"
+          type="tel"
+          pattern="[0-9]{10}"
+          required
+        />
+        <input placeholder="Email:" type="email" />
+      </div>
+      <div class="booking__detail__info__instruction">
+        <textarea
+          placeholder="Driver Instruction:"
+          name="Instruction"
+          id="Instruction"
+          rows="4"
+        ></textarea>
+      </div>
+    </div>
+    <!-- <div class="booking__detail__payments"></div> -->
+  </div>
+</section>

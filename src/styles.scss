@@ -1,0 +1,51 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "Scss/res.scss";
+@import "@fortawesome/fontawesome-free/css/all.css";
+
+* {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+:root {
+  --color1: #1e1f20;
+
+}
+.crisp-client {
+  bottom: 2250px; /* Distance from the bottom */
+  right: 130px; /* Distance from the right */
+  /* Add any additional styles here */
+}
+input[type="datetime-local"] {
+  width: 100%;
+  box-sizing: border-box; /* Ensures padding doesn't exceed 100% width */
+}
+
+
+input{
+  border: none;
+  outline: none;
+:active{
+  border: none;
+}
+:focus{
+  border: none;
+}
+}
+
+
+textarea{
+  border: none;
+  outline: none;
+  background-color: rgb(60, 57, 57);
+  color: white;
+  &::placeholder{
+    color: rgba(255, 255, 255, 0.487);
+  }
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

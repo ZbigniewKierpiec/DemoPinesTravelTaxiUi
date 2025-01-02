@@ -1,0 +1,24 @@
+<header class="header">
+  <div class="header__left">
+    <app-dashboard-hamburger></app-dashboard-hamburger>
+  </div>
+  <div class="header__right">
+    <div (click)="onModeChange()" class="header__right__mode">
+      <i class="fa-solid {{ modeActive ? 'fa-moon' : 'fa-sun' }}"></i>
+    </div>
+
+    <div (click)="toggleFullScreen()" class="header__right__full">
+      <i
+        class="fa-solid {{ fullScreenMode ? 'fa-compress' : 'fa-expand' }}"
+      ></i>
+    </div>
+    <div  (click)="toogleNotyficationsBox()"    class="header__right__notyfications">
+      <i class="fa-regular fa-bell"></i>
+      <div class="notifications--item">{{notificationCount}}</div>
+    </div>
+    <div class="header__right__profile">
+      <i class="fa-solid fa-user"></i>
+    </div>
+  </div>
+
+</header>

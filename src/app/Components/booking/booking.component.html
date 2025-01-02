@@ -1,0 +1,211 @@
+<section class="booking">
+  <app-notification></app-notification>
+  <div class="booking__image">
+    <img src="/assets/Precious_Stones_eBay_Logo-removebg-preview.png" alt="" />
+  </div>
+  <div [class.active]="active" class="booking__wraper">
+    <form [formGroup]="quoteForm">
+      <div
+        [classList]="
+          bookingQuote
+            ? 'animate__animated animate__fadeInRight booking__quote'
+            : 'booking__quote'
+        "
+        class="booking__quote"
+      >
+        <h1>Get an Instant Quote</h1>
+
+        <div class="booking__quote__way">
+          <button
+            [ngClass]="{ active: trip === 'one' }"
+            (click)="activeOne('one')"
+            class="actve"
+          >
+            one way
+          </button>
+          <button
+            [ngClass]="{ active: trip === 'return' }"
+            (click)="activeOne('return')"
+            class="active"
+          >
+            return
+          </button>
+        </div>
+        <div class="booking__quote__pickup">
+          <app-autocomplete (placeChanged)="auto($event)"></app-autocomplete>
+
+          <button (click)="viaFun()">via</button>
+          <small
+            *ngIf="
+              quoteForm.controls['origin'].dirty &&
+              quoteForm.hasError('required', 'origin')
+            "
+            >Pickup is required</small
+          >
+        </div>
+        <ng-container *ngIf="via">
+          <div
+            [classList]="
+              via
+                ? 'animate__animated animate__fadeInDown booking__quote__via'
+                : '  booking__quote__via'
+            "
+            class="booking__quote__via"
+          >
+            <input
+              formControlName="via"
+              type="text"
+              placeholder="Via"
+              name="via"
+              id="via"
+            />
+            <button  (click)="closeVia()">
+              <i class="fa-solid fa-trash-can"></i>
+            </button>
+          </div>
+        </ng-container>
+
+        <div class="booking__quote__destination">
+          <!-- <input     #destinUpField     [placeholder]="placeholder2"   type="text" /> -->
+          <app-autocomplete2 (placeChanged)="auto2($event)"></app-autocomplete2>
+          <small
+            *ngIf="
+              quoteForm.controls['destination'].dirty &&
+              quoteForm.hasError('required', 'destination')
+            "
+            >Destination is required</small
+          >
+        </div>
+        <div class="booking__quote__date">
+          <input
+            formControlName="data"
+            type="datetime-local"
+            name=""
+            id="datetime-input"
+            (focus)="showLabel = true"
+            (blur)="showLabel = !!datetimeValue"
+          />
+          <label *ngIf="!datetimeValue" for="datetime"
+            >Select Date and Time</label
+          >
+
+          <small
+            *ngIf="
+              quoteForm.controls['data'].dirty &&
+              quoteForm.hasError('required', 'data')
+            "
+            class="text-danger"
+            >*data and time is required</small
+          >
+
+          <small *ngIf="isPastDate" style="color: red">
+            The selected date cannot be in the past.
+          </small>
+        </div>
+
+        <ng-container *ngIf="trip === 'return'">
+          <div
+            [ngClass]="{
+              'animate__animated animate__fadeInLeft ooking__quote__return':
+                trip === 'return'
+            }"
+            class="booking__quote__return"
+          >
+            <input
+              placeholder="Pickup"
+              type="datetime-local"
+              name=""
+              id="datetime-input"
+            />
+          </div>
+        </ng-container>
+
+        <div class="booking__quote__passengers">
+          <div class="booking__quote__passengers__select-wrapper">
+            <select
+              formControlName="passengers"
+              name="passengers"
+              id="passengers"
+            >
+              <option value="" disabled selected>Passengers</option>
+              <option value="1">Passengers 1</option>
+              <option value="2">Passengers 2</option>
+              <option value="3">Passengers 3</option>
+              <option value="4">Passengers 4</option>
+            </select>
+
+            <small
+              *ngIf="
+                quoteForm.controls['passengers'].dirty &&
+                quoteForm.hasError('required', 'passengers')
+              "
+              class="text-danger"
+              >*required</small
+            >
+          </div>
+          <div class="booking__quote__passengers__select-wrapper">
+            <select formControlName="luggage" name="luggage" id="luggage">
+              <option value="" disabled selected>Luggages</option>
+              <option value="0">Luggages 0</option>
+              <option value="1">Luggages 1</option>
+              <option value="2">Luggages 2</option>
+              <option value="3">Luggages 3</option>
+              <option value="4">Luggages 4</option>
+            </select>
+            <small
+              *ngIf="
+                quoteForm.controls['luggage'].dirty &&
+                quoteForm.hasError('required', 'luggage')
+              "
+              class="text-danger"
+              >*required</small
+            >
+          </div>
+        </div>
+
+        <div class="booking__quote__greet">
+          <input
+            formControlName="greet"
+            type="checkbox"
+            name="greet"
+            id="greet"
+          />
+          <label for="greet">
+            Meet & Greet Services: An additional charge of
+            <strong>£15.00</strong> applies in all cases.
+          </label>
+        </div>
+        <div (click)="getQuote()" class="booking__quote__get">
+          <h1>get quote</h1>
+        </div>
+      </div>
+    </form>
+    <app-map-display
+      [from]="from"
+      [to]="to"
+      [isActiveMap]="isActiveMap"
+    ></app-map-display>
+    <section [class.active]="bookingQuote" class="booking__wraper__resoult">
+      <app-car-boobing-quote
+        (clicked)="handleCarClick($event)"
+        carType=" Executive"
+        [active]="bookingQuote"
+        [image]="'/assets/26-264798_new-2018-mercedes-benz-e-class-e-300.png'"
+        [price]="totalCostMerce"
+      ></app-car-boobing-quote>
+      <br />
+      <app-car-boobing-quote
+        (clicked)="handleCarClick($event)"
+        carType="Saloon"
+        [active]="bookingQuote"
+        [image]="'/assets/HyundaiIonicHybrid_900.webp'"
+        [customClass]="'hun'"
+        [price]="totalCostIOniq"
+      ></app-car-boobing-quote>
+    </section>
+  </div>
+  <!--
+  <app-booking-detail [active]="active"></app-booking-detail> -->
+  <app-rezerwacja [active]="active"></app-rezerwacja>
+</section>
+<!-- [(ngModel)]="datetimeValue" -->

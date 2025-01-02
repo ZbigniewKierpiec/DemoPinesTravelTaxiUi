@@ -1,0 +1,285 @@
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media only screen and (max-width: 37.5em) {
+      @content;
+    } // 600px - phones
+  }
+
+  @if $breakpoint == tab-port {
+    @media only screen and (max-width: 56.25em) {
+      @content;
+    } // 900px - portrait tablets
+  }
+
+  @if $breakpoint == tab-land {
+    @media only screen and (max-width: 75em) {
+      @content;
+    } // 1200px - landscape tablets
+  }
+
+  @if $breakpoint == tab-port-portrait {
+    @media only screen and (max-width: 56.25em) and (orientation: portrait) {
+      @content;
+    } // Portrait tablets (900px or less, portrait mode)
+  }
+
+  @if $breakpoint == tab-port-landscape {
+    @media only screen and (max-width: 56.25em) and (orientation: landscape) {
+      @content;
+    } // Portrait tablets (900px or less, landscape mode)
+  }
+
+  @if $breakpoint == i-pad {
+    @media only screen and (max-width: 103em) {
+      @content;
+    } // 1648px - larger devices like large tablets and small desktops
+  }
+
+  @if $breakpoint == big-desktop {
+    @media only screen and (min-width: 112.5em) {
+      @content;
+    } // 1800px - large desktop screens
+  }
+
+  @if $breakpoint == ipad-2 {
+    @media only screen and (max-width: 135em) {
+      @content;
+    } // 2160px - very large screens, huge desktops
+  }
+
+  // Additional breakpoint for very small devices like old phones
+  @if $breakpoint == xs {
+    @media only screen and (max-width: 20em) {
+      @content;
+    } // 320px - extremely small screens (older phones)
+  }
+
+  // Additional breakpoint for larger tablet sizes
+  @if $breakpoint == tab-xl {
+    @media only screen and (min-width: 90em) and (max-width: 112.5em) {
+      @content;
+    } // 1440px - large tablets or smaller laptops
+  }
+
+  // Additional breakpoint for larger mobile devices
+  @if $breakpoint == phone-xl {
+    @media only screen and (min-width: 40em) and (max-width: 60.5em) {
+      @content;
+    } // 648px - larger phones or small tablets
+  }
+}
+.box {
+  width: 100%;
+
+  background-color: black;
+}
+.banner {
+  padding: 3rem;
+  margin: 0 auto;
+  background-color: #000000;
+  color: white;
+  &__tittle {
+    margin-bottom: 3rem;
+    @include respond(tab-port) {
+
+    }
+    h1 {
+      font-size: 7rem;
+      text-align: center;
+      font-size: clamp(2.7rem, 2vw + 1rem, 2rem);
+      text-wrap: pretty;
+      letter-spacing: .2rem;
+    }
+  }
+  &__us {
+    margin: 0 auto;
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-gap: 6rem;
+    @include respond(tab-port) {
+      flex-direction: column;
+      line-height: 1.6;
+    }
+    &__h2{
+      @include respond(tab-port) {
+        display: none;
+      }
+    }
+    h2 {
+      align-self: flex-start;
+      text-wrap: pretty;
+      font-size: 3rem;
+
+      color: wheat;
+      font-size: clamp(1.7rem, 2vw + 1rem, 2rem);
+
+      &:nth-child(1) {
+        font-size: 3.5rem;
+        color: #3498db;
+      }
+    }
+  }
+}
+
+.advert {
+  width: 100%;
+  // height: 90vh;
+  background-color: black;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  &__name {
+    width: 30%;
+    height: 60vh;
+
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    @include respond(tab-port) {
+      display: none;
+    }
+
+    &__div {
+      display: flex;
+      align-items: center;
+      flex-grow: 1;
+
+      &__h4 {
+        font-size: 2rem;
+        font-family: lato serif;
+        color: #efc050;
+      }
+      &__input {
+        position: relative;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+      }
+      &__span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 3rem;
+        width: 3rem;
+        margin-left: 20px;
+        margin-right: 10px;
+        background-color: #efc050;
+        i {
+          font-size: 12px;
+          color: black;
+        }
+      }
+    }
+  }
+  &__prices {
+    width: 65%;
+    height: 60vh;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    @include respond(tab-port) {
+      height: max-content;
+      flex-wrap: nowrap;
+      flex-direction: column;
+      row-gap: 6rem;
+    }
+
+    &__exemple {
+      border: 1px solid #efc050;
+      padding: 0rem 2rem;
+      width: 24%;
+      height: 49%;
+      margin-top: 5px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+
+      background: black;
+      @include respond(tab-port) {
+        border: 0.1px solid #efbf506a;
+        padding: 0;
+        width: 100%;
+        height: 200px;
+        border-radius: .5rem;
+      }
+      &__div {
+        width: 7rem;
+        height: 7rem;
+        border-radius: 50%;
+        // background-color:#efc050 ;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 3rem;
+      }
+      &__h1 {
+        color: #efc050;
+        font-size: clamp(1rem, 2vw + 1rem, 2rem);
+        font-family: monospace;
+        text-wrap: pretty;
+      }
+      &__p {
+        color: white;
+        font-size: 2.1rem;
+        font-size: clamp(1rem, 2vw + 1rem, 2rem);
+        color: #efc050;
+        z-index: 1;
+      }
+    }
+  }
+}
+
+.info {
+  width: 100%;
+
+
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-top: 9rem;
+  background-color: black;
+
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+// background-color: #3498db;
+  &__text {
+    width: 50%;
+
+    @include respond(tab-port) {
+      // background-color: green;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      // justify-content: center;
+      width: 70%;
+
+      padding: 3rem 0;
+
+    }
+  }
+
+  p {
+    text-align: center;
+
+    font-size: 2rem;
+    // text-wrap: balance;
+
+    @include respond(tab-port) {
+      text-align: left;
+      margin-top: 4rem;
+      text-wrap: pretty;
+
+    }
+  }
+}

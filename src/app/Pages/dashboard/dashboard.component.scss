@@ -1,0 +1,72 @@
+.box {
+
+  min-height: 70vh;
+  &__top {
+    padding: 4rem 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    grid-gap: 2rem;
+    background-color: pink;
+    h1 {
+      font-size: 3rem;
+    }
+    h2 {
+      font-weight: bolder;
+    }
+  }
+  &__booking-list {
+
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+
+.styled-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 14px;
+
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.styled-table thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+}
+
+.styled-table th, .styled-table td {
+  padding: 12px 15px;
+
+}
+
+.styled-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+
+.styled-table tbody tr:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+tbody tr td{
+   text-align: center;
+ }
+thead tr th{
+  text-align: center;
+}

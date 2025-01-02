@@ -1,0 +1,61 @@
+<div class="box">
+  <app-dashboard-header></app-dashboard-header>
+  <app-dashboard-notifications-box></app-dashboard-notifications-box>
+  <!-- <div class="box__top">
+    <h1>Welcome to User Dashboard</h1>
+    <h2>{{ user?.email }}</h2>
+    <h2>{{ user?.roles }}</h2>
+  </div>
+  <div class="box__booking-list">
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>CreatedAt</th>
+          <th>Name</th>
+          <th>PhoneNumber</th>
+          <th>Email</th>
+          <th>PickupLocation</th>
+          <th>Via</th>
+          <th>DropoffLocation</th>
+          <th>PickupTime</th>
+          <th>Passengers</th>
+          <th>Louggages</th>
+          <th>Greet</th>
+          <th>CarType</th>
+
+          <th>DriverInstruction</th>
+          <th>Price</th>
+          <th>Confirm</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <ng-container *ngIf="bookings && bookings.length > 0">
+          <tr *ngFor="let item of bookings">
+            <td>{{ item.createdAt | date : "dd.MM.yyyy HH:mm" }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.phoneNumber }}</td>
+            <td>{{ item.email }}</td>
+            <td>{{ item.pickupLocation }}</td>
+            <td>{{ item.via }}</td>
+            <td>{{ item.dropoffLocation }}</td>
+            <td>{{ item.pickupTime | date : "EEEE, MMMM d, y, h:mm a" }}</td>
+            <td>{{ item.passengers }}</td>
+            <td>{{ item.louggages }}</td>
+            <td>{{ item.greet ? "Yes" : "No" }}</td>
+            <td>{{ item.carType }}</td>
+
+            <td>{{ item.driverInstruction }}</td>
+            <td>{{ item.price | currency : "GBP" : "symbol" }}</td>
+            <td>{{ item.isConfirmed ?'Yes':'No' }}</td>
+          </tr>
+        </ng-container>
+        <ng-container *ngIf="!bookings || bookings.length === 0">
+          <tr>
+            <td colspan="14">No bookings found.</td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div> -->
+</div>

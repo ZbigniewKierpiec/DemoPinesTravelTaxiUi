@@ -1,0 +1,107 @@
+/* Styles for a fixed position button back to top */
+.btn {
+  position: fixed;
+  bottom: 0;
+  right: 25px;
+  bottom: 10px;
+  width: 10rem;
+  height: 10rem;
+  background-color: var(--back-to-top-background);
+
+  border: none;
+  outline: none;
+  color: white;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-2rem);
+  transition: all 0.4s linear;
+  z-index: 9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999 !important;
+  /* Active state for the button */
+  &.active {
+    visibility: visible;
+    transform: translateY(-15rem);
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+
+
+
+
+
+
+
+
+$white: #FFFFFF;
+$orange: #F47721;
+$cream: #FFF8EC;
+
+svg#fancy_arrow {
+  width: 180px;
+  width: 5rem;
+  animation: bounce-arrow 4s 1s ease forwards infinite;
+  transform: rotate(180deg);
+  g.arrow {
+    fill: $orange;
+    box-shadow: 0px 0px 10px #333;
+  }
+
+  g.lights g.row {
+    fill: lighten($orange, 20%);
+    animation: illuminate-lights 2s ease forwards infinite;
+
+    &:nth-child(2) {
+      animation-delay: 0.1s;
+    }
+    &:nth-child(3) {
+      animation-delay: 0.2s;
+    }
+    &:nth-child(4) {
+      animation-delay: 0.3s;
+    }
+    &:nth-child(5) {
+      animation-delay: 0.4s;
+    }
+    &:nth-child(6) {
+      animation-delay: 0.5s;
+    }
+    &:nth-child(7) {
+      animation-delay: 0.6s;
+    }
+    &:nth-child(8) {
+      animation-delay: 0.7s;
+    }
+  }
+}
+
+@keyframes illuminate-lights {
+  60% {
+    fill: lighten($orange, 20%);
+  }
+  80% {
+    fill: $white;
+  }
+  90% {
+    fill: lighten($orange, 20%);
+  }
+}
+
+// @keyframes bounce-arrow {
+//   74% {
+//     margin-top: 0;
+//   }
+//   78% {
+//     margin-top: 16px;
+//   }
+//   82% {
+//     margin-top: 0;
+//   }
+//   86% {
+//     margin-top: 8px;
+//   }
+//   90% {
+//     margin-top: 0;
+//   }
+// }

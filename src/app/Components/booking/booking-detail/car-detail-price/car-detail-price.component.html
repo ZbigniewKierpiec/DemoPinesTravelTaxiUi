@@ -1,0 +1,72 @@
+<!--  -->
+<div  *ngIf="carDetails"  class="booking__wraper__resoult__car">
+  <div class="booking__wraper__resoult__car__left">
+    <img  [ngStyle]="{'transform': carDetails.carType === 'Saloon' ? 'scaleX(1)' : 'scaleX(-1)', 'width': '80%' }"         src="{{carDetails?.image}}" alt="" />
+  </div>
+  <div class="booking__wraper__resoult__car__right">
+    <div class="booking__wraper__resoult__car__right__top">
+      <h1>1 x {{carDetails?.carType}}</h1>
+    </div>
+    <div class="booking__wraper__resoult__car__right__bottom">
+      <div class="booking__wraper__resoult__car__right__bottom__spec">
+        <div class="booking__wraper__resoult__car__right__bottom__spec__box">
+          <div
+            class="booking__wraper__resoult__car__right__bottom__spec__box__top"
+          >
+            <h1>4</h1>
+          </div>
+          <div
+            class="booking__wraper__resoult__car__right__bottom__spec__box__bottom"
+          >
+            <div
+              class="booking__wraper__resoult__car__right__bottom__spec__box__bottom__person"
+            >
+              <i class="fa-solid fa-person"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="booking__wraper__resoult__car__right__bottom__spec__box">
+          <div
+            class="booking__wraper__resoult__car__right__bottom__spec__box__top"
+          >
+            <h1>4</h1>
+          </div>
+          <div
+            class="booking__wraper__resoult__car__right__bottom__spec__box__bottom"
+          >
+            <div
+              class="booking__wraper__resoult__car__right__bottom__spec__box__bottom__person"
+            >
+              <i class="fa-solid fa-suitcase"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="booking__wraper__resoult__car__right__bottom__spec__box">
+          <div
+            class="booking__wraper__resoult__car__right__bottom__spec__box__top"
+          >
+            <h1>2</h1>
+          </div>
+          <div
+            class="booking__wraper__resoult__car__right__bottom__spec__box__bottom"
+          >
+            <div
+              class="booking__wraper__resoult__car__right__bottom__spec__box__bottom__person"
+            >
+              <i class="fa-solid fa-briefcase"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="booking__wraper__resoult__car__right__bottom__book">
+        <button     >
+
+          <span>price</span>
+          <data value="{{carDetails?.price}}">£ {{carDetails?.price}}</data>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

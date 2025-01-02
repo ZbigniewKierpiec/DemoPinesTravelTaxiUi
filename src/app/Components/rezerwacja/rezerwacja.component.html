@@ -1,0 +1,149 @@
+<div [class.active]="active" class="box">
+  <div class="box__title">
+    <h1>passenger details</h1>
+  </div>
+  <div class="box__quote">
+    <div class="box__quote__left">
+      <div class="box__quote__left__label">
+        <p>pickup:</p>
+        <p>via</p>
+        <p>drop off:</p>
+        <p>date & time:</p>
+
+        <p>passengers:</p>
+        <p>louggages</p>
+        <p>greet:</p>
+      </div>
+      <div class="box__quote__left__details">
+        <p>{{ model.pickupLocation }}</p>
+        <p>{{ model.via }}</p>
+        <p>{{ model.dropoffLocation }}</p>
+        <p>
+          <td>
+            {{ model.pickupTime | date : "fullDate" }}
+            {{ model.pickupTime | date : "shortTime" }}
+          </td>
+          <!-- {{ data | date : "shortTime" }} -->
+        </p>
+
+        <p>{{ model.passengers }}</p>
+        <p>{{ model.louggages }}</p>
+        <p [textContent]="model.greet ? 'Yes' : 'no'"></p>
+      </div>
+    </div>
+    <div class="box__quote__right">
+      <app-car-detail-price></app-car-detail-price>
+    </div>
+  </div>
+
+  <div class="box__info">
+    <form [formGroup]="bookingForm" (ngSubmit)="book()">
+      <div class="box__info__name">
+        <input
+          placeholder="Full Name:"
+          type="text"
+          name="name"
+          formControlName="name"
+        />
+
+        <div
+          *ngIf="
+            bookingForm.controls['name'].invalid &&
+            (bookingForm.controls['name'].touched || bookingForm.dirty)
+          "
+        >
+          <small
+            *ngIf="bookingForm.controls['name'].errors?.['required']"
+            class="text-danger"
+            >*required</small
+          >
+
+          <small
+            *ngIf="bookingForm.controls['name'].errors?.['minlength']"
+            class="text-danger"
+            >Min 4 Charactors</small
+          >
+        </div>
+      </div>
+      <div class="box__info__mobile">
+        <input
+          placeholder="Mobile No:"
+          type="tel"
+          required
+          name="mobile"
+          formControlName="mobile"
+        />
+        <input
+          placeholder="Email:"
+          type="email"
+          name="email"
+          formControlName="email"
+        />
+        <div
+          *ngIf="
+            bookingForm.controls['mobile'].invalid &&
+            (bookingForm.controls['mobile'].touched || bookingForm.dirty)
+          "
+          class="one"
+        >
+          <small
+            *ngIf="
+              bookingForm.controls['mobile'].dirty &&
+              bookingForm.hasError('required', 'mobile')
+            "
+            class="text-danger"
+            >*required</small
+          >
+
+          <small
+            *ngIf="
+              bookingForm.controls['mobile'].dirty &&
+              bookingForm.hasError('pattern', 'mobile')
+            "
+            class="text-danger"
+          >
+            Must be between 7 and 15 digits.
+          </small>
+        </div>
+
+        <div
+          class="two"
+          *ngIf="
+            bookingForm.controls['email'].invalid &&
+            (bookingForm.controls['email'].touched || bookingForm.dirty)
+          "
+        >
+          <small
+            *ngIf="bookingForm.controls['email'].errors?.['required']"
+            class="text-danger"
+            >*required</small
+          >
+
+          <small
+            *ngIf="bookingForm.controls['email'].errors?.['email']"
+            class="text-danger"
+            >Email not valid</small
+          >
+        </div>
+      </div>
+
+      <div class="box__info__instruction">
+        <textarea
+          placeholder="Driver Instruction:"
+          name="Instruction"
+          id="Instruction"
+          rows="4"
+          name="instructions"
+          formControlName="instructions"
+        ></textarea>
+      </div>
+      <button type="submit" class="box__info__book">book now</button>
+    </form>
+  </div>
+</div>
+
+<app-confirmation
+  [name]="name"
+  [email]="email"
+  [isActive]="isActive"
+></app-confirmation>

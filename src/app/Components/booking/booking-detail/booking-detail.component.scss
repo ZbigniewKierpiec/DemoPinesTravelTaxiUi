@@ -1,0 +1,279 @@
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media only screen and (max-width: 37.5em) {
+      @content;
+    } // 600px - phones
+  }
+
+  @if $breakpoint == tab-port {
+    @media only screen and (max-width: 56.25em) {
+      @content;
+    } // 900px - portrait tablets
+  }
+
+  @if $breakpoint == tab-land {
+    @media only screen and (max-width: 75em) {
+      @content;
+    } // 1200px - landscape tablets
+  }
+
+  @if $breakpoint == tab-port-portrait {
+    @media only screen and (max-width: 56.25em) and (orientation: portrait) {
+      @content;
+    } // Portrait tablets (900px or less, portrait mode)
+  }
+
+  @if $breakpoint == tab-port-landscape {
+    @media only screen and (max-width: 56.25em) and (orientation: landscape) {
+      @content;
+    } // Portrait tablets (900px or less, landscape mode)
+  }
+
+  @if $breakpoint == i-pad {
+    @media only screen and (max-width: 103em) {
+      @content;
+    } // 1648px - larger devices like large tablets and small desktops
+  }
+
+  @if $breakpoint == big-desktop {
+    @media only screen and (min-width: 112.5em) {
+      @content;
+    } // 1800px - large desktop screens
+  }
+
+  @if $breakpoint == ipad-2 {
+    @media only screen and (max-width: 135em) {
+      @content;
+    } // 2160px - very large screens, huge desktops
+  }
+
+  // Additional breakpoint for very small devices like old phones
+  @if $breakpoint == xs {
+    @media only screen and (max-width: 20em) {
+      @content;
+    } // 320px - extremely small screens (older phones)
+  }
+
+  // Additional breakpoint for larger tablet sizes
+  @if $breakpoint == tab-xl {
+    @media only screen and (min-width: 90em) and (max-width: 112.5em) {
+      @content;
+    } // 1440px - large tablets or smaller laptops
+  }
+
+  // Additional breakpoint for larger mobile devices
+  @if $breakpoint == phone-xl {
+    @media only screen and (min-width: 40em) and (max-width: 60.5em) {
+      @content;
+    } // 648px - larger phones or small tablets
+  }
+}
+
+.booking {
+  width: 120vh;
+  height: 55vh;
+  height: 60vh;
+  background-color: #f0f0f0;
+  // background-color: rgba(255, 255, 255, 0.467);
+  position: absolute;
+  top: 50%; /* Centers vertically */
+  left: 150%; /* Start off-screen to the right */
+  transform: translateY(-50%); /* Adjust vertically to keep it centered */
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: left 0.3s linear; /* Use left for horizontal movement */
+  border-radius: 0.5rem;
+  z-index: 9999999999999999999999999;
+  @include respond(tab-port) {
+    // transform: translate(100%, 0%);
+
+    height: auto;
+    width: 100vw;
+
+
+  }
+
+  &.active {
+    left: 50%; /* Move to the horizontal center */
+    transform: translateY(-50%); /* Keep it vertically centered */
+    transform: translate(-50%, -50%);
+
+    @include respond(tab-port) {
+      // margin-top: -9rem;
+      margin-top: 20rem;
+      transform: translate(-50%, -100%);
+      // align-self: flex-start;
+    }
+
+    // background-color: green;
+  }
+
+  &__detail {
+    width: 100%;
+    height: 100%;
+    // background-color: rgb(105, 118, 123);
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 2rem 15rem 1fr 7rem;
+    grid-template-rows: 5rem  15rem 1fr;
+    padding: 0 2rem;
+
+    @include respond(tab-port) {
+      // position: relative;
+      // top: 0;
+
+      grid-template-rows: 1fr 30rem 1fr 1fr;
+      // justify-content:flex-start;
+      align-items: center;
+
+
+    }
+    &__tittle {
+      font-size: 3rem;
+      text-transform: capitalize;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      @include respond(tab-port) {
+
+        height: auto;
+        // align-items: flex-end;
+      }
+    }
+    &__quote {
+      // background-color: yellow;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+      grid-gap: 1rem;
+
+      @include respond(tab-port) {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+      }
+      &__left {
+        // background-color: firebrick;
+        display: grid;
+        grid-template-columns: 12rem 1fr;
+        grid-template-rows: 1fr;
+        border: 1px solid grey;
+        border-radius: 0.3rem;
+
+        &__label {
+          background-color: gray;
+          color: white;
+          display: grid;
+          grid-template-columns: 1fr;
+          grid-template-rows: repeat(7, 1fr);
+          align-items: center;
+          padding: 0.6rem.3rem;
+          font-size: 1.2rem;
+          text-transform: capitalize;
+        }
+        &__details {
+          display: grid;
+          grid-template-columns: 1fr;
+          grid-template-rows: repeat(7, 1fr);
+          align-items: center;
+          padding: 0.6rem.3rem;
+          font-size: 1.3rem;
+          text-transform: capitalize;
+        }
+      }
+      &__right {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+        // &__edit {
+        //   padding: 0.3rem 0;
+        //   font-size: 2.3rem;
+        //   text-transform: capitalize;
+        //   background-color: #007bff;
+        //   text-align: center;
+        //   color: white;
+        //   cursor: pointer;
+        //   font-family: monospace;
+        //   letter-spacing: -0.2rem;
+        //   @include respond(tab-port) {
+        //   }
+        // }
+      }
+    }
+    &__info {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 5rem 5rem 7rem;
+      grid-gap: 1rem;
+      // margin-top: 1rem;
+
+      &__name {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        input {
+          flex-grow: 1;
+          height: 80%;
+          padding: 0 1rem;
+          font-size: 1.7rem;
+          background-color: rgb(60, 57, 57);
+          color: white;
+          border-radius: 0.5rem;
+          &::placeholder {
+            color: rgba(255, 255, 255, 0.487);
+          }
+        }
+      }
+      &__mobile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        grid-gap: 1rem;
+        input {
+          flex-grow: 1;
+          height: 80%;
+          padding: 0 1rem;
+          font-size: 1.7rem;
+          background-color: rgb(60, 57, 57);
+          color: white;
+          border-radius: 0.5rem;
+          &::placeholder {
+            color: rgba(255, 255, 255, 0.487);
+          }
+        }
+      }
+      &__instruction {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        textarea {
+          flex-grow: 1;
+          padding: 0 1rem;
+          padding-top: 0.7rem;
+          font-size: 1.7rem;
+          height: 80%;
+          resize: none;
+          overflow-y: auto; /* Enables vertical scrolling */
+          overflow-x: hidden; /* Prevents horizontal scroll */
+          border: none;
+          outline: none;
+          background-color: rgb(60, 57, 57);
+          color: white;
+          border-radius: 0.5rem;
+          &::placeholder {
+            color: rgba(255, 255, 255, 0.487);
+          }
+        }
+      }
+    }
+
+    &__payments {
+    }
+  }
+}

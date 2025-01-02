@@ -1,0 +1,132 @@
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media only screen and (max-width: 37.5em) {
+      @content;
+    } // 600px - phones
+  }
+
+  @if $breakpoint == tab-port {
+    @media only screen and (max-width: 56.25em) {
+      @content;
+    } // 900px - portrait tablets
+  }
+
+  @if $breakpoint == tab-land {
+    @media only screen and (max-width: 75em) {
+      @content;
+    } // 1200px - landscape tablets
+  }
+
+  @if $breakpoint == tab-port-portrait {
+    @media only screen and (max-width: 56.25em) and (orientation: portrait) {
+      @content;
+    } // Portrait tablets (900px or less, portrait mode)
+  }
+
+  @if $breakpoint == tab-port-landscape {
+    @media only screen and (max-width: 56.25em) and (orientation: landscape) {
+      @content;
+    } // Portrait tablets (900px or less, landscape mode)
+  }
+
+  @if $breakpoint == i-pad {
+    @media only screen and (max-width: 103em) {
+      @content;
+    } // 1648px - larger devices like large tablets and small desktops
+  }
+
+  @if $breakpoint == big-desktop {
+    @media only screen and (min-width: 112.5em) {
+      @content;
+    } // 1800px - large desktop screens
+  }
+
+  @if $breakpoint == ipad-2 {
+    @media only screen and (max-width: 135em) {
+      @content;
+    } // 2160px - very large screens, huge desktops
+  }
+
+  // Additional breakpoint for very small devices like old phones
+  @if $breakpoint == xs {
+    @media only screen and (max-width: 20em) {
+      @content;
+    } // 320px - extremely small screens (older phones)
+  }
+
+  // Additional breakpoint for larger tablet sizes
+  @if $breakpoint == tab-xl {
+    @media only screen and (min-width: 90em) and (max-width: 112.5em) {
+      @content;
+    } // 1440px - large tablets or smaller laptops
+  }
+
+  // Additional breakpoint for larger mobile devices
+  @if $breakpoint == phone-xl {
+    @media only screen and (min-width: 40em) and (max-width: 60.5em) {
+      @content;
+    } // 648px - larger phones or small tablets
+  }
+}
+
+.questions {
+  position: relative;
+  // min-height: 70vh;
+  // height: 80vh;
+  height: auto;
+  height: fit-content;
+  // background-image: linear-gradient(to top, #faf4f4, #f8ebeb, #f5e2e2, #f3dada, #f0d1d1);
+  padding: 3rem 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  grid-gap: 4rem;
+  z-index: 3;
+  @include respond(tab-port) {
+    padding: 3rem 2rem;
+    height:max-content;
+    background-color:#8EB98F !important;
+
+  }
+  &__h1 {
+    text-align: center;
+    font-size: 5rem;
+    text-wrap: pretty;
+    z-index: 444444444444 !important;
+    @include respond(tab-port) {
+      font-size: 4rem;
+
+    }
+  }
+  &__h2 {
+    text-align: center;
+    font-size: 3rem;
+    text-wrap: balance;
+    @include respond(tab-port) {
+      font-size: 2rem;
+    }
+
+  }
+  &__all {
+    display: flex;
+    justify-content: center;
+
+    grid-gap: 3rem;
+
+    @include respond(tab-port) {
+      height: fit-content;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+    }
+    &__box {
+      width: 80%;
+      height: 100%;
+      @include respond(tab-port) {
+        width: 100%;
+        height:fit-content;
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+
+input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background-color: #8eb98f;
+  padding: 0 1rem;
+  font-size: 1.3rem;
+  &::placeholder {
+    color: black;
+    font-weight: bolder;
+  }
+}

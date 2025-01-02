@@ -1,0 +1,28 @@
+<div *ngIf="showBox" class="notyfications">
+  <div class="notyfications__top">
+    <h3>Notyfications</h3>
+    <small>5 Unread</small>
+  </div>
+  <div class="notyfications__middle">
+    <ng-container *ngFor="let item of notifications">
+      <app-dashboard-notyfication-item
+        [message]="item.message"
+        [id]="item.id"
+        (boxClicked)="onBoxClick($event)"
+        [date]="item.date"
+      ></app-dashboard-notyfication-item>
+    </ng-container>
+  </div>
+  <div *ngIf="notifications.length" class="notyfications__bottom">
+    <button>View All</button>
+  </div>
+
+  <ng-container *ngIf="notifications.length == 0">
+    <div class="notyfications__no-notifi">
+      <div class="notyfications__no-notifi__circle">
+        <i class="fa-solid fa-bell-slash"></i>
+      </div>
+      <p>No New Notifications</p>
+    </div>
+  </ng-container>
+</div>
