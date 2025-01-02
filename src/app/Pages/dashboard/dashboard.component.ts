@@ -9,11 +9,12 @@ import { AddBookingRequest } from '../../Components/booking/Model/add-booking-re
 import { AddBookingResponse } from '../../Components/booking/Model/add-booking-response';
 import { DashboardHeaderComponent } from "./dashboard-header/dashboard-header.component";
 import { DashboardNotificationsBoxComponent } from "./dashboard-notifications-box/dashboard-notifications-box.component";
+import { DashboardSidenavComponent } from "./dashboard-sidenav/dashboard-sidenav.component";
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, DashboardHeaderComponent, DashboardNotificationsBoxComponent],
+  imports: [CommonModule, DashboardHeaderComponent, DashboardNotificationsBoxComponent, DashboardSidenavComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
 })

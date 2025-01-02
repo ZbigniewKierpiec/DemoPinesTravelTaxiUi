@@ -82,7 +82,7 @@
       <!-- <li #listItem (click)="selectLi(2)" class="nav__menu__list__item">
         <a>{{ "Nav_Testimonials" | translate }}</a>
       </li> -->
-      <ng-container
+      <!-- <ng-container
         *ngIf="user !== undefined && user?.roles?.includes('Writer')"
       >
         <li #listItem (click)="selectLi(2)" class="nav__menu__list__item">
@@ -90,14 +90,14 @@
             >Booking List</a
           >
         </li>
-      </ng-container>
+      </ng-container> -->
 
-      <li #listItem (click)="selectLi(3)" class="nav__menu__list__item">
+      <li #listItem (click)="selectLi(2)" class="nav__menu__list__item">
         <a [routerLink]="['/bracknellTaxis/booking']">{{
           "Nav_Book" | translate
         }}</a>
       </li>
-      <li #listItem (click)="selectLi(4)" class="nav__menu__list__item">
+      <li #listItem (click)="selectLi(3)" class="nav__menu__list__item">
         <a>{{ "Nav_Contact" | translate }}</a>
       </li>
       <div

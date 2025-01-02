@@ -1,0 +1,56 @@
+
+ <!-- Main navigation container. The 'active-nav' class is applied when isActive is true. -->
+ <div    class="navigation" [ngClass]="{ 'active-nav': isActive }">
+
+  <!-- Navigation list. The 'active' class is conditionally applied based on the isActive property. -->
+  <ul [class.active]="isActive" class="ul">
+ <!-- Slider element with two <b> tags, always has the 'slide' class. -->
+
+
+  <li #slider class="slide" [ngClass]="{ slide: true }">
+      <b class="b"></b>
+      <b class="b"></b>
+    </li>  
+
+
+
+
+   <!-- Loop through 'links' array to generate list items. 'index' provides the current index in the loop. -->
+    <ng-container *ngFor="let data of links; let index = index">
+ <!-- List item element with click event binding to handleItemClick method.
+             The 'active' class is applied if activeItem matches the current data name. -->
+
+      <li
+        class="list__items"
+        (click)="handleItemClick($event, data, index)"
+
+        [ngClass]="{ active: activeItem === data.name }"
+      >
+ <!-- Anchor tag (link) -->
+
+        <a class="a"  >
+          <!-- <span [ngClass]="'active':isSame === data.id"   class="icon {{ data.icon }}"> </span> -->
+ <!-- Icon span element with conditional 'active' class based on isSame property.
+                 Also includes dynamic class from data.icon  -->
+
+          <span
+            [ngClass]="{ active: isSame === data.id }"
+            class="icon {{ data.icon }} overlay-element "
+          ></span>
+
+ <!-- Title span element with conditional 'active-margin' class based on isActive property.
+                 Also includes conditional 'active' class -->
+
+          <span
+            [class.active-margin]="isActive"
+            [ngClass]="{ active: isSame === data.id }"
+            class="title overlay-element"
+          >
+           <!-- Display the name from the data object. -->
+            {{ data.name }}
+          </span>
+        </a>
+      </li>
+    </ng-container>
+  </ul>
+</div>

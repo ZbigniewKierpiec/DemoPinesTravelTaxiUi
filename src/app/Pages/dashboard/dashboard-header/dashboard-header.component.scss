@@ -7,9 +7,12 @@
   grid-template-columns: 10rem 30rem;
   grid-template-rows: 1fr;
   &__left {
+    width: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-right: 1px solid rgb(48, 50, 49);
+
   }
   &__right {
     padding: 0 2rem;

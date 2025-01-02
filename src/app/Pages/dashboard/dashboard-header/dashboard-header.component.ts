@@ -95,6 +95,16 @@ export class DashboardHeaderComponent implements OnInit {
     },
   ];
 
+
+  expendSidenav(){
+    this.notificationService.toggleSideNavState();
+    console.log('dziala')
+  }
+
+
+
+
+
   onBoxClick(event: any) {
     console.log('dziala' + event);
     this.notifications = this.notifications.filter(
