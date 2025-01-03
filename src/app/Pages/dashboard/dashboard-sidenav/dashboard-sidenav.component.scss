@@ -3,6 +3,7 @@
 .navigation {
   --nav-background: #292929;
   --layout-backgrounf: #eaedf7;
+  --dashboard-background:#ffffff;
   --nav-width: 80px;
   --nav-width-active: 240px;
   // position: fixed !important;
@@ -17,6 +18,7 @@
   background-color: var(--nav-background);
   transition: width 0.3s linear;
   overflow: hidden;
+
   /* When the navigation bar is active */
   &.active-nav {
     width: var(--nav-width-active);
@@ -59,7 +61,7 @@ justify-content: center;
   width: 100%;
   display: flex;
 
-  text-decoration: none;
+  text-decoration: none !important;
   color: #fff;
   margin: 0;
   padding: 0;
@@ -134,7 +136,7 @@ justify-content: center;
   // left: 1.9rem;
 
   background-color: var(--layout-backgrounf);
-
+  background-color: var(--dashboard-background);
   border-radius: 300px 10px 10px 300px;
   border-radius: 300px 0px 0px 300px;
   margin-left: 1rem;
@@ -167,6 +169,7 @@ justify-content: center;
   width: 100%;
 
   background-color: var(--layout-backgrounf) !important;
+  background-color: var(--dashboard-background) !important;
 }
 /* Before pseudo-element for first child */
 .b:nth-child(1)::before {
@@ -192,6 +195,7 @@ justify-content: center;
   right: 0;
   background-color: var(--nav-background);
   background-color: var(--layout-backgrounf);
+  background-color: var(--dashboard-background);
   overflow: hidden !important;
 }
 /* Before pseudo-element for second child */

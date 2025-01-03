@@ -14,7 +14,8 @@
   grid-template-rows: 6rem minmax(100px, 70%) 7rem;
 
   border: 1px solid rgba(0, 0, 0, 0.127);
-
+  z-index: 9999999999999999999 !important;
+  background-color: white;
   &__top {
     background-color: rgb(235, 232, 232);
     height: 5rem;

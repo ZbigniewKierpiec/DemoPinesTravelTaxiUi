@@ -10,7 +10,7 @@
   <li #slider class="slide" [ngClass]="{ slide: true }">
       <b class="b"></b>
       <b class="b"></b>
-    </li>  
+    </li>
 
 
 
@@ -28,7 +28,7 @@
       >
  <!-- Anchor tag (link) -->
 
-        <a class="a"  >
+        <a class="a" [routerLink]="data.route"  >
           <!-- <span [ngClass]="'active':isSame === data.id"   class="icon {{ data.icon }}"> </span> -->
  <!-- Icon span element with conditional 'active' class based on isSame property.
                  Also includes dynamic class from data.icon  -->

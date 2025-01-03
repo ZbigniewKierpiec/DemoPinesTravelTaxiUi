@@ -2,16 +2,18 @@ import { CommonModule } from '@angular/common';
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { NotificationService } from '../../../Services/notification.service';
+import { RouterLink } from '@angular/router';
 // Define the interface for the Link object
 interface Link {
   id: number;
   icon: string;
   name: string;
+  route:string;
 }
 @Component({
   selector: 'app-dashboard-sidenav',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule , RouterLink],
   templateUrl: './dashboard-sidenav.component.html',
   styleUrl: './dashboard-sidenav.component.scss',
 })
@@ -26,9 +28,9 @@ export class DashboardSidenavComponent implements OnInit {
   ) {}
   // Array of menu items
   links: Link[] = [
-    { id: 1, icon: 'fa solid fa-house', name: 'dashboard' },
-    { id: 2, icon: 'fa solid fa-chart-line', name: 'test' },
-    { id: 3, icon: 'fa solid fa-table-columns', name: 'test' },
+    { id: 1, icon: 'fa solid fa-house', name: 'dashboard',  route: 'home' },
+    { id: 2, icon: 'fa solid fa-chart-line', name: 'test' , route:'booking-list' },
+    // { id: 3, icon: 'fa solid fa-table-columns', name: 'test' },
   ];
   // Track the active item
   activeItem: string | null = null;

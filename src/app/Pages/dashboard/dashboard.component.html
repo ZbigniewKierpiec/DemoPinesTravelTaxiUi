@@ -3,7 +3,9 @@
   <app-dashboard-notifications-box></app-dashboard-notifications-box>
 
   <app-dashboard-sidenav></app-dashboard-sidenav>
-
+  <div [class.active]="isActive" class="main">
+    <router-outlet></router-outlet>
+  </div>
   <!-- <div class="box__top">
     <h1>Welcome to User Dashboard</h1>
     <h2>{{ user?.email }}</h2>

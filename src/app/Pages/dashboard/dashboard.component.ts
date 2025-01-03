@@ -10,21 +10,25 @@ import { AddBookingResponse } from '../../Components/booking/Model/add-booking-r
 import { DashboardHeaderComponent } from "./dashboard-header/dashboard-header.component";
 import { DashboardNotificationsBoxComponent } from "./dashboard-notifications-box/dashboard-notifications-box.component";
 import { DashboardSidenavComponent } from "./dashboard-sidenav/dashboard-sidenav.component";
+import { NotificationService } from '../../Services/notification.service';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, DashboardHeaderComponent, DashboardNotificationsBoxComponent, DashboardSidenavComponent],
+  imports: [CommonModule, DashboardHeaderComponent, DashboardNotificationsBoxComponent, DashboardSidenavComponent , RouterOutlet],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
 })
 export class DashboardComponent implements OnInit {
   user?: User;
-
+  isActive = false;
   bookings: AddBookingResponse[]=[];
   constructor(
     private authService: AuthService,
-    private bookingService: BookingService
+    private bookingService: BookingService,
+     private notificationService: NotificationService
+
   ) {}
 
   ngOnInit(): void {
@@ -52,5 +56,14 @@ export class DashboardComponent implements OnInit {
         console.log('Fetch bookings request completed.');
       },
     });
+
+
+    this.notificationService.currentSideNavState.subscribe((state) => {
+      this.isActive = state;
+
+    });
+
+
+
   }
 }

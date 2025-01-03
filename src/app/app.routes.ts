@@ -9,6 +9,7 @@ import { BookingListComponent } from './Components/booking-list/booking-list.com
 import { EditBookingsListComponent } from './Components/booking-list/edit-bookings-list/edit-bookings-list.component';
 import { authGuard } from './Pages/login/guards/auth.guard';
 import { DashboardComponent } from './Pages/dashboard/dashboard.component';
+import { sidenavRoutes } from './Pages/dashboard/dashboard-sidenav/Routes-SidNav/sidenav.routes';
 
 // export const routes: Routes = [
 //   { path: '', redirectTo: 'bracknellTaxis/main', pathMatch: 'full' },
@@ -58,6 +59,8 @@ export const routes: Routes = [
   },
   {
     path:'bracknellTaxis/user/dashboard',
-    component:DashboardComponent
+    component:DashboardComponent,
+    children:sidenavRoutes
+
   }
 ];

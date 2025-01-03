@@ -1,6 +1,10 @@
 .box {
-  height: 70vh;
-  min-height: 70vh;
+  position: relative;
+  // height: 70vh;
+  // min-height: 70vh;
+width: 100%;
+height: 100vh;
+
   &__top {
     padding: 4rem 0;
     width: 100%;
@@ -18,12 +22,10 @@
     }
   }
   &__booking-list {
-
     display: flex;
     flex-direction: column;
   }
 }
-
 
 .styled-table {
   border-collapse: collapse;
@@ -43,9 +45,9 @@
   text-align: left;
 }
 
-.styled-table th, .styled-table td {
+.styled-table th,
+.styled-table td {
   padding: 12px 15px;
-
 }
 
 .styled-table tbody tr {
@@ -64,9 +66,24 @@
   background-color: #f1f1f1;
   cursor: pointer;
 }
-tbody tr td{
-   text-align: center;
- }
-thead tr th{
+tbody tr td {
   text-align: center;
+}
+thead tr th {
+  text-align: center;
+}
+
+.main {
+  position: absolute;
+  top: 7rem;
+  left: 80px;
+  // width: 100vw;
+  width: 100%;
+  width: calc(100% - 80px);
+  min-height: 100vh;
+  z-index: 0;
+  transition: all 0.3s linear;
+  &.active {
+    left: 240px;
+  }
 }
