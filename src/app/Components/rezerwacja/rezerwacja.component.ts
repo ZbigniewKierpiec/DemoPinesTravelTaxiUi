@@ -134,43 +134,43 @@ export class RezerwacjaComponent implements OnInit {
       (this.email = this.bookingForm.get('email')?.value || ''),
         emailjs.init('169d31qPmdVNK5UZg');
 
-      await emailjs.send('service_4ekvtt3', 'template_o7py4b8', {
-        from_name: this.bookingForm.get('email')?.value || '',
-        name: this.bookingForm.get('name')?.value || '',
-        pickup: this.pickup,
-        destination: this.destination,
-        via: this.via,
-        date: this.data,
-        passengers: this.passengers,
-        luggages: this.luggage,
-        greet: this.greet,
-        carType: this.carType,
+      // await emailjs.send('service_4ekvtt3', 'template_o7py4b8', {
+      //   from_name: this.bookingForm.get('email')?.value || '',
+      //   name: this.bookingForm.get('name')?.value || '',
+      //   pickup: this.pickup,
+      //   destination: this.destination,
+      //   via: this.via,
+      //   date: this.data,
+      //   passengers: this.passengers,
+      //   luggages: this.luggage,
+      //   greet: this.greet,
+      //   carType: this.carType,
 
-        price: this.price,
-        mobile: this.bookingForm.get('mobile')?.value || '',
-        email: this.bookingForm.get('email')?.value || '',
-        instructions: this.bookingForm.get('instructions')?.value || '',
-        reply_to: this.bookingForm.get('email')?.value || '',
-      });
+      //   price: this.price,
+      //   mobile: this.bookingForm.get('mobile')?.value || '',
+      //   email: this.bookingForm.get('email')?.value || '',
+      //   instructions: this.bookingForm.get('instructions')?.value || '',
+      //   reply_to: this.bookingForm.get('email')?.value || '',
+      // });
 
-      await emailjs.send('service_4ekvtt3', 'template_cneqz4l', {
-        from_name: this.bookingForm.get('email')?.value || '',
-        name: this.bookingForm.get('name')?.value || '',
-        pickup: this.pickup,
-        destination: this.destination,
-        via: this.via,
-        date: this.data,
-        passengers: this.passengers,
-        luggages: this.luggage,
-        greet: this.greet,
-        carType: this.carType,
+      // await emailjs.send('service_4ekvtt3', 'template_cneqz4l', {
+      //   from_name: this.bookingForm.get('email')?.value || '',
+      //   name: this.bookingForm.get('name')?.value || '',
+      //   pickup: this.pickup,
+      //   destination: this.destination,
+      //   via: this.via,
+      //   date: this.data,
+      //   passengers: this.passengers,
+      //   luggages: this.luggage,
+      //   greet: this.greet,
+      //   carType: this.carType,
 
-        price: this.price,
-        mobile: this.bookingForm.get('mobile')?.value || '',
-        email: this.bookingForm.get('email')?.value || '',
-        instructions: this.bookingForm.get('instructions')?.value || '',
-        reply_to: this.bookingForm.get('email')?.value || '',
-      });
+      //   price: this.price,
+      //   mobile: this.bookingForm.get('mobile')?.value || '',
+      //   email: this.bookingForm.get('email')?.value || '',
+      //   instructions: this.bookingForm.get('instructions')?.value || '',
+      //   reply_to: this.bookingForm.get('email')?.value || '',
+      // });
 
       this.isActive = true;
       console.log(this.model);

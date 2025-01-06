@@ -1,0 +1,38 @@
+.box{
+  // width: 90%;
+  margin: 0 auto;
+}
+thead{
+  background-color:lightgray;
+  font-family: monospace;
+  text-transform: capitalize;
+  font-size:1.5rem;
+  font-weight: bolder;
+
+}
+tr , th , td{
+  padding: 1rem 1rem;
+}
+
+tbody , tr{
+  cursor: pointer;
+
+}
+tbody tr td{
+  text-align: center;
+}
+
+
+
+
+
+
+.confirmed {
+  color: green;
+  font-weight: bold;
+}
+
+.not-confirmed {
+  color: red;
+  font-weight: bold;
+}

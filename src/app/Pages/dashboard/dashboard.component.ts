@@ -20,50 +20,50 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
 })
-export class DashboardComponent implements OnInit {
-  user?: User;
+export class DashboardComponent {
+  // user?: User;
   isActive = false;
-  bookings: AddBookingResponse[]=[];
-  constructor(
-    private authService: AuthService,
-    private bookingService: BookingService,
-     private notificationService: NotificationService
+  // bookings: AddBookingResponse[]=[];
+  // constructor(
+  //   private authService: AuthService,
+  //   private bookingService: BookingService,
+  //    private notificationService: NotificationService
 
-  ) {}
+  // ) {}
 
-  ngOnInit(): void {
-    this.authService.user().subscribe({
-      next: (response) => {
-        console.log(response?.email);
-        this.user = response;
-      },
-    });
+  // ngOnInit(): void {
+  //   this.authService.user().subscribe({
+  //     next: (response) => {
+  //       console.log(response?.email);
+  //       this.user = response;
+  //     },
+  //   });
 
-    this.user = this.authService.getUser();
+  //   this.user = this.authService.getUser();
 
-    this.bookingService.getMyBookings().subscribe({
-      next: (data) => {
-        // Handle successful response
-        console.log('Bookings data:', data);
-        this.bookings = data; // Assign data to your bookings property
-      },
-      error: (error) => {
-        // Handle error response
-        console.error('Error fetching bookings:', error);
-      },
-      complete: () => {
-        // Optional: Handle completion (when the observable completes)
-        console.log('Fetch bookings request completed.');
-      },
-    });
-
-
-    this.notificationService.currentSideNavState.subscribe((state) => {
-      this.isActive = state;
-
-    });
+  //   this.bookingService.getMyBookings().subscribe({
+  //     next: (data) => {
+  //       // Handle successful response
+  //       console.log('Bookings data:', data);
+  //       this.bookings = data; // Assign data to your bookings property
+  //     },
+  //     error: (error) => {
+  //       // Handle error response
+  //       console.error('Error fetching bookings:', error);
+  //     },
+  //     complete: () => {
+  //       // Optional: Handle completion (when the observable completes)
+  //       console.log('Fetch bookings request completed.');
+  //     },
+  //   });
 
 
+  //   this.notificationService.currentSideNavState.subscribe((state) => {
+  //     this.isActive = state;
 
-  }
+  //   });
+
+
+
+  // }
 }

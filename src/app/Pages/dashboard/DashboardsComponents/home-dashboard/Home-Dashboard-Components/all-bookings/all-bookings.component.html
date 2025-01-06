@@ -1,0 +1,79 @@
+
+<div  [classList]="'animate__animated animate__fadeIn box'"          class="box">
+  <div class="box">
+    <h1 class="mt-3">All Booking List</h1>
+
+    <ng-container *ngIf="bookings">
+      <table class="table table-bordered mt-3">
+        <thead>
+          <tr>
+
+            <th>Booked At</th>
+            <th>Name</th>
+            <th>Phone Number</th>
+            <th>Email</th>
+
+            <th>Pickup</th>
+            <th>Via</th>
+            <th>Destination</th>
+            <th>Pick Up Date</th>
+            <th>Louggages</th>
+            <th>Passengers</th>
+            <th>Car Type</th>
+
+            <th>Driver Instructions</th>
+            <th>Greet</th>
+            <th>Price</th>
+            <th>Is Confirmed</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody style="width: fit-content">
+          <ng-container *ngIf="bookings && bookings.length > 0">
+            <tr *ngFor="let item of bookings">
+
+              <!-- <td>{{ item.bookedAt }}</td> -->
+              <td>{{ item.createdAt | date : "yyyy-MM-dd HH:mm" }}</td>
+              <td>{{ item.name }}</td>
+              <td>{{ item.phoneNumber }}</td>
+              <td>{{ item.email }}</td>
+              <td>{{ item.pickupLocation }}</td>
+              <td>{{ item.via }}</td>
+              <td>{{ item.dropoffLocation }}</td>
+              <td>{{ item.pickupTime }}</td>
+              <td>{{ item.louggages }}</td>
+              <!-- Corrected property name -->
+              <td>{{ item.passengers }}</td>
+              <td>{{ item.carType }}</td>
+              <td>{{ item.driverInstruction }}</td>
+              <td>{{ item.greet ? "Yes" : "No" }}</td>
+              <td>£{{ item.price }}</td>
+              <td [ngClass]="item.isConfirmed ? 'confirmed' : 'not-confirmed'">
+                {{ item.isConfirmed ? 'Yes' : 'No' }}
+              </td>
+
+
+
+              <td>
+                <!-- <a
+                  class="btn btn-light"
+                  [routerLink]="['/bracknellTaxis/booking/admin/list', item.id]"
+                >
+                  Edit
+                </a> -->
+              </td>
+            </tr>
+          </ng-container>
+          <ng-container *ngIf="!bookings || bookings.length === 0">
+            <tr>
+              <td colspan="14">No bookings found.</td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </ng-container>
+  </div>
+
+
+</div>

@@ -94,6 +94,50 @@ export class BookingService {
       );
   }
 
+  // New function to count bookings
+  countMyBookings(): Observable<number> {
+    return this.getMyBookings().pipe(
+      map((bookings) => bookings.length) // Map the bookings array to its length
+    );
+  }
+
+  // Fetch upcoming bookings
+  getUpcomingBookings(): Observable<AddBookingResponse[]> {
+    return this.getMyBookings().pipe(
+      map((bookings) =>
+        bookings.filter((booking) => new Date(booking.pickupTime) > new Date())
+      )
+    );
+  }
+
+  // Fetch count of upcoming bookings
+  countUpcomingBookings(): Observable<number> {
+    return this.getMyBookings().pipe(
+      map(
+        (bookings) =>
+          bookings.filter(
+            (booking) => new Date(booking.pickupTime) > new Date()
+          ).length
+      ) // Filter and get the length
+    );
+  }
+
+  // Fetch past bookings
+  getPastBookings(): Observable<AddBookingResponse[]> {
+    return this.getMyBookings().pipe(
+      map((bookings) =>
+        bookings.filter((booking) => new Date(booking.pickupTime) < new Date())
+      )
+    );
+  }
+
+  // Count past bookings
+  countPastBookings(): Observable<number> {
+    return this.getPastBookings().pipe(
+      map((bookings) => bookings.length) // Map to the count of past bookings
+    );
+  }
+
   getAllBookings(): Observable<{ $id: string; $values: adminBookingList[] }> {
     // Make the GET request with the token in the Authorization header
     return this.http.get<{ $id: string; $values: adminBookingList[] }>(
