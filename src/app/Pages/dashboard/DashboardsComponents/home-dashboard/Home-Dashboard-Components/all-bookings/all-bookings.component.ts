@@ -6,7 +6,7 @@ import { RouterLink } from '@angular/router';
 import { MyBookings } from '../../../../Model/mybookings.model';
 import { AuthService } from '../../../../../login/Services/auth.service';
 import { User } from '../../../../../login/Models/user.model';
-import { AddBookingResponse } from '../../../../../../Components/booking/Model/add-booking-response';
+import { AddBookingResponse, BookingStatus } from '../../../../../../Components/booking/Model/add-booking-response';
 import { NotificationService } from '../../../../../../Services/notification.service';
 
 @Component({
@@ -40,6 +40,29 @@ bookings: AddBookingResponse[]=[];
 
 
 
+// Getter for booking status
+  getBookingStatus(status: any): string {
+    switch (status) {
+      case BookingStatus.Pending:
+        return 'Pending';
+      case BookingStatus.Confirmed:
+        return 'Confirmed';
+      case BookingStatus.Cancelled:
+        return 'Cancelled';
+      case BookingStatus.Completed:
+        return 'Completed';
+      case BookingStatus.Rejected:
+        return 'Rejected';
+      case BookingStatus.InProgress:
+        return 'In Progress';
+      case BookingStatus.AwaitingPayment:
+        return 'Awaiting Payment';
+      case BookingStatus.Failed:
+        return 'Failed';
+      default:
+        return 'Unknown';
+    }
+  }
 
 
  ngOnInit(): void {
