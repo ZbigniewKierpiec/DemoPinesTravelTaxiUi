@@ -19,6 +19,7 @@ export class HomeDashboardComponent implements OnInit {
   allbookingsLength: number = 0;
   upcomingbookingsLength: number = 0;
   pastbookingsLength: number = 0;
+  cancelledBookingsLength:number=0;
   setGreeting(): void {
     const currentHour = new Date().getHours();
     if (currentHour < 12) {
@@ -53,7 +54,10 @@ export class HomeDashboardComponent implements OnInit {
       this.pastbookingsLength = count;
     });
 
-
+    this.bookingService.countCancelledBookings().subscribe((count)=>{
+      console.log(count);
+        this.cancelledBookingsLength = count;
+    });
     this.notificationService.currentSideNavState.subscribe((state) => {
       this.isActive = state;
     });

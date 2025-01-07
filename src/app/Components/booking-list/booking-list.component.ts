@@ -20,11 +20,6 @@ export class BookingListComponent implements OnInit {
 
   isConfirmed(id: string) {
    
-    this.bookingServices.confirmBooking(id).subscribe({
-      next:(res)=>{
-
-      }
-    })
 
 
   }

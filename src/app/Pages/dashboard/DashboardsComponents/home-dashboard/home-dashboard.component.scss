@@ -8,96 +8,87 @@
     height: 100%;
 
     &__user {
-
-
       display: flex;
       align-items: center;
       grid-gap: 2rem;
-      &__image{
+      &__image {
         width: 5rem;
         height: 5rem;
 
-
-    img{
+        img {
           width: 100%;
           height: 100%;
           object-fit: cover;
           border-radius: 50%;
         }
       }
-    &__text{
-
+      &__text {
       }
     }
 
-   &__status{
-    margin-top: 84px;
+    &__status {
+      margin-top: 84px;
 
-    height: 12rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr;
-    grid-gap: 2rem;
-    a{
-      height: 100%;
+      height: 12rem;
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
       grid-template-rows: 1fr;
-      text-decoration: none;
-      
-      // background-color: yellow;
-    }
-    &__item{
-      border: 2px solid rgba(0, 0, 0, 0.089);
-      border-radius: 2rem;
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-template-rows: 1fr 1fr;
-      font-size: 1.2rem;
-      cursor: pointer;
-      &.active{
-        border-color: lightgreen;
+      grid-gap: 2rem;
+      a {
+        height: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+        text-decoration: none;
+        transition: all 0.3s linear;
+
+        // background-color: yellow;
       }
-      &__top{
-        padding: 0 2rem;
-         display: flex;
-         justify-content: space-between;
-         align-items: center;
-
-        text-transform: capitalize;
-        div{
-          width: 3rem;
-          height: 3rem;
-
+      &__item {
+        border: 2px solid rgba(0, 0, 0, 0.089);
+        border-radius: 2rem;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        font-size: 1.2rem;
+        cursor: pointer;
+        &.active {
+          border-color: lightgreen;
+        }
+        &__top {
+          padding: 0 2rem;
           display: flex;
-          justify-content: center;
+          justify-content: space-between;
           align-items: center;
-          img{
-             width: 100%;
 
+          text-transform: capitalize;
+          div {
+            width: 3rem;
+            height: 3rem;
 
-            object-fit: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+              width: 100%;
+
+              object-fit: cover;
+            }
           }
         }
-
-
-      }
-      &__bottom{
-        padding: 0 2rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-
+        &__bottom {
+          padding: 0 2rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
       }
     }
-   }
-  &__display{
-    height: 70rem;
+    &__display {
+      height: 70rem;
 
-    display: flex;
-    justify-content: flex-start;
-  }
+      display: flex;
+      justify-content: flex-start;
+    }
   }
 }
-

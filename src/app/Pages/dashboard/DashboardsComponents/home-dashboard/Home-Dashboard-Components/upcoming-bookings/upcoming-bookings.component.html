@@ -1,5 +1,4 @@
-
-<div  [classList]="'animate__animated animate__fadeIn box'"          class="box">
+<div [classList]="'animate__animated animate__fadeIn box'" class="box">
   <div class="box">
     <h1 class="mt-3">Upcoming Booking List</h1>
 
@@ -7,7 +6,6 @@
       <table class="table table-bordered mt-3">
         <thead>
           <tr>
-
             <th>Booked At</th>
             <th>Name</th>
             <th>Phone Number</th>
@@ -24,15 +22,14 @@
             <th>Driver Instructions</th>
             <th>Greet</th>
             <th>Price</th>
-            <th>Is Confirmed</th>
-            <th></th>
+            <th>Status</th>
+            <th>Cancell Booking</th>
           </tr>
         </thead>
 
         <tbody style="width: fit-content">
           <ng-container *ngIf="bookings && bookings.length > 0">
             <tr *ngFor="let item of bookings">
-
               <!-- <td>{{ item.bookedAt }}</td> -->
               <td>{{ item.createdAt | date : "yyyy-MM-dd HH:mm" }}</td>
               <td>{{ item.name }}</td>
@@ -49,19 +46,15 @@
               <td>{{ item.driverInstruction }}</td>
               <td>{{ item.greet ? "Yes" : "No" }}</td>
               <td>£{{ item.price }}</td>
-              <td [ngClass]="item.isConfirmed ? 'confirmed' : 'not-confirmed'">
-                {{ item.isConfirmed ? 'Yes' : 'No' }}
-              </td>
-
-
-
-              <td>
-                <!-- <a
-                  class="btn btn-light"
-                  [routerLink]="['/bracknellTaxis/booking/admin/list', item.id]"
+              <td>{{ getBookingStatus(item.status) }}</td>
+              <td class="button">
+                <button
+                  [ngClass]="{ disable: item.status }"
+                  [disabled]="item.status"
+                  (click)="cancellBooking(item.id)"
                 >
-                  Edit
-                </a> -->
+                  Cancell Booking
+                </button>
               </td>
             </tr>
           </ng-container>
@@ -74,6 +67,4 @@
       </table>
     </ng-container>
   </div>
-
-
 </div>

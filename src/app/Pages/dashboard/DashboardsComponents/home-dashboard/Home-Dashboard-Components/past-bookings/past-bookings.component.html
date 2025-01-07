@@ -22,7 +22,7 @@
             <th>Driver Instructions</th>
             <th>Greet</th>
             <th>Price</th>
-            <th>Is Confirmed</th>
+
             <th></th>
           </tr>
         </thead>
@@ -46,9 +46,7 @@
               <td>{{ item.driverInstruction }}</td>
               <td>{{ item.greet ? "Yes" : "No" }}</td>
               <td>£{{ item.price }}</td>
-              <td [ngClass]="item.isConfirmed ? 'confirmed' : 'not-confirmed'">
-                {{ item.isConfirmed ? "Yes" : "No" }}
-              </td>
+           
 
               <td>
                 <!-- <a

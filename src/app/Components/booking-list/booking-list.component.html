@@ -50,23 +50,6 @@
             <td>{{ item.greet ? "Yes" : "No" }}</td>
             <td>£{{ item.price }}</td>
 
-            <button
-              [style]="{ width: '100%' }"
-              (click)="isConfirmed(item.id)"
-              [ngStyle]="{
-                'background-color': item.isConfirmed ? 'green' : 'red',
-                color: 'white'
-              }"
-              (click)="isConfirmed(item.id)"
-              style="
-                margin: 0 auto;
-                background-color: red;
-                color: white;
-                border-radius: 0.2rem;
-              "
-            >
-              {{ item.isConfirmed ? "Yes" : "No" }}
-            </button>
             <td>
               <a
                 class="btn btn-light"

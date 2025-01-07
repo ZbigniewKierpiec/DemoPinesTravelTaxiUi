@@ -1,6 +1,16 @@
-import { Data } from "ws";
-
+import { Data } from 'ws';
+export enum BookingStatus {
+  Pending = 0,
+  Confirmed = 1,
+  Cancelled = 2,
+  Completed = 3,
+  Rejected = 4,
+  InProgress = 5,
+  AwaitingPayment = 6,
+  Failed = 7
+}
 export interface AddBookingResponse {
+  id:string,
   pickupLocation: string; // Pickup location (e.g., address)
   dropoffLocation: string; // Drop-off location (e.g., address)
   pickupTime: string; // Time when the taxi is scheduled to pick up (ISO 8601 string format)
@@ -15,6 +25,6 @@ export interface AddBookingResponse {
   phoneNumber: string; // Customer's phone number
   email: string; // Customer's email address
   driverInstruction?: string; // Any specific instructions for the driver (optional)
-  createdAt?:string;
-  isConfirmed:boolean;
+  createdAt?: string;
+  status: BookingStatus;
 }

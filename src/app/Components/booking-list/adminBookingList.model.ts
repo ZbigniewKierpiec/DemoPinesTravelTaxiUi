@@ -18,6 +18,6 @@ export interface adminBookingList{
   email: string;
   driverInstruction: string;
   createdAt: string;
-  isConfirmed:boolean;
+
 }
 

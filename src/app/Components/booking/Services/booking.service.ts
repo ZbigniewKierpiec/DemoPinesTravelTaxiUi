@@ -7,7 +7,7 @@ import { Bookings } from '../Model/bookings.model';
 import { UpdateBookingRequest } from '../Model/Update-booking.request.model';
 import { CookieService } from 'ngx-cookie-service';
 import { MyBookings } from '../../../Pages/dashboard/Model/mybookings.model';
-import { AddBookingResponse } from '../Model/add-booking-response';
+import { AddBookingResponse, BookingStatus } from '../Model/add-booking-response';
 import { adminBookingList } from '../../booking-list/adminBookingList.model';
 import { environment } from '../../../../environments/environment.development';
 
@@ -105,14 +105,14 @@ export class BookingService {
   getUpcomingBookings(): Observable<AddBookingResponse[]> {
     return this.getMyBookings().pipe(
       map((bookings) =>
-        bookings.filter((booking) => new Date(booking.pickupTime) > new Date())
+        bookings.filter((booking) => new Date(booking.pickupTime) > new Date() &&  booking.status ===0      )
       )
     );
   }
 
   // Fetch count of upcoming bookings
   countUpcomingBookings(): Observable<number> {
-    return this.getMyBookings().pipe(
+    return this.getUpcomingBookings().pipe(
       map(
         (bookings) =>
           bookings.filter(
@@ -137,6 +137,47 @@ export class BookingService {
       map((bookings) => bookings.length) // Map to the count of past bookings
     );
   }
+
+  // Method to cancel a reservation using GUID
+  cancelReservation(reservationId: string): Observable<any> {
+    return this.http.put(
+      `${environment.apiBaseUrl}/api/Reservations/cancel-reservation/${reservationId}`,
+      {},
+
+      {
+        headers: {
+          Authorization: this.cookirService.get('Authorization'),
+        },
+      }
+    );
+  }
+
+
+
+  getCancelledBookings(): Observable<AddBookingResponse[]> {
+    return this.getMyBookings().pipe(
+      map((bookings) =>
+        bookings.filter((booking) => booking.status === 2) // Filter for Cancelled bookings
+      )
+    );
+  }
+
+
+
+  countCancelledBookings(): Observable<number> {
+    return this.getCancelledBookings().pipe(
+      map((bookings) => bookings.length) // Map to the count of Cancelled bookings
+    );
+  }
+
+
+
+
+
+
+
+
+
 
   getAllBookings(): Observable<{ $id: string; $values: adminBookingList[] }> {
     // Make the GET request with the token in the Authorization header
@@ -165,11 +206,5 @@ export class BookingService {
         },
       }
     );
-  }
-
-  confirmBooking(orderId: string): Observable<any> {
-    const url = `${environment.apiBaseUrl}/api/Reservations/confirm/${orderId}`; // Zakładam, że `baseUrl` to URL API
-    const body = { isConfirmed: true };
-    return this.http.post(url, body);
   }
 }
