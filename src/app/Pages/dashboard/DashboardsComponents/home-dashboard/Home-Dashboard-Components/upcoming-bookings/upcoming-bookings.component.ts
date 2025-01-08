@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { AddBookingResponse } from '../../../../../../Components/booking/Model/add-booking-response';
 import { AuthService } from '../../../../../login/Services/auth.service';
 import { BookingService } from '../../../../../../Components/booking/Services/booking.service';
 import { NotificationService } from '../../../../../../Services/notification.service';
 import { Router } from '@angular/router';
+import { HomeDashboardNotyficationComponent } from '../home-dashboard-notyfication/home-dashboard-notyfication.component';
 export enum BookingStatus {
   Pending = 0,
   Confirmed = 1,
@@ -18,13 +19,23 @@ export enum BookingStatus {
 @Component({
   selector: 'app-upcoming-bookings',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, HomeDashboardNotyficationComponent],
   templateUrl: './upcoming-bookings.component.html',
   styleUrl: './upcoming-bookings.component.scss',
 })
 export class UpcomingBookingsComponent {
   //  user?: User;
   // @Output() bookingsCount = new EventEmitter<number>();
+
+  @ViewChild(HomeDashboardNotyficationComponent)
+  childComponent!: HomeDashboardNotyficationComponent;
+  triggerNotificationFromParent(message: string) {
+    this.childComponent.addNotification(message);
+
+  }
+
+
+
   isActive = false;
 
   // bookings: AddBookingResponse[]=[];
@@ -83,26 +94,29 @@ export class UpcomingBookingsComponent {
 
   cancellBooking(bookingId: string) {
     console.log('Booking ID:', bookingId);
+    this.triggerNotificationFromParent(
+      'Your booking was canceled successfully.'
+    );
 
     this.bookingService.cancelReservation(bookingId).subscribe(
       (response: { message: string }) => {
+
+
         if (response && response.message) {
           console.log('Booking cancelled successfully:', response.message);
-          alert(response.message); // Display the success message
+
+        //  alert(response.message); // Display the success message
+
           // Navigate to the dashboard/home component
 
 
-
-  // After successful cancellation, navigate to the home/dashboard and force re-render
+// After successful cancellation, delay navigation by a few seconds
+setTimeout(() => {
   this.router.navigateByUrl('/bracknellTaxis/user/dashboard/home', { skipLocationChange: true }).then(() => {
-    // Optionally, you can manually navigate to the same path to force a reload
+    // Optionally, navigate to the same path to force a reload
     this.router.navigate(['/bracknellTaxis/user/dashboard/home'], { queryParams: { refresh: new Date().getTime() } });
   });
-
-
-
-
-
+}, 3000); // Delay in milliseconds (3000ms = 3 seconds)
 
 
 

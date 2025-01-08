@@ -74,13 +74,13 @@
 .box {
   position: fixed;
   top: 2rem;
-
+  top: 50%;
   left: 50%;
   transform: translateX(-50%);
   width: 30rem;
 height: max-content;
   transition: all 0.4s linear;
-  z-index: 999!important;
+  z-index: 999999999999999999999999999999999999999999999999999999999999999999999!important;
 }
 button {
   position: relative;
@@ -151,17 +151,17 @@ button {
     font-size: 1.5rem;
     text-wrap: pretty;
   }
-  &::before {
-    content: "";
-    position: absolute;
-    top: -18px;
-    left: 34px;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 0 17px 21px 17px;
-    border-color: transparent transparent #c5a36f transparent;
-  }
+  // &::before {
+  //   content: "";
+  //   position: absolute;
+  //   top: -18px;
+  //   left: 34px;
+  //   width: 0;
+  //   height: 0;
+  //   border-style: solid;
+  //   border-width: 0 17px 21px 17px;
+  //   border-color: transparent transparent #c5a36f transparent;
+  // }
 }
 
 .length {
