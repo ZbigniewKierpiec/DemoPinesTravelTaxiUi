@@ -35,14 +35,16 @@
             <tr *ngFor="let item of bookings">
 
 
-              <td>{{ item.createdAt | date : "yyyy-MM-dd HH:mm" }}</td>
+              <!-- <td>{{ item.createdAt | date : "yyyy-MM-dd HH:mm" }}</td> -->
+              <td>{{ item.createdAt | date: 'medium' }}</td>
               <td>{{ item.name }}</td>
               <td>{{ item.phoneNumber }}</td>
               <td>{{ item.email }}</td>
               <td>{{ item.pickupLocation }}</td>
               <td>{{ item.via }}</td>
               <td>{{ item.dropoffLocation }}</td>
-              <td>{{ item.pickupTime }}</td>
+
+              <td>{{ item.pickupTime | date: 'MMM d, y, h:mm a' }}</td>
               <td>{{ item.louggages }}</td>
 
               <td>{{ item.passengers }}</td>

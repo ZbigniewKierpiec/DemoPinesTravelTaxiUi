@@ -23,22 +23,23 @@
             <th>Greet</th>
             <th>Price</th>
             <th>Status</th>
-            <th>Cancell Booking</th>
+            <th>booking cancellations</th>
           </tr>
         </thead>
 
         <tbody style="width: fit-content">
           <ng-container *ngIf="bookings && bookings.length > 0">
             <tr *ngFor="let item of bookings">
-              <!-- <td>{{ item.bookedAt }}</td> -->
-              <td>{{ item.createdAt | date : "yyyy-MM-dd HH:mm" }}</td>
+
+              <td>{{ item.createdAt | date: 'medium' }}</td>
               <td>{{ item.name }}</td>
               <td>{{ item.phoneNumber }}</td>
               <td>{{ item.email }}</td>
               <td>{{ item.pickupLocation }}</td>
               <td>{{ item.via }}</td>
               <td>{{ item.dropoffLocation }}</td>
-              <td>{{ item.pickupTime }}</td>
+              <td>{{ item.pickupTime | date : "MMM d, y, h:mm a" }}</td>
+
               <td>{{ item.louggages }}</td>
               <!-- Corrected property name -->
               <td>{{ item.passengers }}</td>

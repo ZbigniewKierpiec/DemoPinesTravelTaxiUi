@@ -40,21 +40,21 @@
         grid-template-columns: 1fr;
         grid-template-rows: 1fr;
         text-decoration: none;
-        transition: all 0.3s linear;
-
-        // background-color: yellow;
-      }
-      &__item {
+        transition: all .2s linear;
         border: 2px solid rgba(0, 0, 0, 0.089);
         border-radius: 2rem;
+      }
+      &__item {
+        // border: 2px solid rgba(0, 0, 0, 0.089);
+        // border-radius: 2rem;
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr;
         font-size: 1.2rem;
         cursor: pointer;
-        &.active {
-          border-color: lightgreen;
-        }
+        // &.active {
+        //   border-color: lightgreen;
+        // }
         &__top {
           padding: 0 2rem;
           display: flex;
@@ -85,10 +85,16 @@
       }
     }
     &__display {
+      position: relative;
       height: 70rem;
 
       display: flex;
       justify-content: flex-start;
     }
   }
+}
+
+.active-link {
+  border: 2px solid lightgreen !important;
+  border-radius: 2rem;
 }

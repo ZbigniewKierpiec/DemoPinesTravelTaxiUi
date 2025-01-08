@@ -1,14 +1,21 @@
 .box {
-  // width: 90%;
+
+  width: 100%;
+  position: absolute;
   margin: 0 auto;
+
+
 }
 thead {
-  background-color: lightgray;
-  font-family: monospace;
-  text-transform: capitalize;
-  font-size: .8rem;
 
-  font-family: Georgia, 'Times New Roman', Times, serif !important;
+  background-color: black;
+  color: white;
+
+  text-transform: capitalize;
+
+  font-size: 0.8rem;
+
+  font-family: Georgia, "Times New Roman", Times, serif !important;
   font-weight: bolder;
 }
 tr,
@@ -29,7 +36,6 @@ tbody tr td {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 3rem;
-
 }
 
 .confirmed {
@@ -41,18 +47,18 @@ tbody tr td {
   color: red;
   font-weight: bold;
 }
-button{
+button {
   background-color: red;
   color: white;
   border: none;
   outline: none;
   padding: 2px;
-  border-radius: .3rem;
-  font-size: .8rem;
+  border-radius: 0.3rem;
+  font-size: 0.8rem;
 }
 .disable {
-  background-color: #ccc;   /* Light gray background */
-  color: #999;              /* Light gray text */
-  cursor: not-allowed;      /* Indicate that the button is not clickable */
-  border: 1px solid #ddd;   /* Optional border style */
+  background-color: #ccc; /* Light gray background */
+  color: #999; /* Light gray text */
+  cursor: not-allowed; /* Indicate that the button is not clickable */
+  border: 1px solid #ddd; /* Optional border style */
 }

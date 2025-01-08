@@ -4,6 +4,7 @@ import { AddBookingResponse } from '../../../../../../Components/booking/Model/a
 import { AuthService } from '../../../../../login/Services/auth.service';
 import { BookingService } from '../../../../../../Components/booking/Services/booking.service';
 import { NotificationService } from '../../../../../../Services/notification.service';
+import { Router } from '@angular/router';
 export enum BookingStatus {
   Pending = 0,
   Confirmed = 1,
@@ -32,7 +33,8 @@ export class UpcomingBookingsComponent {
   constructor(
     private authService: AuthService,
     private bookingService: BookingService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private router: Router
   ) {}
 
   //  sendLengthToParent() {
@@ -63,18 +65,63 @@ export class UpcomingBookingsComponent {
     }
   }
 
+  // cancellBooking(bookingId: string) {
+  //   console.log(bookingId);
+  //   this.bookingService.cancelReservation(bookingId).subscribe(
+  //     (response) => {
+  //       // Handle success response (update UI, show success message)
+  //       console.log('Booking cancelled successfully'+ response);
+  //       // Update local status to 'Cancelled'
+
+  //     },
+  //     (error) => {
+  //       // Handle error response
+  //       console.error('Cancellation failed:', error);
+  //     }
+  //   );
+  // }
+
   cancellBooking(bookingId: string) {
-    console.log(bookingId);
+    console.log('Booking ID:', bookingId);
+
     this.bookingService.cancelReservation(bookingId).subscribe(
-      (response) => {
-        // Handle success response (update UI, show success message)
-        console.log('Booking cancelled successfully');
-        // Update local status to 'Cancelled'
-      
+      (response: { message: string }) => {
+        if (response && response.message) {
+          console.log('Booking cancelled successfully:', response.message);
+          alert(response.message); // Display the success message
+          // Navigate to the dashboard/home component
+
+
+
+  // After successful cancellation, navigate to the home/dashboard and force re-render
+  this.router.navigateByUrl('/bracknellTaxis/user/dashboard/home', { skipLocationChange: true }).then(() => {
+    // Optionally, you can manually navigate to the same path to force a reload
+    this.router.navigate(['/bracknellTaxis/user/dashboard/home'], { queryParams: { refresh: new Date().getTime() } });
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+        } else {
+          console.error(
+            'Response does not contain a Message property:',
+            response
+          );
+          alert('Something went wrong. Please try again.');
+        }
       },
       (error) => {
-        // Handle error response
-        console.error('Cancellation failed:', error);
+        console.error('Cancellation failed:', error.message);
+        alert('Failed to cancel the booking. Please try again.');
       }
     );
   }
@@ -94,7 +141,6 @@ export class UpcomingBookingsComponent {
         // Handle successful response
         console.log('Bookings data:', data);
         this.bookings = data; // Assign data to your bookings property
-        // this.sendLengthToParent();
       },
       error: (error) => {
         // Handle error response

@@ -140,7 +140,7 @@ export class BookingService {
 
   // Method to cancel a reservation using GUID
   cancelReservation(reservationId: string): Observable<any> {
-    return this.http.put(
+    return this.http.put<{message:string}>(
       `${environment.apiBaseUrl}/api/Reservations/cancel-reservation/${reservationId}`,
       {},
 
