@@ -9,6 +9,7 @@ interface Link {
   icon: string;
   name: string;
   route:string;
+
 }
 @Component({
   selector: 'app-dashboard-sidenav',
@@ -28,10 +29,33 @@ export class DashboardSidenavComponent implements OnInit {
   ) {}
   // Array of menu items
   links: Link[] = [
-    { id: 1, icon: 'fa solid fa-house', name: 'dashboard',  route: 'home' },
-    { id: 2, icon: 'fa solid fa-chart-line', name: 'test' , route:'booking-list' },
+    { id: 1, icon: 'fa solid fa-house', name: 'dashboard',  route: 'home'
+
+   },
+    { id: 2, icon: 'fa-solid fa-user', name: 'test' , route:'profile' },
     // { id: 3, icon: 'fa solid fa-table-columns', name: 'test' },
   ];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   // Track the active item
   activeItem: string | null = null;
 
@@ -69,6 +93,14 @@ export class DashboardSidenavComponent implements OnInit {
     //   this.router.navigate(['']);
     // }
   }
+
+
+
+
+
+
+
+
   // Handle burger menu click event to toggle side menu visibility
   handleActiveBurger() {
     this.isActive = !this.isActive;

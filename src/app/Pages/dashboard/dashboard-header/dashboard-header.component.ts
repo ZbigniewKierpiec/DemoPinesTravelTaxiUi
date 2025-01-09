@@ -95,15 +95,10 @@ export class DashboardHeaderComponent implements OnInit {
     },
   ];
 
-
-  expendSidenav(){
+  expendSidenav() {
     this.notificationService.toggleSideNavState();
-    console.log('dziala')
+    console.log('dziala');
   }
-
-
-
-
 
   onBoxClick(event: any) {
     console.log('dziala' + event);
@@ -125,5 +120,9 @@ export class DashboardHeaderComponent implements OnInit {
 
   toogleNotyficationsBox() {
     this.notificationService.toggleBoxState();
+  }
+
+  toogleProfileBox() {
+    this.notificationService.toggleProfileState();
   }
 }

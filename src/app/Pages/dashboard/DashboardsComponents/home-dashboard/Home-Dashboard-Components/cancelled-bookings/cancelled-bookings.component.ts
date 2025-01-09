@@ -18,12 +18,6 @@ import { HomeDashboardNotyficationComponent } from '../home-dashboard-notyficati
   styleUrl: './cancelled-bookings.component.scss',
 })
 export class CancelledBookingsComponent {
-  @ViewChild(HomeDashboardNotyficationComponent)
-  childComponent!: HomeDashboardNotyficationComponent;
-  triggerNotificationFromParent(message: string) {
-    this.childComponent.addNotification(message);
-
-  }
 
   bookings: AddBookingResponse[] = [];
   constructor(
@@ -76,9 +70,7 @@ export class CancelledBookingsComponent {
         console.log('Bookings data:', data);
         this.bookings = data; // Assign data to your bookings property
         // this.sendLengthToParent();
-        this.triggerNotificationFromParent(
-          'Please select a future date. Past dates are not allowed.'
-        );
+       
       },
       error: (error) => {
         // Handle error response

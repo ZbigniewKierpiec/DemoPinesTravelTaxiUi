@@ -51,6 +51,7 @@
   margin: 0;
   padding: 0;
   display: flex;
+
   align-items: center;
 justify-content: center;
 
@@ -58,6 +59,7 @@ justify-content: center;
 }
 /* Anchor tag styling */
 .a {
+
   width: 100%;
   display: flex;
 
@@ -66,6 +68,9 @@ justify-content: center;
   margin: 0;
   padding: 0;
   padding-left: 27px;
+  &:nth-child(2){
+    position: relative;
+  }
 }
 /* Icon styling */
 .icon {
@@ -211,4 +216,18 @@ justify-content: center;
   background-color: var(--nav-background);
 
   overflow: hidden !important;
+}
+.nested-list {
+  margin-left: 20px; /* Indent nested list */
+  list-style-type: none; /* Remove bullets */
+  background-color: yellow;
+
+}
+
+.nested-list__items {
+  padding: 5px 0;
+}
+
+.nested-list__items.active {
+  font-weight: bold;
 }

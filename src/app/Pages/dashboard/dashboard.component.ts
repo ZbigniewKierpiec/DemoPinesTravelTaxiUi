@@ -12,11 +12,12 @@ import { DashboardNotificationsBoxComponent } from "./dashboard-notifications-bo
 import { DashboardSidenavComponent } from "./dashboard-sidenav/dashboard-sidenav.component";
 import { NotificationService } from '../../Services/notification.service';
 import { RouterOutlet } from '@angular/router';
+import { DashboardProfileBoxComponent } from "./dashboard-profile-box/dashboard-profile-box.component";
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, DashboardHeaderComponent, DashboardNotificationsBoxComponent, DashboardSidenavComponent , RouterOutlet],
+  imports: [CommonModule, DashboardHeaderComponent, DashboardNotificationsBoxComponent, DashboardSidenavComponent, RouterOutlet, DashboardProfileBoxComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
 })

@@ -1,0 +1,11 @@
+<div [class.active]="isActive" class="box">
+  <div class="box__name">
+    <span>Matin Lex</span>
+  </div>
+ <ul>
+  <ng-container  *ngFor="let item of profile">
+ <li (click)="close()"> <a  [routerLink]="item.url"       ><i class="{{item.icon}}"></i>   <span>{{item.name}}</span>  </a> </li>
+  </ng-container>
+
+ </ul>
+</div>
