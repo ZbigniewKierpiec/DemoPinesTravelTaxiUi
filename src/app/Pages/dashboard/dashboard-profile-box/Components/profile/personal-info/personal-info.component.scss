@@ -1,114 +1,103 @@
-.box{
+.box {
   width: 100%;
   height: 600px;
   // background-color: burlywood;
   // padding: 3rem 0;
   border: 1px solid rgba(0, 0, 0, 0.164);
-  &__info{
+  &__info {
     // padding: 0 3rem;
-p{
-  font-size: 2rem;
-  text-transform: uppercase;
-}
+    p {
+      font-size: 2rem;
+      text-transform: uppercase;
+    }
   }
-  &__container{
+  &__container {
     width: 100%;
     height: 70%;
 
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
 
-    &__info{
-
+    &__info {
       display: grid;
       grid-template-columns: 1fr;
-      grid-template-rows:.5fr 1fr;
+      grid-template-rows: 0.5fr 1fr;
       // border: 1px solid rgba(0, 0, 0, 0.164);
-      border-bottom:  1px solid rgba(0, 0, 0, 0.164);
-      &__top{
-
+      border-bottom: 1px solid rgba(0, 0, 0, 0.164);
+      &__top {
         display: flex;
         align-items: center;
         padding: 0 2rem;
         font-size: 1rem;
         text-transform: uppercase;
-        span{
+        span {
           font-weight: bold;
         }
       }
-      &__bottom{
-
-        display: grid;
+      &__bottom {
+       display: grid;
         grid-template-columns: 10rem 10rem 10rem 10rem;
-        grid-template-columns:repeat(4,17rem);
+        grid-template-columns: repeat(4,20rem);
         grid-template-rows: 1fr;
-  
 
-        &__left{
-          // background-color: white;
+
+        &__left {
           display: grid;
           grid-template-columns: 1fr 1fr;
           grid-template-rows: 1fr;
-         justify-items: center;
-         align-items: center;
+          justify-items: center;
+          align-items: center;
 
-          &__icon{
+          &__icon {
             width: 60px;
             height: 60px;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color:#EFEEFA ;
+            background-color: #efeefa;
+            color: #6259ca;
             font-size: 2rem;
+            &--secend {
+              background-color: #d7f5e3;
+              color: #19b159;
+            }
+            &--third {
+              background-color: #e5f8ff;
+              color: #01b8ff;
+            }
+            &--gender {
+              background-color: #e2ccf3;
+              color: #333333;
+            }
           }
-          &__text{
+          &__text {
             width: 100%;
+            width: 10rem;
             height: 100%;
 
             display: flex;
             flex-direction: column;
 
             justify-content: center;
-            span{
-              color: #D5C1C7;
-              &:nth-child(2){
-                color: #8F9CC0;
+
+            max-width: 100%;
+            text-transform: capitalize;
+
+            span {
+              color: #d5c1c7;
+
+
+            word-break: break-word;
+
+              &:nth-child(2) {
+                color: #8f9cc0;
               }
             }
           }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       }
     }
-
   }
-
-
 }

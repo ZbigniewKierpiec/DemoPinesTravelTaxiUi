@@ -61,7 +61,8 @@
 
 <div class="box__display">
 <ng-container *ngIf="number==0; else elseTemplate">
-   <app-personal-info></app-personal-info>
+   <!-- <app-personal-info></app-personal-info> -->
+   <app-edit-profile></app-edit-profile>
 </ng-container>
 <ng-template #elseTemplate>
 <app-edit-profile></app-edit-profile>
