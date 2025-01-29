@@ -1,0 +1,121 @@
+<!-- <div [classList]="'animate__animated animate__fadeIn box'" class="box">
+  <div class="box__container">
+    <div class="card-header">
+      <h3 class="card-title pt-3 p-s-2">Images</h3>
+    </div>
+    <div class="card-body">
+      <div class="d-flex flex-md-row flex-sm-column flex-wrap">
+        <div class="col-8 p-4"></div>
+        <div class="col-4 p-4 bg-light">
+          <h5>Upload Image</h5>
+          <form>
+            <div class="mt-3">
+              <input type="file" class="form-control" />
+            </div>
+
+            <div class="mt-3">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="File Name"
+                name="filename"
+              />
+            </div>
+
+            <div class="mt-3">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Title"
+                name="title"
+              />
+            </div>
+
+            <div class="mt-3">
+              <button class="btn btn-dark" type="submit">Upload</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div [classList]="'animate__animated animate__fadeIn box'" class="box">
+  <div class="box__container">
+    <div class="card-header">
+      <h3 class="card-title pt-3 p-s-2">Images</h3>
+    </div>
+    <div class="card-body">
+      <div class="d-flex flex-md-row flex-sm-column flex-wrap">
+        <div class="col-8 p-4 left">
+          <!-- Images will be displayed here -->
+          <div class="image-container" style="overflow-y: scroll">
+            <ng-container *ngIf="images$ | async as images; else noImages">
+              <div
+                (click)="selectprofileImage(item)"
+                *ngFor="let item of images"
+                class="image-container__box"
+              >
+                <img
+                [src]="item.url"
+
+                [title]="item.title"
+                style="height: 100px"
+              />
+<!--
+                <img
+                [src]="item.url ? item.url : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAMAAABC4vDmAAAAMFBMVEXk5ueutLeor7Lf4ePn6eqrsbW5vsHIzM7a3d60ur3BxsjR1NbN0dPX2tzr7O29wsX2DjRMAAADaUlEQVR4nO2bW3LkIAwADYi3be5/25iZZB4bxyDZgqkt+ivZn+0SQgahTNNgMBgMBoPBYDAYDAaDwWCaAGBSG/mn3i53AFQMxt8xdpm6ewE466XU4getpZlVVy9YjHgKPcRE6Ke1KclfRnct2UkLprATpWe05g5W4PzfShmZVHOneGh0D1ZjK5j/yKZ3lpZLCPZ46R7Bcu2sKuN0i1Uzp1gXpxvN8qpeSQjTyMkgAiV0aJFWMGOctnrVpLZXJ/k3DRYQAi5Q2wJGdqkFqZThXj98oHKouK2wGZVhzqra78s/oXK8VobgxF2rHMVpY+WUipSU2goo5/pBoqTUtn6cZ+OV5sScVLTV4y0Kjhgp4fmOVajT3TuMUshTyxPG8kmr5xnGmnBCiu8C8b9JMS7fRyY6vSQwSi0fWDwn9YmfGaBKBUap1dOctGU8JVC3H29LaCGePHnvWKT104lVCgIpUMwXd1JR4KxSGcr+Y917NwhFXTIrTYQ7coNeHjhsVnFnVGZFtTyZL6IPFM7Js/YRfgBcWWduAz2sEN082e55prrPwV+iXii89T3i1NKp8tWhzWsDzqpxnDKlO6AW7J3q38BymFjSdHlvP3pu12LuYHRjdUHuaWlhew5xgApe6Fex7RffLUoPrWmxRkipM1KKNLv+IzjfuBjnuOTv3GcYAawvQN8Rqvy/K7dEG5L5Po4ak4KdF9dpvAtWtdhkvL5l02ue538RPoWoYG0oBpOKQUh9WNJz3pvZqSYRg9VZL3bL017B8iFyxwsmZ2uFniFLC2MpBYh7024VWt4yVQpQ9jiLDr1kYGhaHw+71WiJdHGTaosSMpP2kOnKWwTMlWfyAvq63ic4T+2//ta66L4M9iqju1Y6Xx+Kk5N4q9NTJhDP7bl9rZOZZS/Lple2S8UJJ+IYQhEt6ImF7EShoJasq1P8DeIjBGecMoRYAbeT0Ohsh8Cy797AdmjpT9gItEEtIL4vTULiPoTEx0YsGpHslLlJGr5eqs3iZRCN2tTKSVTPMNGnDwjoVPcgQX1SJ1pVherE7AhJqq6t3Wzr3amq67hHqvPImtMxceiVjimn+koaWT5DTaq3zahMcf2A8ucC5yhXdfqEG51UWrx23+InvphSLb97PxQz3cv2FN++VQeKyzcYDAaDwaA9XxcLKh2A6JUdAAAAAElFTkSuQmCC'"
+                  [title]="item.title"
+                  style="height: 100px"
+                /> -->
+
+                <span class="mt-1">{{ item.title }}</span>
+              </div>
+            </ng-container>
+
+            <ng-template #noImages>
+              <p>No images to display.</p>
+            </ng-template>
+          </div>
+        </div>
+        <div class="col-4 p-4 bg-light">
+          <h5>Upload Image</h5>
+          <form (ngSubmit)="onUpload()">
+            <div class="mt-3">
+              <input
+                type="file"
+                class="form-control"
+                (change)="onFileChange($event)"
+              />
+            </div>
+
+            <div class="mt-3">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="File Name"
+                [(ngModel)]="fileName"
+                name="filename"
+              />
+            </div>
+
+            <div class="mt-3">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Title"
+                [(ngModel)]="title"
+                name="title"
+              />
+            </div>
+
+            <div class="mt-3">
+              <button class="btn btn-dark" type="submit">Upload</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

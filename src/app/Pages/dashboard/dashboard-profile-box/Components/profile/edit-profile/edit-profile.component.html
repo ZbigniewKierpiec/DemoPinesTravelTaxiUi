@@ -1,5 +1,4 @@
-<div  [classList]="'animate__animated animate__fadeIn box'"      class="box">
-
+<div [classList]="'animate__animated animate__fadeIn box'" class="box">
   <div class="box__edit">
     <form [formGroup]="editProfileForm" (ngSubmit)="onSubmit()">
       <!-- Personal Information Section -->
@@ -7,26 +6,78 @@
         <span>Edit Profile</span>
       </div> -->
       <div class="box__edit__bottom">
+        <!-- <div class="form-group">
+          <label for="ID"> ID</label>
+          <input id="ID" formControlName="ID" type="text" placeholder="ID" />
+          <small
+            *ngIf="
+              editProfileForm.controls['ID'].dirty &&
+              editProfileForm.controls['ID'].hasError('required')
+            "
+            >ID is required</small
+          >
+        </div> -->
+
         <!-- First Name -->
         <div class="form-group">
           <label for="firstName">First Name</label>
-          <input id="firstName" formControlName="firstName" type="text" placeholder="First Name" />
-          <small *ngIf="editProfileForm.controls['firstName'].dirty && editProfileForm.controls['firstName'].hasError('required')">First Name is required</small>
+          <input
+            id="firstName"
+            formControlName="firstName"
+            type="text"
+            placeholder="First Name"
+          />
+          <small
+            *ngIf="
+              editProfileForm.controls['firstName'].dirty &&
+              editProfileForm.controls['firstName'].hasError('required')
+            "
+            >First Name is required</small
+          >
         </div>
 
         <!-- Surname -->
         <div class="form-group">
           <label for="surname">Surname</label>
-          <input id="surname" formControlName="surname" type="text" placeholder="Surname" />
-          <small *ngIf="editProfileForm.controls['surname'].dirty && editProfileForm.controls['surname'].hasError('required')">Surname is required</small>
+          <input
+            id="surname"
+            formControlName="surname"
+            type="text"
+            placeholder="Surname"
+          />
+          <small
+            *ngIf="
+              editProfileForm.controls['surname'].dirty &&
+              editProfileForm.controls['surname'].hasError('required')
+            "
+            >Surname is required</small
+          >
         </div>
 
         <!-- Date of Birth -->
         <div class="form-group">
-          <label for="dob">Date of Birth</label>
-          <input id="dob" formControlName="dob" type="date" />
-          <small *ngIf="editProfileForm.controls['dob'].dirty && editProfileForm.controls['dob'].hasError('required')">Date of Birth is required</small>
+          <label for="birthday">Date of Birth</label>
+          <input id="birthday" formControlName="birthday" type="date" />
+          <small
+            *ngIf="
+              editProfileForm.controls['birthday'].dirty &&
+              editProfileForm.controls['birthday'].hasError('required')
+            "
+            >Date of Birth is required</small
+          >
         </div>
+<!--
+        <div class="form-group">
+          <label for="info">Info</label>
+          <input id="info" formControlName="info" type="text" />
+          <small
+            *ngIf="
+              editProfileForm.controls['info'].dirty &&
+              editProfileForm.controls['info'].hasError('required')
+            "
+            >Info is required</small
+          >
+        </div> -->
 
         <!-- Gender -->
         <div class="form-group">
@@ -37,37 +88,87 @@
             <option value="Female">Female</option>
             <option value="Other">Other</option>
           </select>
-          <small *ngIf="editProfileForm.controls['gender'].dirty && editProfileForm.controls['gender'].hasError('required')">Gender is required</small>
+          <small
+            *ngIf="
+              editProfileForm.controls['gender'].dirty &&
+              editProfileForm.controls['gender'].hasError('required')
+            "
+            >Gender is required</small
+          >
         </div>
 
         <!-- Mobile -->
         <div class="form-group">
           <label for="mobile">Mobile</label>
-          <input id="mobile" formControlName="mobile" type="text" placeholder="Mobile Number" />
-          <small *ngIf="editProfileForm.controls['mobile'].dirty && editProfileForm.controls['mobile'].hasError('required')">Mobile Number is required</small>
+          <input
+            id="mobile"
+            formControlName="mobile"
+            type="text"
+            placeholder="Mobile Number"
+          />
+          <small
+            *ngIf="
+              editProfileForm.controls['mobile'].dirty &&
+              editProfileForm.controls['mobile'].hasError('required')
+            "
+            >Mobile Number is required</small
+          >
         </div>
 
         <!-- Landline -->
         <div class="form-group">
           <label for="landline">Landline</label>
-          <input id="landline" formControlName="landline" type="text" placeholder="Landline Number" />
-          <small *ngIf="editProfileForm.controls['landline'].dirty && editProfileForm.controls['landline'].hasError('required')">Landline Number is required</small>
+          <input
+            id="landline"
+            formControlName="landline"
+            type="text"
+            placeholder="Landline Number"
+          />
+          <small
+            *ngIf="
+              editProfileForm.controls['landline'].dirty &&
+              editProfileForm.controls['landline'].hasError('required')
+            "
+            >Landline Number is required</small
+          >
         </div>
 
         <!-- Email -->
         <div class="form-group">
           <label for="email">Email</label>
-          <input id="email" formControlName="email" type="email" placeholder="Email Address" />
-          <small *ngIf="editProfileForm.controls['email'].dirty && editProfileForm.controls['email'].hasError('required')">Email Address is required</small>
+          <input
+            id="email"
+            formControlName="email"
+            type="email"
+            placeholder="Email Address"
+          />
+          <small
+            *ngIf="
+              editProfileForm.controls['email'].dirty &&
+              editProfileForm.controls['email'].hasError('required')
+            "
+            >Email Address is required</small
+          >
         </div>
 
         <!-- Current Address -->
         <div class="form-group">
           <label for="address">Current Address</label>
-          <input id="address" formControlName="address" type="text" placeholder="Current Address" />
-          <small *ngIf="editProfileForm.controls['address'].dirty && editProfileForm.controls['address'].hasError('required')">Address is required</small>
+          <input
+            id="address"
+            formControlName="address"
+            type="text"
+            placeholder="Current Address"
+          />
+          <small
+            *ngIf="
+              editProfileForm.controls['address'].dirty &&
+              editProfileForm.controls['address'].hasError('required')
+            "
+            >Address is required</small
+          >
         </div>
-<!--
+        <!--
         <div class="form-group">
           <label for="paymentMethod">Payment Method</label>
           <select id="paymentMethod" formControlName="paymentMethod">
@@ -76,38 +177,25 @@
             <option value="PayPal">PayPal</option>
             <option value="Cash">Cash</option>
           </select>
-        </div>
+        </div> -->
+
+        <!-- <div class="form-group">
+          <label for="cardNumber">Card Number</label>
+          <input
+            id="cardNumber"
+            formControlName="cardNumber"
+            type="text"
+            placeholder="**** **** **** 1234"
+          />
+        </div> -->
+
+        <!-- Image Upload -->
 
         <div class="form-group">
-          <label for="cardNumber">Card Number</label>
-          <input id="cardNumber" formControlName="cardNumber" type="text" placeholder="**** **** **** 1234" />
-        </div> -->
- <!-- Image Upload -->
- <div class="form-group">
-  <label for="profileImage">Upload Profile Image</label>
-  <input
-    id="profileImage"
-    formControlName="profileImage"
-    type="file"
-    (change)="onImageChange($event)"
-    accept="image/*"
-  />
-  <div *ngIf="imagePreview">
-    <img   class="image-preview"      [src]="imagePreview" alt="Profile Image" width="100" height="100" style="border-radius: 50%;" />
-  </div>
-</div>
-        <div class="form-group">
-          <button type="submit" [disabled]="!editProfileForm.valid">Submit</button>
+          <!-- <button type="submit" [disabled]="!editProfileForm.valid">Submit</button> -->
+          <button type="submit">Submit</button>
         </div>
       </div>
-
-
-
     </form>
-
   </div>
-
-
-
 </div>
-

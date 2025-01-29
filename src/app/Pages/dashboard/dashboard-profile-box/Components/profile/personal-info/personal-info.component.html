@@ -13,36 +13,42 @@
             <i class="fa-solid fa-user"></i>
           </div>
           <div class="box__container__info__bottom__left__text">
-            <span>Name</span>
-            <span>zbyszek</span>
+            <span>name</span>
+            <span>{{ userProfile?.firstName }}</span>
           </div>
         </div>
         <div class="box__container__info__bottom__left">
-          <div class="box__container__info__bottom__left__icon box__container__info__bottom__left__icon--secend">
+          <div
+            class="box__container__info__bottom__left__icon box__container__info__bottom__left__icon--secend"
+          >
             <i class="fa-solid fa-user-group"></i>
           </div>
           <div class="box__container__info__bottom__left__text">
             <span>Surname</span>
-            <span>Kierpiec</span>
+            <span>{{ userProfile?.surname }}</span>
           </div>
         </div>
         <div class="box__container__info__bottom__left">
-          <div class="box__container__info__bottom__left__icon box__container__info__bottom__left__icon--third">
+          <div
+            class="box__container__info__bottom__left__icon box__container__info__bottom__left__icon--third"
+          >
             <i class="fa-solid fa-calendar"></i>
           </div>
           <div class="box__container__info__bottom__left__text">
             <span>Date of Birth</span>
-            <span>05/09/1979</span>
+            <span>{{ userProfile?.birthday }}</span>
           </div>
         </div>
 
         <div class="box__container__info__bottom__left">
-          <div class="box__container__info__bottom__left__icon box__container__info__bottom__left__icon--gender">
+          <div
+            class="box__container__info__bottom__left__icon box__container__info__bottom__left__icon--gender"
+          >
             <i class="fa-solid fa-person-half-dress"></i>
           </div>
           <div class="box__container__info__bottom__left__text">
             <span>Gender</span>
-            <span>Male</span>
+            <span>{{ userProfile?.gender }}</span>
           </div>
         </div>
       </div>
@@ -54,60 +60,52 @@
       </div>
       <div class="box__container__info__bottom">
         <div class="box__container__info__bottom__left">
-          <div class="box__container__info__bottom__left__icon ">
+          <div class="box__container__info__bottom__left__icon">
             <i class="fa-solid fa-mobile"></i>
           </div>
           <div class="box__container__info__bottom__left__text">
             <span>Mobile</span>
-            <span>07912093124</span>
+            <span>{{ userProfile?.mobile }}</span>
           </div>
         </div>
 
         <div class="box__container__info__bottom__left">
-          <div class="box__container__info__bottom__left__icon box__container__info__bottom__left__icon--secend">
+          <div
+            class="box__container__info__bottom__left__icon box__container__info__bottom__left__icon--secend"
+          >
             <i class="fa-solid fa-phone"></i>
           </div>
           <div class="box__container__info__bottom__left__text">
             <span>Home</span>
-            <span>01344565378</span>
+            <span>{{ userProfile?.landline }}</span>
           </div>
         </div>
         <div class="box__container__info__bottom__left">
-          <div class="box__container__info__bottom__left__icon box__container__info__bottom__left__icon--third">
+          <div
+            class="box__container__info__bottom__left__icon box__container__info__bottom__left__icon--third"
+          >
             <i class="fa-solid fa-envelope"></i>
           </div>
           <div class="box__container__info__bottom__left__text">
             <span>Email</span>
-            <span>zbigniewkierpiec&#64;gmail.com</span>
-
+            <!-- <span>zbigniewkierpiec&#64;gmail.com</span> -->
+            <span style="text-transform: lowercase;">{{ userProfile?.email }}</span>
           </div>
         </div>
 
-
         <div class="box__container__info__bottom__left">
-          <div class="box__container__info__bottom__left__icon box__container__info__bottom__left__icon--gender">
+          <div
+            class="box__container__info__bottom__left__icon box__container__info__bottom__left__icon--gender"
+          >
             <i class="fa-solid fa-location-crosshairs"></i>
           </div>
           <div class="box__container__info__bottom__left__text">
             <span>Current Address</span>
-            <span>124 Swaledale Bracknell Berkshire <br />RG12 7EU </span>
+            <span>{{ userProfile?.address }}</span>
           </div>
         </div>
-
-
-
-
-
-
-
       </div>
     </div>
-
-
-
-
-
-
 
     <div class="box__container__info">
       <div class="box__container__info__top">
@@ -124,7 +122,9 @@
           </div>
         </div>
         <div class="box__container__info__bottom__left">
-          <div class="box__container__info__bottom__left__icon box__container__info__bottom__left__icon--secend">
+          <div
+            class="box__container__info__bottom__left__icon box__container__info__bottom__left__icon--secend"
+          >
             <i class="fa-regular fa-credit-card"></i>
           </div>
           <div class="box__container__info__bottom__left__text">
@@ -132,17 +132,7 @@
             <span>**** **** **** 1234</span>
           </div>
         </div>
-
       </div>
     </div>
-
-
-
-
-
-
-
-
-
   </div>
 </div>

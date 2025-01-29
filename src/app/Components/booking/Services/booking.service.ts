@@ -1,4 +1,8 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AddBookingRequest } from '../Model/add-booking-request.model';
 import { catchError, map, Observable, tap, throwError } from 'rxjs';
@@ -7,15 +11,32 @@ import { Bookings } from '../Model/bookings.model';
 import { UpdateBookingRequest } from '../Model/Update-booking.request.model';
 import { CookieService } from 'ngx-cookie-service';
 import { MyBookings } from '../../../Pages/dashboard/Model/mybookings.model';
-import { AddBookingResponse, BookingStatus } from '../Model/add-booking-response';
+import {
+  AddBookingResponse,
+  BookingStatus,
+} from '../Model/add-booking-response';
 import { adminBookingList } from '../../booking-list/adminBookingList.model';
 import { environment } from '../../../../environments/environment.development';
+
+export interface UserProfile {
+  id: string;
+  firstName: string;
+  surname: string;
+  birthday: string;
+  gender: string;
+  mobile: string;
+  email: string;
+  landline: string;
+  address: string;
+  profilepicturepath:string;
+
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class BookingService {
-  constructor(private http: HttpClient, private cookirService: CookieService) {}
+  constructor(private http: HttpClient, private cookiService: CookieService) {}
 
   addBooking(model: AddBookingRequest): Observable<void> {
     const token = localStorage.getItem('authToken'); // Retrieve the token from storage
@@ -28,7 +49,33 @@ export class BookingService {
       model,
       {
         headers: {
-          Authorization: this.cookirService.get('Authorization'),
+          Authorization: this.cookiService.get('Authorization'),
+        },
+      }
+    );
+  }
+
+  //////////////////////////Update Profile
+
+  getUserProfile(): Observable<UserProfile> {
+    // Make the HTTP GET request
+    return this.http.get<UserProfile>(
+      `${environment.apiBaseUrl}/api/UserProfile/profile`,
+      {
+        headers: {
+          Authorization: this.cookiService.get('Authorization'),
+        },
+      }
+    );
+  }
+
+  updateUserProfile(profileDto: any): Observable<any> {
+    return this.http.post<any>(
+      `${environment.apiBaseUrl}/api/UserProfile/profile`,
+      profileDto,
+      {
+        headers: {
+          Authorization: this.cookiService.get('Authorization'), // Send token for authentication
         },
       }
     );
@@ -51,6 +98,18 @@ export class BookingService {
   //   );
   // }
 
+
+
+
+
+
+
+
+
+
+
+
+
   updateBooking(
     id: string,
     updateBookingRequest: UpdateBookingRequest
@@ -60,7 +119,7 @@ export class BookingService {
       updateBookingRequest,
       {
         headers: {
-          Authorization: this.cookirService.get('Authorization'),
+          Authorization: this.cookiService.get('Authorization'),
         },
       }
     );
@@ -85,7 +144,7 @@ export class BookingService {
         `${environment.apiBaseUrl}/api/Reservations/get-my-reservations`,
         {
           headers: {
-            Authorization: this.cookirService.get('Authorization'),
+            Authorization: this.cookiService.get('Authorization'),
           },
         }
       )
@@ -105,7 +164,10 @@ export class BookingService {
   getUpcomingBookings(): Observable<AddBookingResponse[]> {
     return this.getMyBookings().pipe(
       map((bookings) =>
-        bookings.filter((booking) => new Date(booking.pickupTime) > new Date() &&  booking.status ===0      )
+        bookings.filter(
+          (booking) =>
+            new Date(booking.pickupTime) > new Date() && booking.status === 0
+        )
       )
     );
   }
@@ -140,29 +202,25 @@ export class BookingService {
 
   // Method to cancel a reservation using GUID
   cancelReservation(reservationId: string): Observable<any> {
-    return this.http.put<{message:string}>(
+    return this.http.put<{ message: string }>(
       `${environment.apiBaseUrl}/api/Reservations/cancel-reservation/${reservationId}`,
       {},
 
       {
         headers: {
-          Authorization: this.cookirService.get('Authorization'),
+          Authorization: this.cookiService.get('Authorization'),
         },
       }
     );
   }
 
-
-
   getCancelledBookings(): Observable<AddBookingResponse[]> {
     return this.getMyBookings().pipe(
-      map((bookings) =>
-        bookings.filter((booking) => booking.status === 2) // Filter for Cancelled bookings
+      map(
+        (bookings) => bookings.filter((booking) => booking.status === 2) // Filter for Cancelled bookings
       )
     );
   }
-
-
 
   countCancelledBookings(): Observable<number> {
     return this.getCancelledBookings().pipe(
@@ -170,22 +228,13 @@ export class BookingService {
     );
   }
 
-
-
-
-
-
-
-
-
-
   getAllBookings(): Observable<{ $id: string; $values: adminBookingList[] }> {
     // Make the GET request with the token in the Authorization header
     return this.http.get<{ $id: string; $values: adminBookingList[] }>(
       `${environment.apiBaseUrl}/api/Reservations/GetAllReservations`,
       {
         headers: {
-          Authorization: this.cookirService.get('Authorization'), // Include the Authorization header
+          Authorization: this.cookiService.get('Authorization'), // Include the Authorization header
         },
       }
     );
@@ -202,7 +251,7 @@ export class BookingService {
       `${environment.apiBaseUrl}/api/Reservations/${id}`,
       {
         headers: {
-          Authorization: this.cookirService.get('Authorization'),
+          Authorization: this.cookiService.get('Authorization'),
         },
       }
     );
