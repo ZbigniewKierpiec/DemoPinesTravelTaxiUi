@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, map, Observable, of } from 'rxjs';
 import { environment } from '../../../../../../environments/environment.development';
@@ -22,6 +22,17 @@ export class ProfileImageService {
     title: '',
     url: '',
   });
+
+  // Method to update the selected image
+  selectImage(image: BlogImage): void {
+    this.selectedImage.next(image);
+  }
+
+  // Observable for other components to subscribe
+  getSelectedImage(): Observable<BlogImage> {
+    return this.selectedImage.asObservable();
+  }
+
   // uploadImage(
   //   file: File,
   //   fileName: string,
@@ -45,7 +56,6 @@ export class ProfileImageService {
   // }
 
   uploadImage(file: File, fileName: string, title: string): Observable<any> {
-
     const formData = new FormData();
     formData.append('file', file);
     formData.append('fileName', fileName);
@@ -93,8 +103,6 @@ export class ProfileImageService {
   //     );
   // }
 
-
-
   getAllImages(): Observable<BlogImage[]> {
     return this.http
       .get<{ $values: BlogImage[] }>(
@@ -116,21 +124,44 @@ export class ProfileImageService {
         })
       );
   }
+  ///////////////////////////////
+  saveSingleProfileImage(imageDetails: BlogImage): Observable<any> {
+    const headers = new HttpHeaders({
+      Authorization: this.cookiService.get('Authorization'), // Pobranie tokenu z cookies
+    });
 
-
-
-
-
-
-
-
-
-
-  selectImage(image: BlogImage): void {
-    this.selectedImage.next(image);
+    // Wysyłamy zapytanie POST do API z danymi obrazu
+    return this.http.post<any>(
+      `${environment.apiBaseUrl}/api/ProfileImage/SaveSingleProfileImage`, // Zaktualizuj ścieżkę URL do swojego API
+      imageDetails,
+      { headers }
+    );
   }
+  /////////////////////////////////////////////////
 
-  onSelectImage(): Observable<BlogImage> {
-    return this.selectedImage.asObservable();
+  // Method to get the profile image
+
+  // Method to get the profile images as an array
+  getSingleProfileImages(): Observable<BlogImage[]> {
+    // Notice the change to BlogImage[]
+    const headers = new HttpHeaders({
+      Authorization: this.cookiService.get('Authorization'), // Pobranie tokenu z cookies
+    });
+
+    // Return the GET request as an Observable of BlogImage array
+    return this.http.get<BlogImage[]>(
+      `${environment.apiBaseUrl}/api/ProfileImage/GetSingleProfileImage`,
+      { headers }
+    ); // Expecting an array of BlogImage
   }
 }
+
+//////////////////////////////////////////////////
+
+// selectImage(image: BlogImage): void {
+//   this.selectedImage.next(image);
+// }
+
+// onSelectImage(): Observable<BlogImage> {
+//   return this.selectedImage.asObservable();
+// }

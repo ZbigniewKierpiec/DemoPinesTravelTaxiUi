@@ -6,7 +6,13 @@
     <div class="box__info__top">
       <div class="box__info__top__image-box">
         <div class="box__info__top__image-box__image">
-          <img [src]="url ? url : '/assets/defoultProfileImage.png'" alt="" />
+
+
+              <img [src]="single ? single : '/assets/defoultProfileImage.png'" alt="Profile Image" />
+
+
+
+
         </div>
 
         <span>{{ profileName }}</span>

@@ -62,23 +62,28 @@ export class ProfileImageUploaderComponent implements OnInit {
     }
   }
 
+  selectprofileImage(item: BlogImage): void {
+    console.log(item);
+    // this.imageService.selectImage(item);
+    localStorage.setItem('profileImage', item.url);
 
-  selectprofileImage(item:BlogImage):void{
-console.log(item.id)
-this.imageService.selectImage(item);
-localStorage.setItem('profileImage', item.url);
+    this.imageService.saveSingleProfileImage(item).subscribe({
+      next: (response) => {
+        // Obsługuje odpowiedź po pomyślnym zapisaniu obrazu
+        console.log('Obrazek zapisany pomyślnie:', response);
+      },
+      error: (err) => {
+        // Obsługuje błąd, jeśli wystąpi podczas przesyłania
+        console.error('Błąd podczas zapisywania obrazka:', err);
+      },
+      complete: () => {
+        // Można dodać coś, co wykona się po zakończeniu subskrypcji (np. animacja ładowania)
+        console.log('Operacja zakończona.');
+      },
+    });
 
-
+    this.imageService.selectImage(item);
   }
-
-
-
-
-
-
-
-
-
 
   ngOnInit(): void {
     this.getImages();

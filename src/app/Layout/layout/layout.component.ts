@@ -16,6 +16,7 @@ import {
 } from '@angular/animations';
 import { routeTransition } from '../../../route-transition';
 import { filter } from 'rxjs';
+import { LogingWelcomeComponent } from "../../Pages/login/loging-welcome/loging-welcome.component";
 
 
 @Component({
@@ -29,8 +30,8 @@ import { filter } from 'rxjs';
     SocialComponent,
     Header2Component,
     BookNowMobileComponent,
-
-  ],
+    LogingWelcomeComponent
+],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',
  animations:[

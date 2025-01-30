@@ -57,6 +57,8 @@
                 *ngFor="let item of images"
                 class="image-container__box"
               >
+              <!-- <span class="dot"> <i class="fa-solid fa-xmark"></i>  </span> -->
+
                 <img
                 [src]="item.url"
 
@@ -71,6 +73,7 @@
                 /> -->
 
                 <span class="mt-1">{{ item.title }}</span>
+
               </div>
             </ng-container>
 

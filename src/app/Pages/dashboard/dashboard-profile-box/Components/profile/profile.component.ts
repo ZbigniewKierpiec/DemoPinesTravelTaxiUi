@@ -12,7 +12,8 @@ import { CommonModule } from '@angular/common';
 import { PersonalInfoComponent } from './personal-info/personal-info.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { ProfileImageUploaderComponent } from './profile-image-uploader/profile-image-uploader.component';
-import { ProfileImageService } from './profile-image.service';
+import { BlogImage, ProfileImageService } from './profile-image.service';
+import { map, Observable } from 'rxjs';
 interface Link {
   id: number;
   name: string;
@@ -36,7 +37,7 @@ export class ProfileComponent implements OnInit {
   @ViewChild('segmentedControl', { static: false })
   segmentedControl?: ElementRef;
   markerWidth: number = 0;
-  profileName:string='';
+  profileName: string = '';
   allbookingsLength: number = 0;
   upcomingbookingsLength: number = 0;
   pastbookingsLength: number = 0;
@@ -44,7 +45,7 @@ export class ProfileComponent implements OnInit {
   number: number = 0;
   isSame: any;
   url: string = '';
-
+  single: string[] = [];
   links: Link[] = [
     { id: 1, name: 'personal info' },
     { id: 2, name: 'edit profile' },
@@ -54,7 +55,8 @@ export class ProfileComponent implements OnInit {
   constructor(
     private bookingService: BookingService,
     private renderer: Renderer2,
-    private imageService: ProfileImageService
+    private imageService: ProfileImageService,
+    private profileImageService: ProfileImageService
   ) {}
 
   selectLi(index: number): void {
@@ -108,33 +110,22 @@ export class ProfileComponent implements OnInit {
       this.cancelledBookingsLength = data;
     });
 
+    // Check if a profile image URL is saved in localStorage when the component is initialized
+    const savedImageUrl = localStorage.getItem('profileImage');
 
- // Check if a profile image URL is saved in localStorage when the component is initialized
- const savedImageUrl = localStorage.getItem('profileImage');
+    // this.imageService.onSelectImage().subscribe({
+    //   next: (res) => {
+    //     console.log(res);
+    //     this.url = res.url;
 
+    //     localStorage.setItem('profileImage', res.url); // Save the URL to localStorage
 
-
-
-
-
-    this.imageService.onSelectImage().subscribe({
-      next: (res) => {
-        console.log(res);
-        this.url = res.url;
-
-        localStorage.setItem('profileImage', res.url); // Save the URL to localStorage
-
-
-      },
-    });
+    //   },
+    // });
 
     if (savedImageUrl) {
       this.url = savedImageUrl; // Initialize the profile image with the saved URL
     }
-
-
-
-
 
     this.bookingService.getUserProfile().subscribe(
       (profile) => {
@@ -146,11 +137,31 @@ export class ProfileComponent implements OnInit {
       }
     );
 
-
-   
-
+    // Correctly calling the method
 
 
+    this.profileImageService.getSingleProfileImages().subscribe(
+      (data: any) => {
+        console.log(data);  // Logowanie odpowiedzi, aby zobaczyć strukturę
+
+        // Sprawdzamy, czy pole ImageUrl istnieje w odpowiedzi
+        if (data && data.imageUrl) {
+          this.single = [data.imageUrl];  // Przypisanie URL obrazu do tablicy
+        } else {
+          console.log('ImageUrl not found in the response.');
+        }
+      },
+      (error) => {
+        console.error('Error fetching profile images:', error);
+      }
+    );
+
+
+    this.imageService.getSelectedImage().subscribe((image) => {
+
+      console.log('Received image in ProfileComponent:', image);
+      this.single = [image.url];
+    });
 
 
 
