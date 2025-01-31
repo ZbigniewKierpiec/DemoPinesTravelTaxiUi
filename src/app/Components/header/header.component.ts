@@ -26,6 +26,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { AuthService } from '../../Pages/login/Services/auth.service';
 import { User } from '../../Pages/login/Models/user.model';
 import { BookingService } from '../booking/Services/booking.service';
+import { LogoutService } from '../../Pages/login/loging-welcome/logout.service';
 
 @Component({
   selector: 'app-header',
@@ -69,7 +70,8 @@ export class HeaderComponent implements OnInit {
     private countryService: CountryService,
     private authService: AuthService,
     private router: Router,
-    private bookingServices: BookingService
+    private bookingServices: BookingService,
+    private logoutservice:LogoutService
   ) {
     this.navbarOffsetTop = this.getNavbarOffsetTop();
   }
@@ -145,9 +147,16 @@ export class HeaderComponent implements OnInit {
     this.isFixed = window.pageYOffset > this.navbarOffsetTop;
   }
 
+
+
+
+
   logOut(): void {
     this.authService.logout();
-    this.router.navigateByUrl('/');
+
+    this.logoutservice.logOut();
+    this.router.navigate(['/']);
+
   }
 
   ngOnInit(): void {

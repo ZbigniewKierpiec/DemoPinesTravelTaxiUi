@@ -1,0 +1,35 @@
+.box{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50% , -50%);
+  min-width: 300px;
+  padding: 2rem 1rem;
+  -webkit-box-shadow: 10px 10px 13px -10px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 13px -10px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 13px -10px rgba(0, 0, 0, 0.75);
+
+  background: linear-gradient(
+    to right,
+    rgba(243, 226, 199, 1) 0%,
+    rgba(193, 158, 103, 1) 0%,
+    rgba(233, 212, 179, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3e2c7', endColorstr='#e9d4b3', GradientType=1 );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+pointer-events: none;
+visibility: hidden;
+opacity: 0;
+transition: all .7s linear;
+font-size: 1.3rem;
+border-radius: 0.4rem;
+&.active{
+  transition: all .7s linear;
+  display: block;
+  visibility: visible;
+  opacity: 1;
+}
+
+}

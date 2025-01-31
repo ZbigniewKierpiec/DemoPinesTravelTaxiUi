@@ -32,7 +32,7 @@
 
   <!-- *ngIf="user !== undefined && (user?.roles?.includes('Writer') || user?.roles?.includes('Reader'))"  -->
 
-  <ng-container      >
+  <ng-container  *ngIf="user"    >
     <div [attr.data-content]="dotContent"         class="dot">  <i class="fas fa-calendar-check"></i>   </div>
     <a   [routerLink]="['bracknellTaxis/user/dashboard']"         style="display: flex; justify-content: center; align-items: center;" class="dashboard">Dashboard</a>
   </ng-container>

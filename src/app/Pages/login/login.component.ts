@@ -1,5 +1,5 @@
 import { NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -16,6 +16,7 @@ import { LoginRequest } from './Models/login-request.model';
 import { AuthService } from './Services/auth.service';
 import { CookieService } from 'ngx-cookie-service';
 import { BookingService } from '../../Components/booking/Services/booking.service';
+import { NotificationComponent } from "../../Components/notification/notification.component";
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -27,7 +28,8 @@ import { BookingService } from '../../Components/booking/Services/booking.servic
     RouterLink,
     RouterLinkActive,
     ReactiveFormsModule,
-  ],
+    NotificationComponent
+],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
@@ -37,6 +39,8 @@ export class LoginComponent {
   eyeIcon: string = 'fa-eye-slash';
   loginForm!: FormGroup;
   model: LoginRequest;
+
+
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
@@ -99,11 +103,6 @@ export class LoginComponent {
           });
 
           console.log('User set with roles:', roles);
-
-         this.bookingService.getUserProfile().subscribe((data)=>{
-                 console.log(`To jest z Loging Component Info z User Profile ${data.firstName + data.surname}}`)
-                 alert(`Welcome${data.firstName + data.surname}`)
-         })
 
 
 

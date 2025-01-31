@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { LoginRequest } from '../Models/login-request.model';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { LoginResponse } from '../Models/login-response.model';
@@ -22,7 +22,8 @@ export interface RegisterResponse {
 })
 export class AuthService {
   $user = new BehaviorSubject<User | undefined>(undefined);
-
+ // Tworzymy EventEmitter do przesyłania zdarzeń
+//  public logOutEvent: EventEmitter<void> = new EventEmitter<void>();
   constructor(private http: HttpClient, private cookieService: CookieService) {}
 
   login(request: LoginRequest): Observable<LoginResponse> {
@@ -75,5 +76,6 @@ export class AuthService {
     localStorage.clear();
     this.cookieService.delete('Authorization', '/');
     this.$user.next(undefined);
+    sessionStorage.clear();
   }
 }
