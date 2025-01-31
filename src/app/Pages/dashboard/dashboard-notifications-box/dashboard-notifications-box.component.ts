@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DashboardNotyficationItemComponent } from "../dashboard-header/dashboard-notyfication-item/dashboard-notyfication-item.component";
 import { NotificationService } from '../../../Services/notification.service';
+import { Subscription } from 'rxjs';
 
 export interface Notification {
   id: number;
@@ -16,8 +17,8 @@ export interface Notification {
   templateUrl: './dashboard-notifications-box.component.html',
   styleUrl: './dashboard-notifications-box.component.scss'
 })
-export class DashboardNotificationsBoxComponent {
-
+export class DashboardNotificationsBoxComponent implements OnInit , OnDestroy {
+  private notifiServSubs?:Subscription;
   notificationCount: number = 0;
 
   showBox = false;
@@ -89,12 +90,15 @@ export class DashboardNotificationsBoxComponent {
 
 
   ngOnInit(): void {
-    this.notificationService.currentBoxState.subscribe((state) => {
+  this.notifiServSubs   =  this.notificationService.currentBoxState.subscribe((state) => {
       this.showBox = state;
       console.log(state)
     });
   }
 
+  ngOnDestroy(): void {
+   this.notifiServSubs?.unsubscribe();
+  }
 
 
 

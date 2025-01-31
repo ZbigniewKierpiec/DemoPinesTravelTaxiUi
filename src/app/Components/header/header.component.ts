@@ -5,6 +5,7 @@ import {
   HostListener,
   inject,
   NgModule,
+  OnDestroy,
   OnInit,
   QueryList,
   Renderer2,
@@ -27,6 +28,7 @@ import { AuthService } from '../../Pages/login/Services/auth.service';
 import { User } from '../../Pages/login/Models/user.model';
 import { BookingService } from '../booking/Services/booking.service';
 import { LogoutService } from '../../Pages/login/loging-welcome/logout.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -46,7 +48,7 @@ import { LogoutService } from '../../Pages/login/loging-welcome/logout.service';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
   @ViewChild('navBar', { static: false }) navBar!: ElementRef;
   @ViewChildren('listItem') listItems!: QueryList<ElementRef>; // Query for all li items
   @ViewChild('mobile') mobile?: ElementRef;
@@ -60,6 +62,7 @@ export class HeaderComponent implements OnInit {
   isSame?: number;
   dotContent: number = 0;
   isActiveList: boolean = false;
+  private userSub?: Subscription;
 
   country: Country[] = Countries;
   user?: User;
@@ -71,7 +74,7 @@ export class HeaderComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private bookingServices: BookingService,
-    private logoutservice:LogoutService
+    private logoutservice: LogoutService
   ) {
     this.navbarOffsetTop = this.getNavbarOffsetTop();
   }
@@ -147,20 +150,15 @@ export class HeaderComponent implements OnInit {
     this.isFixed = window.pageYOffset > this.navbarOffsetTop;
   }
 
-
-
-
-
   logOut(): void {
     this.authService.logout();
 
     this.logoutservice.logOut();
     this.router.navigate(['/']);
-
   }
 
   ngOnInit(): void {
-    this.authService.user().subscribe({
+    this.userSub = this.authService.user().subscribe({
       next: (response) => {
         console.log(response);
         this.user = response;
@@ -170,5 +168,9 @@ export class HeaderComponent implements OnInit {
     this.bookingServices.getMyBookings();
 
     this.user = this.authService.getUser();
+  }
+
+  ngOnDestroy(): void {
+    this.userSub?.unsubscribe();
   }
 }

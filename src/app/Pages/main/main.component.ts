@@ -93,8 +93,9 @@ export class MainComponent implements OnInit,  OnDestroy {
 
     if (!notificationShown) {
     this.profileSubscription   =  this.profileService.getUserProfile().subscribe((data) => {
-        let displayName = data.firstName ? data.firstName : userName;
+        let displayName = data.firstName ? data.firstName : userEmail;
         this.displayName = displayName;
+
         console.log(
           `To jest z Loging Component Info z User Profile ${
             data.firstName ? data.firstName + ' ' + data.surname : userName
@@ -107,7 +108,42 @@ export class MainComponent implements OnInit,  OnDestroy {
           this.triggerNotificationFromParent(
             `${this.generateRandomMessage()} ${displayName}! ${this.generateWelcomeMessage()}`
           );
+///////////////////////////////////
+  if(data.birthday){
 
+// Uzyskujemy dzisiejszą datę
+const today = new Date();
+
+// Parsujemy datę urodzin w formacie "YYYY-MM-DD"
+const birthdayArray = data.birthday.split("-"); // Dzielimy datę na tablicę [rok, miesiąc, dzień]
+
+// Tworzymy datę urodzin na podstawie danych, ale w sposób kontrolowany
+const birthdayYear = parseInt(birthdayArray[0]);  // Rok
+const birthdayMonth = parseInt(birthdayArray[1]) - 1; // Miesiąc (w JavaScript jest 0-indexed)
+const birthdayDay = parseInt(birthdayArray[2]);    // Dzień
+
+// Tworzymy datę urodzin na przyszły rok, jeśli urodziny już miały miejsce w bieżącym
+let birthday = new Date(today.getFullYear(), birthdayMonth, birthdayDay);
+
+// Jeśli urodziny już miały miejsce w tym roku, ustawiamy je na przyszły rok
+if (birthday < today) {
+  birthday.setFullYear(today.getFullYear() + 1);
+}
+
+// Obliczamy różnicę w czasie w milisekundach
+const timeDiff = birthday.getTime() - today.getTime();
+
+// Obliczamy liczbę dni pozostałych do urodzin (dzieląc przez milisekundy na dzień)
+const daysLeft = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+// Wyświetlamy wynik
+this.triggerNotificationFromParent(
+  `Do twoich urodzin zostało ${daysLeft} dni`
+);
+
+  }
+
+//////////////////////////////////
 
 
 
