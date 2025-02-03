@@ -1,4 +1,11 @@
-import { AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { SlideshowComponent } from './slideshow/slideshow.component';
 import { PromiseComponent } from './promise/promise.component';
 import { CarsComponent } from './cars/cars.component';
@@ -20,6 +27,7 @@ import { LogingWelcomeNotiComponent } from './loging-welcome-noti/loging-welcome
 import { LogoutnotifComponent } from './logoutnotif/logoutnotif.component';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
+import { BirthdayComponent } from './birthday/birthday.component';
 
 @Component({
   selector: 'app-main',
@@ -39,30 +47,31 @@ import { Subscription } from 'rxjs';
     BookNowMobileComponent,
     LogingWelcomeNotiComponent,
     LogoutnotifComponent,
-    CommonModule
+    CommonModule,
+    BirthdayComponent,
   ],
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss',
 })
-export class MainComponent implements OnInit,  OnDestroy {
+export class MainComponent implements OnInit, OnDestroy {
   @ViewChild(LogingWelcomeNotiComponent)
   childComponent!: LogingWelcomeNotiComponent;
-  @ViewChild(LogoutnotifComponent, { static: false }) childComponent2!: LogoutnotifComponent;
+  @ViewChild(LogoutnotifComponent, { static: false })
+  childComponent2!: LogoutnotifComponent;
   isActive: any;
   displayName: any = null;
   isLoggedOut = false;
+  happyBirthday: boolean = false;
+  birthdayTime:number=9000;
   private logoutSubscription?: Subscription;
   private profileSubscription?: Subscription;
   triggerNotificationFromParent(message: string) {
     this.childComponent.addNotification(message); // Calls addNotification() in child
   }
 
-
   triggerNotificationFromParent2(message: string) {
     this.childComponent.addNotification(message); // Calls addNotification() in child
   }
-
-
 
   constructor(
     private profileService: BookingService,
@@ -72,10 +81,9 @@ export class MainComponent implements OnInit,  OnDestroy {
     private cdr: ChangeDetectorRef
   ) {}
 
-
   ngOnInit(): void {
-    let b =this.auth.getUser();
-    console.log(b?.email)
+    let b = this.auth.getUser();
+    console.log(b?.email);
     let userEmail = localStorage.getItem('user-email');
     let userName = localStorage.getItem('user-name');
     this.isActive = !!userEmail;
@@ -83,7 +91,7 @@ export class MainComponent implements OnInit,  OnDestroy {
     if (!this.isActive) {
       console.log('User just logged out');
       // alert('You just log out')
-       this.isLoggedOut=false;
+      this.isLoggedOut = false;
 
       return;
     }
@@ -92,72 +100,106 @@ export class MainComponent implements OnInit,  OnDestroy {
     let notificationShown = sessionStorage.getItem('notificationShown');
 
     if (!notificationShown) {
-    this.profileSubscription   =  this.profileService.getUserProfile().subscribe((data) => {
-        let displayName = data.firstName ? data.firstName : userEmail;
-        this.displayName = displayName;
+      this.profileSubscription = this.profileService
+        .getUserProfile()
+        .subscribe((data) => {
+          let displayName = data.firstName ? data.firstName : userEmail;
+          this.displayName = displayName;
 
-        console.log(
-          `To jest z Loging Component Info z User Profile ${
-            data.firstName ? data.firstName + ' ' + data.surname : userName
-          }`
-        );
-
-
-
+          console.log(
+            `To jest z Loging Component Info z User Profile ${
+              data.firstName ? data.firstName + ' ' + data.surname : userName
+            }`
+          );
 
           this.triggerNotificationFromParent(
             `${this.generateRandomMessage()} ${displayName}! ${this.generateWelcomeMessage()}`
           );
-///////////////////////////////////
-  if(data.birthday){
+          ///////////////////////////////////
+          if (data.birthday) {
+            // Uzyskujemy dzisiejszą datę
+            const today = new Date();
 
-// Uzyskujemy dzisiejszą datę
-const today = new Date();
+            // Parsujemy datę urodzin w formacie "YYYY-MM-DD"
+            const birthdayArray = data.birthday.split('-'); // Dzielimy datę na tablicę [rok, miesiąc, dzień]
 
-// Parsujemy datę urodzin w formacie "YYYY-MM-DD"
-const birthdayArray = data.birthday.split("-"); // Dzielimy datę na tablicę [rok, miesiąc, dzień]
+            // Tworzymy datę urodzin na podstawie danych, ale w sposób kontrolowany
+            const birthdayYear = parseInt(birthdayArray[0]); // Rok
+            const birthdayMonth = parseInt(birthdayArray[1]) - 1; // Miesiąc (w JavaScript jest 0-indexed)
+            const birthdayDay = parseInt(birthdayArray[2]); // Dzień
 
-// Tworzymy datę urodzin na podstawie danych, ale w sposób kontrolowany
-const birthdayYear = parseInt(birthdayArray[0]);  // Rok
-const birthdayMonth = parseInt(birthdayArray[1]) - 1; // Miesiąc (w JavaScript jest 0-indexed)
-const birthdayDay = parseInt(birthdayArray[2]);    // Dzień
+            // Tworzymy datę urodzin na przyszły rok, jeśli urodziny już miały miejsce w bieżącym
+            let birthday = new Date(
+              today.getFullYear(),
+              birthdayMonth,
+              birthdayDay
+            );
 
-// Tworzymy datę urodzin na przyszły rok, jeśli urodziny już miały miejsce w bieżącym
-let birthday = new Date(today.getFullYear(), birthdayMonth, birthdayDay);
+            // Jeśli urodziny już miały miejsce w tym roku, ustawiamy je na przyszły rok
+            if (birthday < today) {
+              birthday.setFullYear(today.getFullYear() + 1);
+            }
 
-// Jeśli urodziny już miały miejsce w tym roku, ustawiamy je na przyszły rok
-if (birthday < today) {
-  birthday.setFullYear(today.getFullYear() + 1);
-}
+            // Ustawiamy godziny, minuty, sekundy i milisekundy na 0, aby porównać tylko daty
+            birthday.setHours(0, 0, 0, 0);
+            today.setHours(0, 0, 0, 0);
 
-// Obliczamy różnicę w czasie w milisekundach
-const timeDiff = birthday.getTime() - today.getTime();
+            // Obliczamy różnicę w czasie w milisekundach
+            const timeDiff = birthday.getTime() - today.getTime();
 
-// Obliczamy liczbę dni pozostałych do urodzin (dzieląc przez milisekundy na dzień)
-const daysLeft = Math.ceil(timeDiff / (1000 * 3600 * 24));
+            // Obliczamy liczbę dni pozostałych do urodzin (dzieląc przez milisekundy na dzień)
+            // const daysLeft = Math.ceil(timeDiff / (1000 * 3600 * 24));
+            const daysLeft = Math.floor(timeDiff / (1000 * 3600 * 24)); // Używamy Math.floor zamiast Math.ceil
+            //   if (today.getDate() === birthday.getDate() && today.getMonth() === birthday.getMonth()) {
+            //   alert("Happy Birthday!");
+            //  }
 
-// Wyświetlamy wynik
-this.triggerNotificationFromParent(
-  `Do twoich urodzin zostało ${daysLeft} dni`
-);
+            // this.triggerNotificationFromParent(
+            //   `Do twoich urodzin zostało ${daysLeft} dni`
+            // );
 
-  }
+            // Sprawdzamy, czy dzisiaj są Twoje urodziny
+            if (
+              today.getDate() === birthday.getDate() &&
+              today.getMonth() === birthday.getMonth()
+            ) {
+              this.triggerNotificationFromParent(`Happy Birthday! `);
 
-//////////////////////////////////
+              setTimeout(() => {
+                this.happyBirthday = true;
+              }, this.birthdayTime);
+            } else {
+              // Jeśli to nie Twoje urodziny, wyświetlamy ile dni pozostało
+                 this.happyBirthday=false;
+              this.triggerNotificationFromParent(
+                // `Your birthday is in ${daysLeft} ${message}`
+                `Your birthday is in ${daysLeft} day${
+                  daysLeft === 1 ? '' : 's'
+                }`
+              );
+            }
+          }
 
+          //////////////////////////////////
 
-
-        // Zapisz w sessionStorage, aby uniknąć ponownego wyświetlania powiadomienia
-        sessionStorage.setItem('notificationShown', 'true');
-      });
+          // Zapisz w sessionStorage, aby uniknąć ponownego wyświetlania powiadomienia
+          sessionStorage.setItem('notificationShown', 'true');
+        });
     }
-
-
-
-
-
-
   }
+
+
+
+
+  onChildClick(){
+    this.happyBirthday=false;
+  }
+
+
+
+
+
+
 
 
 
@@ -281,7 +323,6 @@ this.triggerNotificationFromParent(
 
   generateWelcomeMessage() {
     const welcomeMessages = [
-
       'It’s always a pleasure to see you! 😊',
       'Welcome back, let’s make today amazing! 🌞',
       'So happy to see you again! 💫',
@@ -388,34 +429,13 @@ this.triggerNotificationFromParent(
       'It’s time to make today epic! 🌟',
       'You’re back, and the adventure continues! 🚀',
       'Together, we’re unstoppable! 💪',
-      'Welcome back, let’s create something amazing! ✨'
-
+      'Welcome back, let’s create something amazing! ✨',
     ];
     return welcomeMessages[Math.floor(Math.random() * welcomeMessages.length)];
   }
-
-
 
   ngOnDestroy(): void {
     this.logoutSubscription?.unsubscribe();
     this.profileSubscription?.unsubscribe();
   }
-
-
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
