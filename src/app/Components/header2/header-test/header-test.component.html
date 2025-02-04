@@ -1,0 +1,122 @@
+<header class="header">
+  <div class="header__logo">
+    <div class="header__logo__image">
+      <a href="/">
+        <img src="/assets/PinesTree.png" alt="Pines Executive Travel Logo" />
+      </a>
+    </div>
+    <div class="header__logo__text">
+      <span class="header__logo__text">pines executive travel</span>
+    </div>
+  </div>
+  <div *ngIf="isMobile" class="header__mobile">
+    <span>pines executive travel</span>
+  </div>
+  <ul class="header__list">
+    <li #listItem (click)="selectLi(0)">
+      <a class="header__list__item" [routerLink]="['/bracknellTaxis/home']">{{
+        "Nav_Home" | translate
+      }}</a>
+    </li>
+    <li #listItem (click)="selectLi(1)">
+      <a
+        class="header__list__item"
+        [routerLink]="['/bracknellTaxis/airportTransfer']"
+        >{{ "Nav_Airport" | translate }}</a
+      >
+    </li>
+
+    <li #listItem (click)="selectLi(2)">
+      <a
+        class="header__list__item"
+        [routerLink]="['/bracknellTaxis/booking']"
+        >{{ "Nav_Book" | translate }}</a
+      >
+    </li>
+    <li #listItem (click)="selectLi(3)">
+      <a class="header__list__item">{{ "Nav_Contact" | translate }}</a>
+    </li>
+    <div
+      [ngStyle]="{ 'width.px': markerWidth }"
+      #segmentedControl
+      #marker
+      class="header__list__slide"
+    ></div>
+  </ul>
+
+  <div class="header__badge">
+    <span>24</span>
+    <img src="/assets/mercedes.png" alt="Mercedes Logo" />
+    <span>7</span>
+  </div>
+
+  <ng-container *ngIf="user === undefined; else showLogout">
+    <button class="header__log">
+      <a [routerLink]="['/bracknellTaxis/login']" style="display: block"
+        >login</a
+      >
+    </button>
+  </ng-container>
+
+  <ng-template #showLogout>
+    <span class="header__name">{{ user?.email }}</span>
+    <button (click)="logOut()" class="header__log">
+      <a [routerLink]="['/bracknellTaxis/login']" style="display: block"
+        >logout</a
+      >
+    </button>
+  </ng-template>
+  <div class="header__hamburger">
+    <app-hamburger (menuToggled)="onMenuToggle()"></app-hamburger>
+  </div>
+</header>
+
+<header *ngIf="menuOpen" @submenuAnimation class="mobile">
+  <nav class="mobile__nav">
+    <ul class="mobile__nav__menu">
+      <li class="mobile__nav__menu__item" (click)="toggleMenu()">
+        <a [routerLink]="['/bracknellTaxis/home']">{{
+          "Nav_Home" | translate
+        }}</a>
+      </li>
+      <li class="mobile__nav__menu__item" (click)="toggleMenu()">
+        <a [routerLink]="['/bracknellTaxis/airportTransfer']">{{
+          "Nav_Airport" | translate
+        }}</a>
+      </li>
+      <li class="mobile__nav__menu__item" (click)="toggleMenu()">
+        <a [routerLink]="['/bracknellTaxis/booking']">{{
+          "Nav_Book" | translate
+        }}</a>
+      </li>
+      <li class="mobile__nav__menu__item" (click)="toggleMenu()">
+        <a>{{ "Nav_Contact" | translate }}</a>
+      </li>
+
+      <li
+        [class.active]="isCorporate === 'Corporate Account'"
+        class="mobile__nav__menu__item mobile__nav__menu__item--corporate"
+        (click)="toggleSubmenu('Corporate Account')"
+      >
+        <a class="mobile__nav__menu__item--corporate--link">
+          Corporate Account
+          <i
+            class="fa-solid fa-caret-down"
+            [@rotateAnimation]="isSubmenuOpen ? 'up' : 'down'"
+          ></i>
+        </a>
+      </li>
+
+      <ul
+        class="mobile__nav__menu__submenu"
+        *ngIf="isSubmenuOpen"
+        @submenuAnimation
+      >
+        <li (click)="submenu('get-a-quote')"><a>Get a Quote</a></li>
+        <li (click)="submenu('make-booking')"><a>Make a booking</a></li>
+        <li *ngIf="!user && !token" (click)="submenu('open-account')"><a>Open an Account</a></li>
+        <li *ngIf="user || token" (click)="submenu('')"         (click)="logOut()"><a>Logout</a></li>
+      </ul>
+    </ul>
+  </nav>
+</header>

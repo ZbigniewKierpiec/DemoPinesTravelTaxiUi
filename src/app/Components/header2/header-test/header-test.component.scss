@@ -1,0 +1,305 @@
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media only screen and (max-width: 37.5em) {
+      @content;
+    } // 600px - phones
+  }
+
+  @if $breakpoint == tab-port {
+    @media only screen and (max-width: 56.25em) {
+      @content;
+    } // 900px - portrait tablets
+  }
+
+  @if $breakpoint == tab-land {
+    @media only screen and (max-width: 75em) {
+      @content;
+    } // 1200px - landscape tablets
+  }
+
+  @if $breakpoint == tab-port-portrait {
+    @media only screen and (max-width: 56.25em) and (orientation: portrait) {
+      @content;
+    } // Portrait tablets (900px or less, portrait mode)
+  }
+
+  @if $breakpoint == tab-port-landscape {
+    @media only screen and (max-width: 56.25em) and (orientation: landscape) {
+      @content;
+    } // Portrait tablets (900px or less, landscape mode)
+  }
+
+  @if $breakpoint == i-pad {
+    @media only screen and (max-width: 103em) {
+      @content;
+    } // 1648px - larger devices like large tablets and small desktops
+  }
+
+  @if $breakpoint == big-desktop {
+    @media only screen and (min-width: 112.5em) {
+      @content;
+    } // 1800px - large desktop screens
+  }
+
+  @if $breakpoint == ipad-2 {
+    @media only screen and (max-width: 135em) {
+      @content;
+    } // 2160px - very large screens, huge desktops
+  }
+
+  // Additional breakpoint for very small devices like old phones
+  @if $breakpoint == xs {
+    @media only screen and (max-width: 20em) {
+      @content;
+    } // 320px - extremely small screens (older phones)
+  }
+
+  // Additional breakpoint for larger tablet sizes
+  @if $breakpoint == tab-xl {
+    @media only screen and (min-width: 90em) and (max-width: 112.5em) {
+      @content;
+    } // 1440px - large tablets or smaller laptops
+  }
+
+  // Additional breakpoint for larger mobile devices
+  @if $breakpoint == phone-xl {
+    @media only screen and (min-width: 40em) and (max-width: 60.5em) {
+      @content;
+    } // 648px - larger phones or small tablets
+  }
+}
+.header {
+  min-height: 12rem;
+  background-color: black;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  @include respond(phone) {
+    justify-content: space-between;
+    padding: 0 3rem;
+  }
+
+  &__logo {
+    width: 6rem;
+    width: fit-content;
+    height: 100%;
+    line-height: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    grid-gap: 1rem;
+    @include respond(phone) {
+    display: none;
+    }
+
+
+    &__image {
+      width: 7rem;
+      height: 7rem;
+      background-color: #bce2bd;
+      border-radius: 50%;
+      @include respond(phone) {
+        width: 6rem;
+        height: 6rem;
+      }
+
+      img {
+        width: 100%;
+        object-fit: cover;
+        display: block;
+      }
+    }
+    &__text {
+      min-width: 15rem;
+      text-align: center;
+      text-transform: capitalize;
+      font-size: 1.4rem;
+      font-weight: bolder;
+      font-family: monospace;
+      font-weight: bolder;
+      font-style: italic;
+      text-wrap: pretty;
+      color: white;
+    }
+  }
+&__mobile{
+
+  color: white;                          // Kolor tekstu
+  text-transform: capitalize;             // Pierwsza litera każdego słowa wielka
+  font-size: 2rem;                       // Rozmiar czcionki
+  font-weight: bold;                     // Pogrubienie czcionki, żeby wyróżniało się jako logo
+  letter-spacing: 1px;                   // Zwiększona przestrzeń między literami dla lepszej czytelności
+
+
+  display: inline-block;                 // Zapewnia, że tekst jest wyświetlany w jednej linii
+  padding: 10px 0px;                    //
+
+
+}
+  &__list {
+    position: relative;
+    width: 60rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    @include respond(phone) {
+      display: none;
+    }
+
+    &__item {
+      padding: 1rem 2rem;
+      display: inline-block;
+      text-transform: capitalize;
+      font-size: 1.8rem;
+
+      color: white;
+      cursor: pointer;
+      transition: 0.1s linear;
+      text-decoration: none;
+    }
+    &__slide {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      background-color: #efc050;
+      width: 100%;
+      height: 2px;
+      transition: 0.3s linear;
+    }
+  }
+
+  &__badge {
+    width: 20rem;
+    height: 100px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include respond(phone) {
+      display: none;
+    }
+    span {
+      color: white;
+      font-size: 1.7rem;
+      font-weight: bolder;
+      color: #efc050;
+      &:last-child {
+        color: #efc050;
+      }
+    }
+
+    img {
+      width: 50%;
+      display: block;
+      object-fit: cover;
+    }
+  }
+  &__log {
+    display: inline-block;
+    border: none;
+    padding: 0.4rem 1rem;
+    border-radius: 0.3rem;
+    background-color: #4b4b4b;
+    text-transform: capitalize;
+    // margin-right: 1.5rem;
+    color: white;
+    @include respond(phone) {
+      display: none;
+    }
+    a {
+      text-decoration: none;
+      color: white !important;
+    }
+  }
+  &__name {
+    color: white !important;
+    margin-right: 1rem;
+  }
+  &__hamburger {
+    width: 2rem;
+    height: 2rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.mobile {
+  transition: height 0.3s linear;
+
+  &.active {
+  }
+  &.close {
+    display: none;
+  }
+  &__nav {
+    background: white;
+    transition: height 0.3s linear;
+    width: 100%;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+
+    &__menu {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+
+      &__item {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+
+        a {
+          text-decoration: none;
+          color: #333;
+          display: block;
+          font-size: 3rem;
+          text-transform: capitalize;
+        }
+
+        &--corporate {
+
+             &.active{
+              background-color: whitesmoke;
+             }
+           &--link {
+            display: flex !important;
+            justify-content: space-between;
+            align-items: center;
+            padding-right: 4rem;
+            font-size: 3rem;
+          }
+
+        }
+      }
+
+      &__submenu{
+        list-style: none;
+
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        background-color: whitesmoke;
+        li{
+          padding: 10px;
+         border-bottom: 1px solid #ddd;
+         a{
+          padding: 10px;
+          display: block;
+          font-size: 2rem;
+          text-transform: capitalize;
+          text-decoration: none;
+          color: black;
+         }
+        }
+
+       }
+
+
+    }
+  }
+}

@@ -17,6 +17,7 @@ import {
 import { routeTransition } from '../../../route-transition';
 import { filter } from 'rxjs';
 import { LogingWelcomeComponent } from "../../Pages/login/loging-welcome/loging-welcome.component";
+import { HeaderTestComponent } from "../../Components/header2/header-test/header-test.component";
 
 
 @Component({
@@ -30,7 +31,8 @@ import { LogingWelcomeComponent } from "../../Pages/login/loging-welcome/loging-
     SocialComponent,
     Header2Component,
     BookNowMobileComponent,
-    LogingWelcomeComponent
+    LogingWelcomeComponent,
+    HeaderTestComponent
 ],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',

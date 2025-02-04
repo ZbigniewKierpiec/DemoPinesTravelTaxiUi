@@ -33,7 +33,7 @@
   <!-- *ngIf="user !== undefined && (user?.roles?.includes('Writer') || user?.roles?.includes('Reader'))"  -->
 
   <ng-container  *ngIf="user"    >
-    <div [attr.data-content]="dotContent"         class="dot">  <i class="fas fa-calendar-check"></i>   </div>
+    <!-- <div [attr.data-content]="dotContent"         class="dot">  <i class="fas fa-calendar-check"></i>   </div> -->
     <a   [routerLink]="['bracknellTaxis/user/dashboard']"         style="display: flex; justify-content: center; align-items: center;" class="dashboard">Dashboard</a>
   </ng-container>
 
@@ -157,46 +157,13 @@
       </ng-container>
     </ul>
   </div>
-
+<!--
   <div class="header-contact-mobile">
     <app-header-mobile-contact></app-header-mobile-contact>
-  </div>
+  </div> -->
 
   <div class="nav__hamburger">
     <app-hamburger (menuToggled)="onMenuToggle()"></app-hamburger>
   </div>
 
-  <section
-    [classList]="isActive ? 'active mobile      ' : 'mobile'"
-    class="mobile"
-  >
-    <ul class="mobile__list">
-      <li [routerLinkActive]="'active'" class="active">
-        <a [routerLink]="['/bracknellTaxis/home']">{{
-          "Nav_Home" | translate
-        }}</a>
-      </li>
-      <li [routerLinkActive]="'active'">
-        <a [routerLink]="['/bracknellTaxis/airportTransfer']"
-          >{{ "Nav_Airport" | translate }}
-        </a>
-      </li>
-      <!-- <li>
-        <a>{{ "Nav_Testimonials" | translate }} </a>
-      </li> -->
-
-      <li [routerLinkActive]="'active'">
-        <a [routerLink]="['/bracknellTaxis/booking/list']">Bookings List</a>
-      </li>
-
-      <li>
-        <a [routerLink]="['/bracknellTaxis/booking']">{{
-          "Nav_Book" | translate
-        }}</a>
-      </li>
-      <li>
-        <a>{{ "Nav_Contact" | translate }}</a>
-      </li>
-    </ul>
-  </section>
 </nav>

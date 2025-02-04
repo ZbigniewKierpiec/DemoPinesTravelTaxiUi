@@ -44,6 +44,7 @@ export const routes: Routes = [
   {
     path: 'bracknellTaxis/booking',
     component: BookingComponent,
+    canActivate: [authGuard],
   },
 
   {
