@@ -156,10 +156,12 @@ h2{
   background-size: contain;
 }
 .card__social {
-  width: 20%;
+  // width: 20%;
   height: 100%;
-
+  color: white;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
 
   @include respond(tab-port) {
@@ -187,12 +189,13 @@ h2{
 }
 .mainFooter {
   width: 100vw;
-  height: 10vh;
+  height: 20vh;
   background-color: black;
   text-align: center;
-  line-height: 10vh;
+  // line-height: 10vh;
 
   position: relative;
+
   &__h1 {
     color: white;
     text-align: center;

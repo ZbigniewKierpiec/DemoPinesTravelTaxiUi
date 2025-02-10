@@ -1,3 +1,57 @@
+<div class="banner">
+
+
+    <div class="banner__contact">
+      <div class="banner__contact__phone">
+        <a class="mainHeader__contact__a" href="tel:07960186334">
+          <span>
+            <span>
+              <i class="fa fa-phone" aria-hidden="true"></i>
+              07960186334
+            </span>
+          </span>
+        </a>
+
+      </div>
+
+      <div class="banner__contact__email">
+        <a class="mainHeader__mail__a" href="mailto:zbigniewkierpiec@gmail.com">
+          <span>
+            <span>
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+              bookingtaxi.online
+            </span>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <!-- *ngIf="user !== undefined && (user?.roles?.includes('Writer') || user?.roles?.includes('Reader'))"  -->
+
+    <ng-container  *ngIf="user"    >
+
+      <a    [routerLink]="['bracknellTaxis/user/dashboard']"        class="banner__dashboard">
+        <i class="fa-solid fa-gauge-high"></i>
+
+      </a>
+    </ng-container>
+
+    <div class="banner__social">
+      <ul class="mainHeader__social__list">
+        <li class="soc zorro mainHeader__social__list__items">
+          <i class="fab fa-facebook-f zorro"></i>
+        </li>
+        <li class="soc mainHeader__social__list__items">
+          <i class="fab fa-linkedin-in"></i>
+        </li>
+        <li class="soc mainHeader__social__list__items">
+          <i class="fab fa-twitter"></i>
+        </li>
+      </ul>
+    </div>
+
+</div>
+
 <header class="header">
   <div class="header__logo">
     <div class="header__logo__image">
@@ -9,9 +63,9 @@
       <span class="header__logo__text">pines executive travel</span>
     </div>
   </div>
-  <div *ngIf="isMobile" class="header__mobile">
+  <!-- <div *ngIf="isMobile" class="header__mobile">
     <span>pines executive travel</span>
-  </div>
+  </div> -->
   <ul class="header__list">
     <li #listItem (click)="selectLi(0)">
       <a class="header__list__item" [routerLink]="['/bracknellTaxis/home']">{{
