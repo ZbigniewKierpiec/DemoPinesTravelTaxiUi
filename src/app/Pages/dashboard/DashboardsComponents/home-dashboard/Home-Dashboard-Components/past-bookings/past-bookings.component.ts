@@ -4,16 +4,23 @@ import { AuthService } from '../../../../../login/Services/auth.service';
 import { BookingService } from '../../../../../../Components/booking/Services/booking.service';
 import { NotificationService } from '../../../../../../Services/notification.service';
 import { AddBookingResponse } from '../../../../../../Components/booking/Model/add-booking-response';
+import { CardComponent } from "../all-bookings/Mobile/card/card.component";
 
 @Component({
   selector: 'app-past-bookings',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CardComponent],
   templateUrl: './past-bookings.component.html',
   styleUrl: './past-bookings.component.scss'
 })
 export class PastBookingsComponent {
 bookings: AddBookingResponse[]=[];
+
+isMobile(): boolean {
+  return window.matchMedia('(max-width: 768px)').matches;
+}
+
+
  constructor(
    private authService: AuthService,
   private bookingService: BookingService,

@@ -6,6 +6,7 @@ import { BookingService } from '../../../../../../Components/booking/Services/bo
 import { NotificationService } from '../../../../../../Services/notification.service';
 import { Router } from '@angular/router';
 import { HomeDashboardNotyficationComponent } from '../home-dashboard-notyfication/home-dashboard-notyfication.component';
+import { CardUpcomingComponent } from "./Mobile/card-upcoming/card-upcoming.component";
 export enum BookingStatus {
   Pending = 0,
   Confirmed = 1,
@@ -19,11 +20,15 @@ export enum BookingStatus {
 @Component({
   selector: 'app-upcoming-bookings',
   standalone: true,
-  imports: [CommonModule, HomeDashboardNotyficationComponent],
+  imports: [CommonModule, HomeDashboardNotyficationComponent, CardUpcomingComponent],
   templateUrl: './upcoming-bookings.component.html',
   styleUrl: './upcoming-bookings.component.scss',
 })
 export class UpcomingBookingsComponent {
+  isMobile(): boolean {
+    return window.matchMedia('(max-width: 768px)').matches;
+  }
+
   //  user?: User;
   // @Output() bookingsCount = new EventEmitter<number>();
 

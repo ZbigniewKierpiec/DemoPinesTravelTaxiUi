@@ -1,6 +1,6 @@
 <div [classList]="'animate__animated animate__fadeIn box'" class="box">
   <div class="box">
-    <h1 class="mt-3">All Booking List</h1>
+    <h1 class="mt-3 text-8xl">All Booking List</h1>
 
     <ng-container *ngIf="bookings && !isMobile()">
       <table class="table table-bordered mt-3">
@@ -57,13 +57,16 @@
           </ng-container>
         </tbody>
       </table>
-
     </ng-container>
     <ng-container *ngIf="isMobile()">
-      <app-card *ngFor="let item of bookings"   [item]="item"        ></app-card>
+      <app-card *ngFor="let item of bookings" [item]="item"></app-card>
     </ng-container>
 
-
+    <ng-container *ngIf="!bookings || bookings.length === 0">
+      <tr>
+        <td colspan="14">No bookings found.</td>
+      </tr>
+    </ng-container>
 
 
   </div>

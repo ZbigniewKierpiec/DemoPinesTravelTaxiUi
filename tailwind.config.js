@@ -4,7 +4,13 @@ module.exports = {
   theme: {
     extend: {
       fontSize: {
-        tiny: "10px", // Ustaw bardziej realistyczny rozmiar
+        tiny: "10px",
+        "9xl": "2.2rem",
+        "8xl":"1.7rem"
+      },
+
+      colors: {
+        "custom-red": "#FF5733", // Twój własny czerwony kolor
       },
     },
   },

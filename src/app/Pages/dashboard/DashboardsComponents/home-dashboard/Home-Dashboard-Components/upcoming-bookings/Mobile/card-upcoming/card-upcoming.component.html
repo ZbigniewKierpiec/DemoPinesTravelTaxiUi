@@ -1,9 +1,10 @@
+<app-home-dashboard-notyfication></app-home-dashboard-notyfication>
 <div class="border-b pb-4 mb-4 last:border-b-0">
   <h3 class="text-8xl font-semibold text-gray-800 mb-6">
     Reservation #{{ item.id }}
   </h3>
 
-  <p class="text-gray-600 text-9xl ">
+  <p class="text-9xl text-gray-600">
     📅 Created: {{ item.createdAt | date : "medium" }}
   </p>
 
@@ -17,14 +18,13 @@
     <p class="text-9xl">
       <strong>🛬 Destination:</strong> {{ item.dropoffLocation }}
     </p>
-
     <p class="text-9xl">
       <strong>📅 Pickup Time:</strong> {{ item.pickupTime | date : "medium" }}
     </p>
-
-    <!-- <p><strong>📅 Pickup Date:</strong> {{ item.pickupTime | date: 'short' }}</p> -->
     <p class="text-9xl"><strong>🎒 Luggage:</strong> {{ item.louggages }}</p>
-    <p class="text-9xl"><strong>🧍 Passengers:</strong> {{ item.passengers }}</p>
+    <p class="text-9xl">
+      <strong>🧍 Passengers:</strong> {{ item.passengers }}
+    </p>
     <p class="text-9xl"><strong>🚗 Car Type:</strong> {{ item.carType }}</p>
     <p class="text-9xl">
       <strong>📝 Instructions:</strong> {{ item.driverInstruction }}
@@ -33,12 +33,17 @@
       <strong>🙋 Greeting:</strong> {{ item.greet ? "Yes" : "No" }}
     </p>
     <p class="text-9xl"><strong>💰 Price:</strong> £{{ item.price }}</p>
-
-    <p class="text-9xl">
-      <strong>🚦 Status:</strong> {{ getBookingStatus(item.status) }}
-    </p>
-
-
   </div>
+
+  <!-- Cancel Button -->
+  <div class="mt-6">
+    <button
+    (click)="cancellBooking(item.id)"
+      class="px-6 py-2 bg-custom-red text-black-50 font-semibold rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 w-full border border-1 px-3 border-red-700"
+    >
+      <span class="text-9xl text-white">Cancel Booking</span>
+    </button>
+  </div>
+ 
   <hr />
 </div>

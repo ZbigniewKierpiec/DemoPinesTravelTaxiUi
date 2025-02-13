@@ -9,15 +9,20 @@ import {
 } from '../../../../../../Components/booking/Model/add-booking-response';
 
 import { HomeDashboardNotyficationComponent } from '../home-dashboard-notyfication/home-dashboard-notyfication.component';
+import { CardComponent } from "../all-bookings/Mobile/card/card.component";
 
 @Component({
   selector: 'app-cancelled-bookings',
   standalone: true,
-  imports: [CommonModule,HomeDashboardNotyficationComponent],
+  imports: [CommonModule, HomeDashboardNotyficationComponent, CardComponent],
   templateUrl: './cancelled-bookings.component.html',
   styleUrl: './cancelled-bookings.component.scss',
 })
 export class CancelledBookingsComponent {
+
+  isMobile(): boolean {
+    return window.matchMedia('(max-width: 768px)').matches;
+  }
 
   bookings: AddBookingResponse[] = [];
   constructor(
@@ -70,7 +75,7 @@ export class CancelledBookingsComponent {
         console.log('Bookings data:', data);
         this.bookings = data; // Assign data to your bookings property
         // this.sendLengthToParent();
-       
+
       },
       error: (error) => {
         // Handle error response
