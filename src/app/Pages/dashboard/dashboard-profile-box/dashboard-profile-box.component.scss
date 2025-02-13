@@ -64,6 +64,7 @@
         grid-gap: 1rem;
         text-decoration: none;
         color: rgba(0, 0, 0, 0.733);
+        flex-grow: 1;
       }
       &:hover {
         background-color: rgba(195, 175, 175, 0.283);

@@ -22,17 +22,18 @@ export class DashboardProfileBoxComponent implements OnInit, OnDestroy {
   isActive: boolean = false;
 
   profile: Profile[] = [
+
+    {
+      icon: 'fas fa-home',
+      name: 'home',
+      url: 'home',
+    },
     {
       icon: 'fa-regular fa-user',
       name: 'profile',
       url: 'profile',
     },
 
-    {
-      icon: 'fa-solid fa-gear',
-      name: 'settings',
-      url: 'home/settings',
-    },
     {
       icon: 'fa-solid fa-headphones-simple',
       name: 'support',

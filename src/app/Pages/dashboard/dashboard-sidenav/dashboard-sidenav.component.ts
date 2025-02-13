@@ -19,6 +19,8 @@ interface Link {
   styleUrl: './dashboard-sidenav.component.scss',
 })
 export class DashboardSidenavComponent implements OnInit {
+  Mobile:boolean=this.isMobile();
+
   currentUrl: any;
   // Reference to slider element
   @ViewChild('slider', { static: true }) slider?: ElementRef;
@@ -128,4 +130,12 @@ export class DashboardSidenavComponent implements OnInit {
       this.sideMenuSubscription.unsubscribe();
     }
   }
+
+
+
+  isMobile(): boolean {
+    return window.matchMedia('(max-width: 768px)').matches;
+  }
+
+
 }

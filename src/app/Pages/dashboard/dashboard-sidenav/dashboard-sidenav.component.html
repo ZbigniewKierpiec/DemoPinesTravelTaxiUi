@@ -1,6 +1,6 @@
 
  <!-- Main navigation container. The 'active-nav' class is applied when isActive is true. -->
- <div    class="navigation" [ngClass]="{ 'active-nav': isActive }">
+ <div  [class.isMobile]="Mobile"    class="navigation" [ngClass]="{ 'active-nav': isActive }">
 
   <!-- Navigation list. The 'active' class is conditionally applied based on the isActive property. -->
   <ul [class.active]="isActive" class="ul">

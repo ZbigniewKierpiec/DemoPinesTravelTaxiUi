@@ -1,0 +1,26 @@
+<div class="border-b pb-4 mb-4 last:border-b-0">
+  <h3 class="text-xl font-semibold text-gray-800 mb-4">
+    Reservation #{{ item.id }}
+  </h3>
+
+  <p class="text-sm text-gray-600">📅 Created: {{ item.createdAt | date: 'medium' }}</p>
+
+  <div class="mt-6 space-y-4">
+    <p class="text-lg"><strong>📛 Name:</strong> {{ item.name }}</p>
+    <p class="text-lg"><strong>📞 Phone:</strong> {{ item.phoneNumber }}</p>
+    <p class="text-lg"><strong>✉️ Email:</strong> {{ item.email }}</p>
+    <p class="text-lg"><strong>📍 Pickup Location:</strong> {{ item.pickupLocation }}</p>
+    <p class="text-lg"><strong>🛬 Destination:</strong> {{ item.dropoffLocation }}</p>
+    <!-- <p><strong>📅 Pickup Date:</strong> {{ item.pickupTime | date: 'short' }}</p> -->
+    <p class="text-lg"><strong>🎒 Luggage:</strong> {{ item.louggages }}</p>
+    <p class="text-lg"><strong>🧍 Passengers:</strong> {{ item.passengers }}</p>
+    <p class="text-lg"><strong>🚗 Car Type:</strong> {{ item.carType }}</p>
+    <p class="text-lg"><strong>📝 Instructions:</strong> {{ item.driverInstruction }}</p>
+    <p class="text-lg"><strong>🙋 Greeting:</strong> {{ item.greet ? 'Yes' : 'No' }}</p>
+    <p class="text-lg"><strong>💰 Price:</strong> £{{ item.price }}</p>
+
+  </div>
+  <hr>
+</div>
+
+

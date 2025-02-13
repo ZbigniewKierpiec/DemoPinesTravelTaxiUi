@@ -1,13 +1,11 @@
-
-<div  [classList]="'animate__animated animate__fadeIn box'"          class="box">
+<div [classList]="'animate__animated animate__fadeIn box'" class="box">
   <div class="box">
     <h1 class="mt-3">All Booking List</h1>
 
-    <ng-container *ngIf="bookings">
+    <ng-container *ngIf="bookings && !isMobile()">
       <table class="table table-bordered mt-3">
         <thead>
           <tr>
-
             <th>Booked At</th>
             <th>Name</th>
             <th>Phone Number</th>
@@ -26,17 +24,14 @@
             <th>Price</th>
 
             <th>Status</th>
-
           </tr>
         </thead>
 
         <tbody style="width: fit-content">
           <ng-container *ngIf="bookings && bookings.length > 0">
             <tr *ngFor="let item of bookings">
-
-
               <!-- <td>{{ item.createdAt | date : "yyyy-MM-dd HH:mm" }}</td> -->
-              <td>{{ item.createdAt | date: 'medium' }}</td>
+              <td>{{ item.createdAt | date : "medium" }}</td>
               <td>{{ item.name }}</td>
               <td>{{ item.phoneNumber }}</td>
               <td>{{ item.email }}</td>
@@ -44,7 +39,7 @@
               <td>{{ item.via }}</td>
               <td>{{ item.dropoffLocation }}</td>
 
-              <td>{{ item.pickupTime | date: 'MMM d, y, h:mm a' }}</td>
+              <td>{{ item.pickupTime | date : "MMM d, y, h:mm a" }}</td>
               <td>{{ item.louggages }}</td>
 
               <td>{{ item.passengers }}</td>
@@ -53,9 +48,6 @@
               <td>{{ item.greet ? "Yes" : "No" }}</td>
               <td>£{{ item.price }}</td>
               <td>{{ getBookingStatus(item.status) }}</td>
-
-
-
             </tr>
           </ng-container>
           <ng-container *ngIf="!bookings || bookings.length === 0">
@@ -65,8 +57,14 @@
           </ng-container>
         </tbody>
       </table>
+
     </ng-container>
+    <ng-container *ngIf="isMobile()">
+      <app-card *ngFor="let item of bookings"   [item]="item"        ></app-card>
+    </ng-container>
+
+
+
+
   </div>
-
-
 </div>

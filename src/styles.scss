@@ -2,6 +2,9 @@
 
 @import "Scss/res.scss";
 @import "@fortawesome/fontawesome-free/css/all.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 * {
   font-family: "Montserrat", sans-serif;
