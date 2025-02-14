@@ -168,9 +168,26 @@
         <li *ngIf="!user && !token" (click)="submenu('open-account')">
           <a>Open an Account</a>
         </li>
-        <li *ngIf="user || token" (click)="submenu('')" (click)="logOut()">
-          <a>Logout</a>
-        </li>
+
+
+<ng-container  *ngIf="user == undefined ; else showMobileLogout "   >
+  <li  (click)="submenu('')">
+
+    <a [routerLink]="['/bracknellTaxis/login']" style="display: block"
+    >login</a
+  >
+
+
+  </li>
+</ng-container>
+
+<ng-template #showMobileLogout>
+  <li  (click)="submenu('')" (click)="logOut()">
+    <a>LogOut</a>
+  </li>
+</ng-template>
+
+
       </ul>
     </ul>
   </nav>
