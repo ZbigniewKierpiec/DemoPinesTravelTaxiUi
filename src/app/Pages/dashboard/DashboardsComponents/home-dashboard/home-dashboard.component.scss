@@ -70,17 +70,21 @@
 }
 
 .box {
-
-  width:100%;
-  // height: 100vh;
-
+  width: 100%;
+  min-height: 100vh;
+  height: auto; /* Ensures dynamic content can make the box grow */
+  max-height: fit-content; /* Limits the height to the content size */
   padding: 7rem;
+
+  position: relative;
+  flex-grow: 1;
   @include respond(phone) {
-  padding: 7rem 3rem;
+    padding: 7rem 3rem;
   }
   &__inner {
     width: 100%;
-    // height: 100%;
+
+    height: auto;
 
     &__user {
       display: flex;
@@ -91,6 +95,11 @@
         width: 5rem;
         height: 5rem;
 
+        @include respond(phone) {
+          width: 7rem;
+          height: 7rem;
+        }
+
         img {
           width: 100%;
           height: 100%;
@@ -99,6 +108,9 @@
         }
       }
       &__text {
+        @include respond(phone) {
+          font-size: 1.7rem;
+        }
       }
     }
 
@@ -112,10 +124,10 @@
       grid-gap: 2rem;
       @include respond(phone) {
         margin-top: 7rem;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-columns: repeat(4, 1fr);
+        justify-content: center;
         grid-template-rows: 1fr;
         grid-gap: 1rem;
-
       }
       a {
         height: 100%;
@@ -127,9 +139,9 @@
         border: 2px solid rgba(0, 0, 0, 0.089);
         border-radius: 2rem;
         @include respond(phone) {
-      height: 7rem;
+          height: 7rem;
 
-         border-radius: 1rem;
+          border-radius: 1rem;
         }
       }
       &__item {
@@ -161,23 +173,23 @@
 
           text-transform: capitalize;
           @include respond(phone) {
-           span{
-            display: none;
-           }
+            span {
+              display: none;
+            }
           }
           div {
             width: 3rem;
             height: 3rem;
             @include respond(phone) {
-              width: 15px;
-              height: 15px;
+              width: 20px;
+              height: 20px;
             }
             display: flex;
             justify-content: center;
             align-items: center;
             img {
               width: 100%;
-               display: block;
+              display: block;
               object-fit: cover;
               @include respond(phone) {
                 // display: none;
@@ -190,20 +202,27 @@
           display: flex;
           justify-content: space-between;
           align-items: center;
+          @include respond(phone) {
+            line-height: 1;
+            span {
+              font-size: 1.5rem;
+              margin-top: -0.6rem;
+            }
+          }
         }
       }
     }
     &__display {
-
-        background-color: whitesmoke;
-        position: relative;
-        width: 100%;
-
+   
+      position: relative;
+      width: 100%;
+      min-height: auto; /* Allow height to adjust based on content */
+      height: auto; /* Ensures dynamic content can make the box grow */
+      max-height: fit-content; /* Limits the height to the content size */
+      margin-top: 5rem;
       @include respond(phone) {
+        margin-top: 2rem;
         position: relative;
-
-
-
       }
     }
   }

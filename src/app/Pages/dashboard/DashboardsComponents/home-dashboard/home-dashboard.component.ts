@@ -7,6 +7,7 @@ import { BookingService } from '../../../../Components/booking/Services/booking.
 import { NotificationService } from '../../../../Services/notification.service';
 import { CommonModule } from '@angular/common';
 import { forkJoin } from 'rxjs';
+import { ProfileImageService } from '../../dashboard-profile-box/Components/profile/profile-image.service';
 
 @Component({
   selector: 'app-home-dashboard',
@@ -21,6 +22,7 @@ export class HomeDashboardComponent implements OnInit {
   upcomingbookingsLength: number = 0;
   pastbookingsLength: number = 0;
   cancelledBookingsLength:number=0;
+  imageUrl?:string='';
   setGreeting(): void {
     const currentHour = new Date().getHours();
     if (currentHour < 12) {
@@ -39,7 +41,8 @@ export class HomeDashboardComponent implements OnInit {
     private authService: AuthService,
     private bookingService: BookingService,
     private notificationService: NotificationService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+      private profileImageService: ProfileImageService
   ) {}
 
   // ngOnInit(): void {
@@ -90,6 +93,35 @@ export class HomeDashboardComponent implements OnInit {
 
     // Set greeting based on time
     this.setGreeting();
+
+
+    this.profileImageService.getSingleProfileImages().subscribe(
+      (data: any) => {
+        console.log(data);  // Logowanie odpowiedzi, aby zobaczyć strukturę
+
+        // Sprawdzamy, czy pole ImageUrl istnieje w odpowiedzi
+        if (data && data.imageUrl) {
+          this.imageUrl = data.imageUrl;  // Przypisanie URL obrazu do tablicy
+
+            // Save image URL to localStorage
+
+
+
+        } else {
+          console.log('ImageUrl not found in the response.');
+        }
+      },
+      (error) => {
+        console.error('Error fetching profile images:', error);
+      }
+    );
+
+
+
+
+
+
+
   }
 
   refreshBookingsData() {

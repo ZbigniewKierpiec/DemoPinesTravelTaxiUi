@@ -3,7 +3,7 @@
     Reservation #{{ item.id }}
   </h3>
 
-  <p class="text-gray-600 text-9xl ">
+  <p class="text-gray-600 text-9xl">
     📅 Created: {{ item.createdAt | date : "medium" }}
   </p>
 
@@ -24,7 +24,9 @@
 
     <!-- <p><strong>📅 Pickup Date:</strong> {{ item.pickupTime | date: 'short' }}</p> -->
     <p class="text-9xl"><strong>🎒 Luggage:</strong> {{ item.louggages }}</p>
-    <p class="text-9xl"><strong>🧍 Passengers:</strong> {{ item.passengers }}</p>
+    <p class="text-9xl">
+      <strong>🧍 Passengers:</strong> {{ item.passengers }}
+    </p>
     <p class="text-9xl"><strong>🚗 Car Type:</strong> {{ item.carType }}</p>
     <p class="text-9xl">
       <strong>📝 Instructions:</strong> {{ item.driverInstruction }}
@@ -37,8 +39,11 @@
     <p class="text-9xl">
       <strong>🚦 Status:</strong> {{ getBookingStatus(item.status) }}
     </p>
-
-
   </div>
-  <hr />
+
+  <app-divider-down
+  [bgColor]="'white'"
+  [aosAnimation]="'fade-right'"
+  ></app-divider-down>
+
 </div>

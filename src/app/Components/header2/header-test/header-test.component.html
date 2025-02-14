@@ -1,55 +1,52 @@
 <div class="banner">
-
-
-    <div class="banner__contact">
-      <div class="banner__contact__phone">
-        <a class="mainHeader__contact__a" href="tel:07960186334">
+  <div class="banner__contact">
+    <div class="banner__contact__phone">
+      <a class="mainHeader__contact__a" href="tel:07960186334">
+        <span>
           <span>
-            <span>
-              <i class="fa fa-phone" aria-hidden="true"></i>
-              07960186334
-            </span>
+            <i class="fa fa-phone" aria-hidden="true"></i>
+            07960186334
           </span>
-        </a>
-
-      </div>
-
-      <div class="banner__contact__email">
-        <a class="mainHeader__mail__a" href="mailto:zbigniewkierpiec@gmail.com">
-          <span>
-            <span>
-              <i class="fa fa-envelope" aria-hidden="true"></i>
-              bookingtaxi.online
-            </span>
-          </span>
-        </a>
-      </div>
-    </div>
-
-    <!-- *ngIf="user !== undefined && (user?.roles?.includes('Writer') || user?.roles?.includes('Reader'))"  -->
-
-    <ng-container  *ngIf="user"    >
-
-      <a    [routerLink]="['bracknellTaxis/user/dashboard']"        class="banner__dashboard">
-        <i class="fa-solid fa-gauge-high"></i>
-
+        </span>
       </a>
-    </ng-container>
-
-    <div class="banner__social">
-      <ul class="mainHeader__social__list">
-        <li class="soc zorro mainHeader__social__list__items">
-          <i class="fab fa-facebook-f zorro"></i>
-        </li>
-        <li class="soc mainHeader__social__list__items">
-          <i class="fab fa-linkedin-in"></i>
-        </li>
-        <li class="soc mainHeader__social__list__items">
-          <i class="fab fa-twitter"></i>
-        </li>
-      </ul>
     </div>
 
+    <div class="banner__contact__email">
+      <a class="mainHeader__mail__a" href="mailto:zbigniewkierpiec@gmail.com">
+        <span>
+          <span>
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+            bookingtaxi.online
+          </span>
+        </span>
+      </a>
+    </div>
+  </div>
+
+  <!-- *ngIf="user !== undefined && (user?.roles?.includes('Writer') || user?.roles?.includes('Reader'))"  -->
+
+  <ng-container *ngIf="user">
+    <a
+      [routerLink]="['bracknellTaxis/user/dashboard/home']"
+      class="banner__dashboard"
+    >
+      <i class="fa-solid fa-gauge-high"></i>
+    </a>
+  </ng-container>
+
+  <div class="banner__social">
+    <ul class="mainHeader__social__list">
+      <li class="soc zorro mainHeader__social__list__items">
+        <i class="fab fa-facebook-f zorro"></i>
+      </li>
+      <li class="soc mainHeader__social__list__items">
+        <i class="fab fa-linkedin-in"></i>
+      </li>
+      <li class="soc mainHeader__social__list__items">
+        <i class="fab fa-twitter"></i>
+      </li>
+    </ul>
+  </div>
 </div>
 
 <header class="header">
@@ -168,8 +165,12 @@
       >
         <li (click)="submenu('get-a-quote')"><a>Get a Quote</a></li>
         <li (click)="submenu('make-booking')"><a>Make a booking</a></li>
-        <li *ngIf="!user && !token" (click)="submenu('open-account')"><a>Open an Account</a></li>
-        <li *ngIf="user || token" (click)="submenu('')"         (click)="logOut()"><a>Logout</a></li>
+        <li *ngIf="!user && !token" (click)="submenu('open-account')">
+          <a>Open an Account</a>
+        </li>
+        <li *ngIf="user || token" (click)="submenu('')" (click)="logOut()">
+          <a>Logout</a>
+        </li>
       </ul>
     </ul>
   </nav>

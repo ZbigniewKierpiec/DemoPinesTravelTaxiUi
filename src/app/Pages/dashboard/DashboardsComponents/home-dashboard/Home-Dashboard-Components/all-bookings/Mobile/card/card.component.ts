@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { BookingStatus } from '../../../upcoming-bookings/upcoming-bookings.component';
+import { DividerDownComponent } from "../../../../../../../../Components/dividers/divider-down/divider-down.component";
 
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, DividerDownComponent],
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss'
 })

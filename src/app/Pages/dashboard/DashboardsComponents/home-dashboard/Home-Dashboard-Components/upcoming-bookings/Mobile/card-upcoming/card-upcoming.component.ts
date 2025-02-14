@@ -4,11 +4,12 @@ import { HomeDashboardNotyficationComponent } from '../../../home-dashboard-noty
 import { BookingService } from '../../../../../../../../Components/booking/Services/booking.service';
 import { NotificationService } from '../../../../../../../../Services/notification.service';
 import { Router } from '@angular/router';
+import { DividerDownComponent } from "../../../../../../../../Components/dividers/divider-down/divider-down.component";
 
 @Component({
   selector: 'app-card-upcoming',
   standalone: true,
-  imports: [CommonModule, HomeDashboardNotyficationComponent],
+  imports: [CommonModule, HomeDashboardNotyficationComponent, DividerDownComponent],
   templateUrl: './card-upcoming.component.html',
   styleUrl: './card-upcoming.component.scss',
 })

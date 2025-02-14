@@ -1,5 +1,5 @@
 .divider {
-  --border-color: black;
+  --border-color:rgba(0, 0, 0, 0.177);
   width: 100%;
   position: relative;
   // margin-top: 90px;
@@ -7,7 +7,8 @@
 
   // margin-bottom: 3rem;
   margin: 3rem 0;
-  background-color: black;
+
+  background-color: rgba(0, 0, 0, 0.177);
 }
 
 .div-point-downward:after {
@@ -22,7 +23,7 @@
   height: 0.95rem;
   transform: rotate(45deg);
   background-color: white;
-  background-color: #8eb98f;
+  background-color: var(--bg-color, #8eb98f);
   border-bottom: 1px solid var(--border-color);
 
   border-right: 1px solid var(--border-color);

@@ -1,14 +1,16 @@
+import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import AOS from 'aos'; // Import AOS
 @Component({
   selector: 'app-divider-down',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './divider-down.component.html',
   styleUrl: './divider-down.component.scss'
 })
 export class DividerDownComponent implements OnInit , AfterViewInit {
   @Input() aosAnimation: string = '';
+  @Input() bgColor: string = '#8eb98f'; 
   constructor() {
     AOS.refresh(); // Refresh AOS after view is initialized
   }

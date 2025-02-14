@@ -147,6 +147,11 @@ export class ProfileComponent implements OnInit {
         // Sprawdzamy, czy pole ImageUrl istnieje w odpowiedzi
         if (data && data.imageUrl) {
           this.single = [data.imageUrl];  // Przypisanie URL obrazu do tablicy
+
+            // Save image URL to localStorage
+    
+
+
         } else {
           console.log('ImageUrl not found in the response.');
         }
@@ -159,8 +164,16 @@ export class ProfileComponent implements OnInit {
 
     this.imageService.getSelectedImage().subscribe((image) => {
 
-      console.log('Received image in ProfileComponent:', image);
-      this.single = [image.url];
+      if (image && image.url) {
+        this.single = [image.url];
+
+
+      }
+
+
+
+
+
     });
 
 

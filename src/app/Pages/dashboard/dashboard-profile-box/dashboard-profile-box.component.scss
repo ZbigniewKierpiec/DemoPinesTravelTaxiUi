@@ -32,11 +32,12 @@
   &__name {
 
     display: flex;
-    justify-content: center;
+    justify-content:center;
     align-items: center;
     font-size: 1.2rem;
     font-weight: bolder;
     border-bottom: 1px solid rgba(0, 0, 0, 0.256);
+    grid-gap: 1rem;
     span {
       font-weight: 700;
     }

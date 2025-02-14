@@ -28,6 +28,7 @@ import { LogoutnotifComponent } from './logoutnotif/logoutnotif.component';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { BirthdayComponent } from './birthday/birthday.component';
+import { DashboardSidenavComponent } from "../dashboard/dashboard-sidenav/dashboard-sidenav.component";
 
 @Component({
   selector: 'app-main',
@@ -49,7 +50,8 @@ import { BirthdayComponent } from './birthday/birthday.component';
     LogoutnotifComponent,
     CommonModule,
     BirthdayComponent,
-  ],
+    DashboardSidenavComponent
+],
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss',
 })

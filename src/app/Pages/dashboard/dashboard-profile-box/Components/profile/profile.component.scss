@@ -1,9 +1,10 @@
 .box {
-  // min-height: 100vh;
-  // height: 100vh;
-  max-height: 300vh;
+
+  min-height: 100vh;
+  max-height: max-content;
+  height: auto;
   padding: 7rem;
-  background-color: lightblue;
+  // background-color: lightblue;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 40rem;

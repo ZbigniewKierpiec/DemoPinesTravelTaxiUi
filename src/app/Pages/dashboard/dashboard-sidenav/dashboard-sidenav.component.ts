@@ -31,10 +31,10 @@ export class DashboardSidenavComponent implements OnInit {
   ) {}
   // Array of menu items
   links: Link[] = [
-    { id: 1, icon: 'fa solid fa-house', name: 'dashboard',  route: 'home'
+    { id: 1, icon: 'fa solid fa-house', name: 'home',  route: 'home'
 
    },
-    { id: 2, icon: 'fa-solid fa-user', name: 'test' , route:'profile' },
+    { id: 2, icon: 'fa-solid fa-user', name: 'profile' , route:'profile' },
     // { id: 3, icon: 'fa solid fa-table-columns', name: 'test' },
   ];
 

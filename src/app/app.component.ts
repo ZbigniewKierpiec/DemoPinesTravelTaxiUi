@@ -12,5 +12,5 @@ import { LogingWelcomeComponent } from "./Pages/login/loging-welcome/loging-welc
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'app';
+
 }
