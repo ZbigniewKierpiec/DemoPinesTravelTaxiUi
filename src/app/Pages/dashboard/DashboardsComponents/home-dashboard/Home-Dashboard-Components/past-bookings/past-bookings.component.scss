@@ -1,8 +1,10 @@
 .box{
 
   width: 100%;
-  position: absolute;
+
   margin: 0 auto;
+  height: auto; /* Ensures dynamic content can make the box grow */
+  max-height: fit-content; /* Limits the height to the content size */
   h1{font-size: 2rem;}
 }
 thead{
