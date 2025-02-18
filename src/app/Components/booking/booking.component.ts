@@ -33,7 +33,7 @@ import { CarService } from '../../Services/car.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import ValidateForm from '../../helpers/validateForm';
 import { NotificationComponent } from '../notification/notification.component';
-import { RezerwacjaComponent } from "../rezerwacja/rezerwacja.component";
+import { RezerwacjaComponent } from '../rezerwacja/rezerwacja.component';
 export interface PlaceResult {
   address: string;
   location?: google.maps.LatLng;
@@ -59,8 +59,8 @@ export interface PlaceResult {
     BookingDetailComponent,
     ReactiveFormsModule,
     NotificationComponent,
-    RezerwacjaComponent
-],
+    RezerwacjaComponent,
+  ],
   templateUrl: './booking.component.html',
   styleUrl: './booking.component.scss',
 })
@@ -111,6 +111,28 @@ export class BookingComponent {
   /////////////////////////////////////////
 
   ///////////////////////////////////////////////
+
+  // datetimeValue: string | null = null;
+
+  // Dodajemy metodę do formatowania daty na 24-godzinny format
+  // get datetimeValueFormatted() {
+  //   const value = this.quoteForm.get('data')?.value;
+  //   return value
+  //     ? new Date(value).toLocaleString('en-GB', { hour12: false })
+  //     : null;
+  // }
+
+  get datetimeValueFormatted() {
+    const value = this.quoteForm.get('data')?.value;
+    return value
+      ? new Date(value).toLocaleDateString('en-GB', {
+          weekday: 'long', // Full weekday name (e.g., "Monday")
+          day: 'numeric', // Day of the month as a number (e.g., "15")
+          month: 'long', // Full month name (e.g., "September")
+          year: 'numeric', // Full year (e.g., "2025")
+        })
+      : null;
+  }
 
   importantPlaces = [
     {
@@ -391,7 +413,7 @@ export class BookingComponent {
   triggerNotificationFromParent(message: string) {
     this.childComponent.addNotification(message); // Calls addNotification() in child
   }
-  isActiveMap:boolean=false;
+  isActiveMap: boolean = false;
   getQuote(): void {
     if (this.quoteForm && this.quoteForm.valid) {
       console.log(this.quoteForm.value);
@@ -413,7 +435,7 @@ export class BookingComponent {
       this.isPastDate = false;
       this.bookingQuote = true;
       this.calculateDistance();
-      this.isActiveMap=true;
+      this.isActiveMap = true;
       // Additional logic for valid form submission can be added here
     } else {
       // Handle invalid form case
@@ -426,8 +448,6 @@ export class BookingComponent {
     }
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
-
-
   }
 
   auto(item: PlaceResult) {

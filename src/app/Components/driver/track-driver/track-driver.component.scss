@@ -1,0 +1,50 @@
+.box{
+  height: 120vh;
+  min-height: 100vh;
+  background-color: skyblue;
+  padding: 3rem;
+  font-size: 4rem;
+}
+#map {
+  height: 500px; /* Adjust height as needed */
+  width: 100%;   /* Map will take up full width of its container */
+}
+.box {
+  max-width: 700px;
+  margin: auto;
+  padding: 7rem 3rem;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+h1 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.location-info p {
+  font-size: 18px;
+  font-weight: bold;
+  color: #444;
+}
+
+.tracking-status {
+  font-size: 14px;
+  color: #888;
+  font-style: italic;
+}
+
+google-map {
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 3rem;
+}

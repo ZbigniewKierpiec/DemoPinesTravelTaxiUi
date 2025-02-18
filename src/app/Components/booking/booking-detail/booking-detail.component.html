@@ -18,7 +18,8 @@
           <p>{{ pickup }}</p>
           <p>{{ via }}</p>
           <p>{{ destination }}</p>
-          <p>{{ data | date : "fullDate" }} {{ data | date : "shortTime" }}</p>
+          <!-- <p>{{ data | date : "fullDate" }} {{ data | date : "shortTime" }}</p> -->
+          <p>{{ data | date: "fullDate" }} {{ data | date: "HH:mm" }}</p>
 
           <p>{{ passengers }}</p>
           <p>{{ luggages }}</p>

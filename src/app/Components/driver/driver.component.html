@@ -1,0 +1,9 @@
+<div class="box">
+  <h1>Driver Location Tracking</h1>
+  <p>Latitude: {{ latitude }}</p>
+  <p>Longitude: {{ longitude }}</p>
+
+  <button class="btn btn-info" (click)="onTheWay()" [disabled]="isOnTheWay">
+    {{ isOnTheWay ? 'On The Way 🚗' : 'Start Trip' }}
+  </button>
+</div>

@@ -91,34 +91,28 @@ export class RezerwacjaComponent implements OnInit {
       email: '',
       driverInstruction: '',
     };
-
-
   }
 
   async book() {
     if (this.bookingForm.valid) {
       this.formData = this.bookingForm.value;
 
-      // this.model.Pickup = this.pickup;
-      // this.model.DropOff = this.destination;
       this.model.name = this.bookingForm.value.name;
       this.model.phoneNumber = this.bookingForm.value.mobile;
-      // this.model.CarType = this.carType;
-      // this.model.CarImage = this.carImage;
-      // this.model.Price = this.price;
+
       this.model.driverInstruction = this.bookingForm.value.instructions;
-      // this.model.Greet = this.greet;
+
       this.model.email = this.bookingForm.value.email;
-      // this.model.luggage = this.luggage;
-      // this.model.Passengers = this.passengers;
-      // this.model.PickUpDate = this.data;
-      // this.model.Via = this.via;
+      const pickupTime = this.bookingForm.get('pickupTime')?.value || '';
+      const timeFormat = this.bookingForm.get('timeFormat')?.value || '24h';
+
 
       const payload = {
         pickup: this.pickup,
         destination: this.destination,
         via: this.via,
         data: this.data,
+
         passengers: this.passengers,
         luggage: this.luggage,
         greet: this.greet,
@@ -133,7 +127,6 @@ export class RezerwacjaComponent implements OnInit {
       this.name = this.bookingForm.get('name')?.value || '';
       (this.email = this.bookingForm.get('email')?.value || ''),
         emailjs.init('169d31qPmdVNK5UZg');
-
 
       this.isActive = true;
       console.log(this.model);
@@ -175,7 +168,7 @@ export class RezerwacjaComponent implements OnInit {
     this.subscription = this.carS.carDetails$.subscribe((details) => {
       if (details) {
         // Update carDetails whenever it changes
-       console.log(details.data)
+        console.log(details.data);
         this.model.dropoffLocation = details?.destination || '';
         this.model.pickupLocation = details?.pickup || '';
         this.model.via = details?.via || '';
@@ -197,4 +190,5 @@ export class RezerwacjaComponent implements OnInit {
     this.subscription.unsubscribe();
     this.addBookingsubscription.unsubscribe();
   }
+
 }
