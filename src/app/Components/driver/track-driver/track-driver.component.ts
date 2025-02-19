@@ -15,7 +15,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './track-driver.component.html',
   styleUrl: './track-driver.component.scss',
 })
-export class TrackDriverComponent implements OnInit, OnDestroy {
+export class TrackDriverComponent implements OnInit ,   OnDestroy {
   latitude: number = 0; // Default latitude set to 0
   longitude: number = 0; // Default longitude set to 0
   center: google.maps.LatLngLiteral = { lat: 0, lng: 0 }; // Default to (0, 0)

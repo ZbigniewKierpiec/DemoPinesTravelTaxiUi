@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { SignalrService } from './signalr.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { SignalrService } from './signalr.service';
   templateUrl: './driver.component.html',
   styleUrl: './driver.component.scss',
 })
-export class DriverComponent implements OnInit {
+export class DriverComponent implements OnInit , OnDestroy {
   latitude?: number;
   longitude?: number;
   isOnTheWay = false;
