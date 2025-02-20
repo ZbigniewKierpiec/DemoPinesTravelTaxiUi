@@ -1,9 +1,86 @@
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media only screen and (max-width: 37.5em) {
+      @content;
+    } // 600px - phones
+  }
+
+  @if $breakpoint == tab-port {
+    @media only screen and (max-width: 56.25em) {
+      @content;
+    } // 900px - portrait tablets
+  }
+
+  @if $breakpoint == tab-land {
+    @media only screen and (max-width: 75em) {
+      @content;
+    } // 1200px - landscape tablets
+  }
+
+  @if $breakpoint == tab-port-portrait {
+    @media only screen and (max-width: 56.25em) and (orientation: portrait) {
+      @content;
+    } // Portrait tablets (900px or less, portrait mode)
+  }
+
+  @if $breakpoint == tab-port-landscape {
+    @media only screen and (max-width: 56.25em) and (orientation: landscape) {
+      @content;
+    } // Portrait tablets (900px or less, landscape mode)
+  }
+
+  @if $breakpoint == i-pad {
+    @media only screen and (max-width: 103em) {
+      @content;
+    } // 1648px - larger devices like large tablets and small desktops
+  }
+
+  @if $breakpoint == big-desktop {
+    @media only screen and (min-width: 112.5em) {
+      @content;
+    } // 1800px - large desktop screens
+  }
+
+  @if $breakpoint == ipad-2 {
+    @media only screen and (max-width: 135em) {
+      @content;
+    } // 2160px - very large screens, huge desktops
+  }
+
+  // Additional breakpoint for very small devices like old phones
+  @if $breakpoint == xs {
+    @media only screen and (max-width: 20em) {
+      @content;
+    } // 320px - extremely small screens (older phones)
+  }
+
+  // Additional breakpoint for larger tablet sizes
+  @if $breakpoint == tab-xl {
+    @media only screen and (min-width: 90em) and (max-width: 112.5em) {
+      @content;
+    } // 1440px - large tablets or smaller laptops
+  }
+
+  // Additional breakpoint for larger mobile devices
+  @if $breakpoint == phone-xl {
+    @media only screen and (min-width: 40em) and (max-width: 60.5em) {
+      @content;
+    } // 648px - larger phones or small tablets
+  }
+}
+
 .box {
   width: 100%;
   height: 600px;
+
   // background-color: burlywood;
   // padding: 3rem 0;
   border: 1px solid rgba(0, 0, 0, 0.164);
+
+  @include respond(phone) {
+    height: max-content;
+    border: none;
+  }
   &__info {
     // padding: 0 3rem;
     p {
@@ -19,28 +96,49 @@
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr 1fr;
 
+    @include respond(phone) {
+      height: max-content;
+
+      grid-template-columns: 1fr;
+      // align-items: center;
+    }
     &__info {
       display: grid;
       grid-template-columns: 1fr;
       grid-template-rows: 0.5fr 1fr;
       // border: 1px solid rgba(0, 0, 0, 0.164);
       border-bottom: 1px solid rgba(0, 0, 0, 0.164);
+
+      @include respond(phone) {
+        grid-template-columns: 1fr;
+
+        width: 100%;
+      }
+
       &__top {
         display: flex;
         align-items: center;
         padding: 0 2rem;
         font-size: 1rem;
         text-transform: uppercase;
+
+        @include respond(phone) {
+          padding: 0;
+          font-size: 1.4rem;
+        }
         span {
           font-weight: bold;
         }
       }
       &__bottom {
-       display: grid;
-        grid-template-columns: 10rem 10rem 10rem 10rem;
-        grid-template-columns: repeat(4,20rem);
+        display: grid;
+        // grid-template-columns: 10rem 10rem 10rem 10rem;
+        grid-template-columns: repeat(4, 20rem);
         grid-template-rows: 1fr;
 
+        @include respond(phone) {
+          grid-template-columns: repeat(4, 1fr);
+        }
 
         &__left {
           display: grid;
@@ -49,16 +147,39 @@
           justify-items: center;
           align-items: center;
 
+          @include respond(phone) {
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 1fr;
+            grid-gap: 1rem;
+
+          }
           &__icon {
+
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+
+            text-align: center;
+
             background-color: #efeefa;
             color: #6259ca;
             font-size: 2rem;
+           
+
+
+           i{
+            line-height: 60px;
+           }
+
+
+
+            @include respond(phone) {
+              width: 70px;
+            height: 70px;
+            font-size: 2.3rem;
+              line-height: 70px;
+            }
+
             &--secend {
               background-color: #d7f5e3;
               color: #19b159;
@@ -70,13 +191,14 @@
             &--gender {
               background-color: #e2ccf3;
               color: #333333;
+
             }
           }
           &__text {
-            width: 100%;
             width: 10rem;
-            height: 100%;
+            max-width: 10rem;
 
+            height: auto;
             display: flex;
             flex-direction: column;
 
@@ -84,16 +206,62 @@
 
             max-width: 100%;
             text-transform: capitalize;
+            text-transform: capitalize;
+            word-wrap: break-word;
+            overflow-wrap: break-word; // Ensures long words wrap correctly
+            white-space: normal; // Allows text wrapping naturally
+            @include respond(phone) {
+              min-width: 4rem;
+              width: 13rem;
+              max-width: max-content;
 
+              align-items: center;
+
+              font-size: 1.2rem;
+
+              min-height: 4rem;
+              align-items: center;
+              font-size: 1.2rem;
+
+              align-self: flex-start;
+
+              text-align: center;
+              // Prevents overflow, allows text wrapping
+              overflow: hidden; // Prevents content from overflowing the box
+              word-wrap: break-word; // Ensures long words are broken and wrapped inside the box
+              word-break: break-word; // Ensures words that are too long are properly broken
+              white-space: normal; // Allows multiple lines and wraps text
+
+              grid-gap: 1.7rem;
+            }
             span {
               color: #d5c1c7;
-
-
-            word-break: break-word;
+              @include respond(phone) {
+                color: #b08a94;
+                font-size: 1.4rem;
+              }
+              // word-break: break-word;
 
               &:nth-child(2) {
                 color: #8f9cc0;
+
+                @include respond(phone) {
+                  color: #6e7ba3;
+
+
+                  // font-size: 1.4rem;
+                }
               }
+            }
+            &--card{
+
+                @include respond(phone) {
+                  display: flex;
+
+
+                }
+
+
             }
           }
         }

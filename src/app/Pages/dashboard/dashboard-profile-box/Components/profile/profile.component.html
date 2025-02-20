@@ -8,7 +8,7 @@
         <div class="box__info__top__image-box__image">
 
 
-              <img [src]="single ? single : '/assets/defoultProfileImage.png'" alt="Profile Image" />
+              <img [src]="single ? single : '/615-6155337_all-major-credit.png'" alt="Profile Image" />
 
 
 
@@ -51,7 +51,7 @@
           </ng-container> -->
           <li #listItem (click)="selectLi(0)">personal info</li>
           <li #listItem (click)="selectLi(1)">edit profile</li>
-          <li #listItem (click)="selectLi(2)">Profile Image Uploader</li>
+          <li #listItem (click)="selectLi(2)">Image Uploader</li>
           <div
             class="slide"
             [ngStyle]="{ 'width.px': markerWidth }"
@@ -63,7 +63,7 @@
   </div>
 
   <div class="box__display">
-    <ng-container *ngIf="number == 0; else elseTemplate">
+ <ng-container *ngIf="number == 0; else elseTemplate">
       <app-personal-info></app-personal-info>
     </ng-container>
     <ng-template #elseTemplate>
@@ -78,6 +78,6 @@
       </ng-container>
     </ng-template>
 
-    <!-- <app-profile-image-uploader></app-profile-image-uploader> -->
+   <!-- <app-profile-image-uploader></app-profile-image-uploader> -->
   </div>
 </div>

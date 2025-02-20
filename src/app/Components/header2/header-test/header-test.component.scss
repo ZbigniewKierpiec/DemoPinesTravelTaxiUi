@@ -78,22 +78,14 @@
   justify-content: space-between;
   align-items: center;
   z-index: 999999999999999999999999999999999999999 !important;
-  // top: 0;
+
   overflow: hidden;
 
-  // @include respond(tab-port) {
-  //   padding: 1rem;
-  //   height: 10rem;
-  //   display: none;
-  // }
+  @include respond(tab-port) {
 
-  // @include respond(phone) {
-  //   padding: 1rem;
-  //   height: 10rem;
-
-  //   display: none;
-  // }
-
+  padding: 0 2rem;
+   height: 8rem;
+  }
   &__flag {
     position: absolute;
     width: 1.5625rem;
@@ -131,7 +123,11 @@
     align-items: center;
 
     font-size: 1.6rem;
-
+    @include respond(phone) {
+      grid-gap: 2rem;
+      width: 100%;
+      justify-content: space-between;
+    }
     a {
       text-decoration: none;
     }
@@ -179,7 +175,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
+    @include respond(phone) {
+      display: none;
+    }
     ul {
       margin: 0;
       padding: 0;
@@ -442,6 +440,12 @@
     box-shadow: 0 0 0 0px rgba(249, 250, 251, 0.3);
   }
   100% {
-    box-shadow: 0 0 0 35px rgba(54, 113, 236, 0);
+    box-shadow: 0 0 0 10px rgba(54, 113, 236, 0);
   }
+}
+@include respond(phone) {
+
+
+
+
 }

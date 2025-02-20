@@ -17,6 +17,7 @@ import { AuthService } from './Services/auth.service';
 import { CookieService } from 'ngx-cookie-service';
 import { BookingService } from '../../Components/booking/Services/booking.service';
 import { NotificationComponent } from "../../Components/notification/notification.component";
+import { LogingWelcomeNotiComponent } from "../main/loging-welcome-noti/loging-welcome-noti.component";
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -28,7 +29,8 @@ import { NotificationComponent } from "../../Components/notification/notificatio
     RouterLink,
     RouterLinkActive,
     ReactiveFormsModule,
-    NotificationComponent
+    NotificationComponent,
+    LogingWelcomeNotiComponent
 ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
@@ -108,6 +110,10 @@ export class LoginComponent {
 
           // Navigate to the homepage
           this.router.navigateByUrl('/');
+
+
+
+
         },
         error: (err) => {
           console.error('Login failed:', err);

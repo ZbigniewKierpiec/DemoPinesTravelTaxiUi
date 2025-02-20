@@ -11,6 +11,19 @@
       </a>
     </div>
 
+
+    <ng-container *ngIf="user">
+      <a
+        [routerLink]="['bracknellTaxis/user/dashboard/home']"
+        class="banner__dashboard"
+      >
+        <i class="fa-solid fa-gauge-high"></i>
+      </a>
+    </ng-container>
+
+
+
+
     <div class="banner__contact__email">
       <a class="mainHeader__mail__a" href="mailto:pinesbracknelltaxi">
         <span>
@@ -23,16 +36,7 @@
     </div>
   </div>
 
-  <!-- *ngIf="user !== undefined && (user?.roles?.includes('Writer') || user?.roles?.includes('Reader'))"  -->
-
-  <ng-container *ngIf="user">
-    <a
-      [routerLink]="['bracknellTaxis/user/dashboard/home']"
-      class="banner__dashboard"
-    >
-      <i class="fa-solid fa-gauge-high"></i>
-    </a>
-  </ng-container>
+ <!-- *ngIf="user !== undefined && (user?.roles?.includes('Writer') || user?.roles?.includes('Reader'))"   -->
 
   <div class="banner__social">
     <ul class="mainHeader__social__list">
@@ -143,6 +147,9 @@
       <li class="mobile__nav__menu__item" (click)="toggleMenu()">
         <a>{{ "Nav_Contact" | translate }}</a>
       </li>
+
+
+
 
       <li
         [class.active]="isCorporate === 'Corporate Account'"

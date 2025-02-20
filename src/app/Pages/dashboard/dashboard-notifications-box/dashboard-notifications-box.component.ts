@@ -20,9 +20,11 @@ export interface Notification {
 export class DashboardNotificationsBoxComponent implements OnInit , OnDestroy {
   private notifiServSubs?:Subscription;
   notificationCount: number = 0;
-
+  private hubConnection!: signalR.HubConnection;
   showBox = false;
-  constructor(private notificationService: NotificationService) {}
+  constructor(private notificationService: NotificationService) {
+
+  }
 
 
 
@@ -90,6 +92,12 @@ export class DashboardNotificationsBoxComponent implements OnInit , OnDestroy {
 
 
   ngOnInit(): void {
+    this.hubConnection.on('ReceiveBookingReminder', (message: string) => {
+      // Wyświetlenie komunikatu za pomocą Toastra (możesz także użyć alertu)
+      // Możesz zastąpić toastr alertem lub innym mechanizmem
+      console.log(message)
+    });
+
   this.notifiServSubs   =  this.notificationService.currentBoxState.subscribe((state) => {
       this.showBox = state;
       console.log(state)

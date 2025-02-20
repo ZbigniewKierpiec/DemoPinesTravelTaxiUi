@@ -12,7 +12,7 @@ import {
 } from '../../../../../../Components/booking/Model/add-booking-response';
 import { NotificationService } from '../../../../../../Services/notification.service';
 import { Platform } from '@angular/cdk/platform';
-import { CardComponent } from "./Mobile/card/card.component";
+import { CardComponent } from './Mobile/card/card.component';
 
 @Component({
   selector: 'app-all-bookings',
@@ -35,11 +35,8 @@ export class AllBookingsComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private bookingService: BookingService,
-    private notificationService: NotificationService,
-
-  ) {
-
-  }
+    private notificationService: NotificationService
+  ) {}
 
   //  sendLengthToParent() {
   //   this.bookingsCount.emit(this.bookings.length); // Emit the length of the array
@@ -52,6 +49,9 @@ export class AllBookingsComponent implements OnInit {
         return 'Pending';
       case BookingStatus.Confirmed:
         return 'Confirmed';
+      case BookingStatus.ReminderSent:
+        return 'Reminder Sent';
+
       case BookingStatus.Cancelled:
         return 'Cancelled';
       case BookingStatus.Completed:
@@ -64,6 +64,7 @@ export class AllBookingsComponent implements OnInit {
         return 'Awaiting Payment';
       case BookingStatus.Failed:
         return 'Failed';
+
       default:
         return 'Unknown';
     }
@@ -99,7 +100,5 @@ export class AllBookingsComponent implements OnInit {
     this.notificationService.currentSideNavState.subscribe((state) => {
       this.isActive = state;
     });
-
-
   }
 }

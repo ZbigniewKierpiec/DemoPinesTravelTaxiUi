@@ -7,7 +7,8 @@ export enum BookingStatus {
   Rejected = 4,
   InProgress = 5,
   AwaitingPayment = 6,
-  Failed = 7
+  Failed = 7,
+  ReminderSent = 8
 }
 export interface AddBookingResponse {
   id:string,

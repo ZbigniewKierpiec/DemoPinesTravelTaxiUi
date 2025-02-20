@@ -8,9 +8,31 @@ img {
   position: relative;
 }
 .outer {
-  height: 100vh;
+  height:80vh;
   background: linear-gradient(to top, #c9c9ff 50%, #6e6ef6 90%) no-repeat;
+
+
 }
+
+
+.container{
+
+
+
+
+}
+.linia{
+
+
+}
+.linia2{
+
+  margin: 0 auto;
+}
+form{
+
+}
+
 .panel-heading {
   text-align: center;
   margin-bottom: 10px;
@@ -86,3 +108,113 @@ input[type="password"] {
 .error {
   border: 1px solid red;
 }
+// .custom-snackbar {
+//   position: fixed;
+//   top:50vh;
+//   left:50%;
+//   transform: translateX(-50%);
+//   background-color: #4caf50;
+//   color: white;
+//   padding: 16px;
+//   border-radius: 8px;
+//   text-align: center;
+//   min-width: 300px;
+//   max-width: 500px;
+
+//   z-index: 9999;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
+
+// .custom-snackbar-field{
+//   position: fixed;
+//   top:50vh;
+//   left:50%;
+//   transform: translateX(-50%);
+//   background-color: red !important;
+//   color: white;
+//   padding: 16px;
+//   border-radius: 8px;
+//   text-align: center;
+//   min-width: 300px;
+//   max-width: 500px;
+
+//   z-index: 9999;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
+
+
+// .custom-snackbar-field{
+//   background-color: red !important;
+// }
+// .custom-snackbar-field {
+//   background-color: red !important;
+// }
+
+@media (max-width: 768px) {
+  .container {
+    padding: 10px; /* Mniejsze paddingi na małych ekranach */
+  }
+
+  .panel {
+    padding: 15px; /* Zmniejszamy padding panelu na mobile */
+  }
+
+  .panel-heading h3 {
+    font-size: 20px; /* Mniejszy tytuł na mobilnych ekranach */
+  }
+
+  .input-field input {
+    font-size: 18px; /* Większy rozmiar czcionki w inputach na mobile */
+    padding: 14px 40px 14px 12px; /* Większa przestrzeń w polach wejściowych */
+  }
+
+  .btn {
+    padding: 16px; /* Większe przyciski na małych ekranach */
+    font-size: 18px; /* Większy rozmiar czcionki w przycisku */
+  }
+
+
+  .fa{
+    font-size: 2rem;
+  }
+
+  .text-danger{
+  font-size: 1.3rem;
+  }
+  .form-inline{
+    font-size: 1.3rem;
+  }
+.account{
+  font-size: 1.5rem;
+}
+
+
+
+}
+
+/* Media Queries - style dla jeszcze mniejszych ekranów (telefony w pionie) */
+
+@media (max-width: 576px) {
+  .panel {
+    padding: 10px; /* Zmniejszamy padding na bardzo małych ekranach */
+  }
+
+  .panel-heading h3 {
+    font-size: 18px; /* Mniejszy nagłówek na telefonach w pionie */
+  }
+
+  .input-field input {
+    font-size: 16px; /* Dostosowanie rozmiaru tekstu w inputach */
+    padding: 12px 30px 12px 12px; /* Większa przestrzeń na wejściu */
+  }
+
+  .btn {
+    padding: 14px; /* Zmniejszenie paddingu przycisku */
+    font-size: 16px; /* Zmniejszenie czcionki przycisku */
+  }
+}
+

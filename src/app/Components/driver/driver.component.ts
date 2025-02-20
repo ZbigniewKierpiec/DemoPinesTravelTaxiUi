@@ -8,7 +8,7 @@ import { SignalrService } from './signalr.service';
   templateUrl: './driver.component.html',
   styleUrl: './driver.component.scss',
 })
-export class DriverComponent implements OnInit , OnDestroy {
+export class DriverComponent implements OnInit, OnDestroy {
   latitude?: number;
   longitude?: number;
   isOnTheWay = false;
@@ -46,11 +46,11 @@ export class DriverComponent implements OnInit , OnDestroy {
           this.signalrService.sendLocation(this.latitude, this.longitude);
 
           // Keep sending location every 10 seconds (or adjust as needed)
-          setTimeout(() => this.sendLocation(), 10000);
+          setTimeout(() => this.sendLocation(), 5000);
         },
         (error) => {
           console.error('❌ Error getting location:', error);
-        },
+        }
 
         // {
         //   enableHighAccuracy: true, // Poproś o możliwie najdokładniejszą lokalizację
