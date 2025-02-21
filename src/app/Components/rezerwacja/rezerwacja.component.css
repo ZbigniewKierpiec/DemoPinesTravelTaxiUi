@@ -1,0 +1,219 @@
+.box {
+  position: absolute;
+  padding: 0 2rem;
+  top: 50%;
+  transform: translateY(-60%);
+  left: 0;
+  right: 0;
+  width: 60%;
+  height: 50vh;
+  margin: 0 auto;
+  z-index: 10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 !important;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s linear;
+  transition-delay: 0.3s;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+@media only screen and (max-width: 56.25em) {
+  .box {
+    top: 30%;
+    width: 100%;
+  }
+}
+.box.active {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: all;
+}
+.box__title {
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.box__title h1 {
+  text-transform: capitalize;
+  text-align: center;
+  font-size: 2.7rem;
+}
+.box__quote {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-gap: 1rem;
+}
+@media only screen and (max-width: 56.25em) {
+  .box__quote {
+    grid-template-columns: 1fr;
+    padding: 0.5rem 0;
+  }
+}
+.box__quote__left {
+  display: grid;
+  grid-template-columns: 12rem 1fr;
+  grid-template-rows: 1fr;
+  border: 1px solid grey;
+  border-radius: 0.3rem;
+}
+.box__quote__left__label {
+  background-color: gray;
+  color: white;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(7, 1fr);
+  align-items: center;
+  padding: 0.6rem 0.3rem;
+  font-size: 1.2rem;
+  text-transform: capitalize;
+}
+.box__quote__left__details {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(7, 1fr);
+  align-items: center;
+  padding: 0.6rem 0.3rem;
+  font-size: 1.3rem;
+  text-transform: capitalize;
+}
+.box__info {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+.box__info form {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 5rem 5rem 7rem 5rem;
+}
+.box__info__name {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.box__info__name div {
+  width: 40%;
+  height: 100%;
+  position: absolute;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.box__info__name input {
+  flex-grow: 1;
+  height: 80%;
+  padding: 0 1rem;
+  font-size: 1.7rem;
+  background-color: rgb(60, 57, 57);
+  color: white;
+  border-radius: 0.5rem;
+}
+.box__info__name input::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.487);
+}
+.box__info__name input::placeholder {
+  color: rgba(255, 255, 255, 0.487);
+}
+.box__info__name small {
+  position: absolute;
+  font-size: 1.7rem;
+  text-transform: capitalize;
+}
+.box__info__mobile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 1rem;
+}
+.box__info__mobile input {
+  position: relative;
+  flex-grow: 1;
+  height: 80%;
+  padding: 0 1rem;
+  font-size: 1.7rem;
+  background-color: rgb(60, 57, 57);
+  color: white;
+  border-radius: 0.5rem;
+}
+.box__info__mobile input::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.487);
+}
+.box__info__mobile input::placeholder {
+  color: rgba(255, 255, 255, 0.487);
+}
+.box__info__mobile div {
+  width: 40%;
+  height: 3rem;
+  position: absolute;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.box__info__mobile small {
+  position: absolute;
+  font-size: 1.7rem;
+  text-transform: capitalize;
+}
+.box__info__mobile .one {
+  left: 50%;
+  transform: translate(-105%);
+}
+.box__info__mobile .two {
+  position: absolute;
+  right: 25%;
+  transform: translate(50%);
+}
+.box__info__instruction {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.box__info__instruction textarea {
+  flex-grow: 1;
+  padding: 0 1rem;
+  padding-top: 0.7rem;
+  font-size: 1.7rem;
+  height: 80%;
+  resize: none;
+  overflow-y: auto; /* Enables vertical scrolling */
+  overflow-x: hidden; /* Prevents horizontal scroll */
+  border: none;
+  outline: none;
+  background-color: rgb(60, 57, 57);
+  color: white;
+  border-radius: 0.5rem;
+}
+.box__info__instruction textarea::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.487);
+}
+.box__info__instruction textarea::placeholder {
+  color: rgba(255, 255, 255, 0.487);
+}
+.box__info__instruction small {
+  position: absolute;
+  font-size: 2rem;
+  text-transform: capitalize;
+}
+.box__info__book {
+  outline: none;
+  border: none;
+  text-transform: capitalize;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.54);
+  color: black;
+  font-weight: bolder;
+  background-color: whitesmoke;
+}
+
+.text-danger {
+  color: red;
+}/*# sourceMappingURL=rezerwacja.component.css.map */

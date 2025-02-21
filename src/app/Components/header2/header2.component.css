@@ -1,0 +1,321 @@
+.header {
+  padding: 0 3rem;
+  position: relative;
+  width: 100vw;
+  height: 5rem;
+  background-color: rgba(30, 28, 28, 0.9176470588);
+  display: flex;
+  justify-content: space-between;
+  z-index: 1000000000000000000000000000000000000000 !important;
+  top: 0;
+  overflow: hidden;
+}
+@media only screen and (max-width: 56.25em) {
+  .header {
+    padding: 1rem;
+    height: 10rem;
+    display: none;
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  .header {
+    padding: 1rem;
+    height: 10rem;
+    display: none;
+  }
+}
+.header__flag {
+  position: absolute;
+  width: 1.5625rem;
+  height: 1.5625rem;
+}
+.header__flag--left {
+  top: 0;
+  left: 0;
+}
+.header__flag--right {
+  top: 0;
+  right: 0;
+}
+@media only screen and (max-width: 56.25em) {
+  .header__flag--right {
+    display: none;
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  .header__flag--right {
+    display: none;
+  }
+}
+.header__flag img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+.header__contact {
+  min-width: 30%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.6rem;
+}
+.header__contact a {
+  text-decoration: none;
+}
+.header__contact span {
+  color: white;
+  font-family: "Roboto", sans-serif;
+}
+.header__contact span i {
+  margin-right: 1rem;
+}
+.header__contact__phone {
+  margin-right: 4rem;
+}
+.header__social {
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header__social ul {
+  width: 90%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.7rem;
+  color: white;
+}
+.header__social ul li {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav {
+  width: 100vw;
+  padding: 3rem 7rem;
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 !important;
+}
+.nav.fixed {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000; /* Ensure it stays on top */
+}
+@media only screen and (max-width: 56.25em) {
+  .nav {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0rem 3rem;
+  }
+}
+.nav__logo {
+  width: 25rem;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: 0.1s linear;
+}
+@media only screen and (max-width: 56.25em) {
+  .nav__logo {
+    display: none;
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  .nav__logo {
+    display: none;
+  }
+}
+.nav__logo img {
+  width: 30%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+  border-radius: 50%;
+}
+.nav__logo span {
+  color: white;
+  margin-top: 1rem;
+  text-transform: capitalize;
+  font-size: 1.4rem;
+  font-family: monospace;
+  font-weight: bolder;
+  font-style: italic;
+}
+.nav__menu {
+  min-width: 50%;
+  padding: 3rem;
+  transition: transform 0.3s linear;
+  transform: translateX(0);
+}
+@media only screen and (max-width: 56.25em) {
+  .nav__menu {
+    margin: 0 auto;
+    font-size: 5rem;
+  }
+}
+.nav__menu__list {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+}
+@media only screen and (max-width: 56.25em) {
+  .nav__menu__list {
+    display: none;
+  }
+}
+.nav__menu__list .slide {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: #efc050;
+  width: 100%;
+  height: 2px;
+  transition: 0.3s linear;
+}
+@media only screen and (max-width: 56.25em) {
+  .nav__menu__list .slide {
+    display: none;
+  }
+}
+.nav__menu__list__item a {
+  padding: 1rem 2rem;
+  display: inline-block;
+  text-transform: capitalize;
+  font-size: 1.8rem;
+  color: white;
+  cursor: pointer;
+  transition: 0.1s linear;
+  text-decoration: none;
+}
+.nav__badge {
+  width: 20rem;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav__badge span {
+  color: white;
+  font-size: 1.7rem;
+  font-weight: bolder;
+  color: #efc050;
+}
+.nav__badge span:last-child {
+  color: #efc050;
+}
+.nav__badge img {
+  width: 50%;
+  display: block;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+@media only screen and (max-width: 56.25em) {
+  .nav__badge {
+    display: none;
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  .nav__badge {
+    display: none;
+  }
+}
+.nav__hamburger {
+  display: none;
+}
+@media only screen and (max-width: 56.25em) {
+  .nav__hamburger {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.mobile {
+  position: relative;
+  width: 100vw;
+  height: 0;
+  background-color: black;
+  display: none;
+}
+@media only screen and (max-width: 56.25em) {
+  .mobile {
+    position: absolute;
+    left: 0;
+    bottom: -30rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999999999;
+    height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+  }
+  .mobile.active {
+    opacity: 1;
+    height: 30rem;
+  }
+  .mobile__list {
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+  }
+  .mobile__list li {
+    position: relative;
+    border-bottom: thin solid rgba(255, 255, 255, 0.349);
+    margin-bottom: 2rem;
+  }
+  .mobile__list li::before {
+    content: "";
+    display: none;
+    position: absolute;
+    left: -3rem;
+    width: 0.3rem;
+    height: 100%;
+    background-color: #efc050;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  .mobile__list li.active::before {
+    display: block; /* Show when active */
+    opacity: 1;
+    transform: scaleY(1);
+  }
+  .mobile a {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 3rem;
+    text-transform: capitalize;
+    text-align: left;
+    color: white;
+  }
+  .mobile a:visited {
+    color: white;
+  }
+}
+
+.header-contact-mobile {
+  display: none;
+}
+@media only screen and (max-width: 56.25em) {
+  .header-contact-mobile {
+    display: block;
+  }
+}/*# sourceMappingURL=header2.component.css.map */

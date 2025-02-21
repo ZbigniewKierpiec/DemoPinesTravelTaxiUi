@@ -1,0 +1,430 @@
+.booking {
+  --active: #28a745;
+  height: 100vh;
+  height: 70vh;
+  background-color: #8eb98f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.booking button,
+.booking input {
+  border-radius: 0.5rem;
+}
+.booking__image {
+  position: absolute;
+  right: 50%;
+  transform: translateX(50%);
+  width: 30rem;
+  min-height: 20vh;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+.booking__image img {
+  width: 50%;
+  display: block;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.booking__wraper {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.booking__wraper__resoult {
+  width: 30%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 10rem 10rem;
+  grid-row-gap: 2rem;
+  background-color: transparent;
+}
+.booking__wraper__resoult__car {
+  background-color: black;
+  display: grid;
+  grid-template-columns: 12rem 1fr;
+  background-color: white;
+}
+.booking__wraper__resoult__car__left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.booking__wraper__resoult__car__left img {
+  display: block;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 70%;
+  transform: scaleX(-1);
+}
+.booking__wraper__resoult__car__left img.hun {
+  transform: scaleX(1);
+  width: 80%;
+}
+.booking__wraper__resoult__car__right {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 3rem 1fr;
+}
+.booking__wraper__resoult__car__right__top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(220, 213, 213);
+}
+.booking__wraper__resoult__car__right__top h1 {
+  font-size: 1.4rem;
+  text-align: center;
+  font-weight: bolder;
+}
+.booking__wraper__resoult__car__right__bottom {
+  display: grid;
+  grid-template-columns: 1fr 0.5fr;
+  background-color: rgb(224, 220, 220);
+}
+.booking__wraper__resoult__car__right__bottom__spec {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  padding: 0.5rem 0;
+  grid-gap: 1rem;
+}
+@media only screen and (max-width: 56.25em) {
+  .booking__wraper__resoult__car__right__bottom__spec {
+    padding: 0.5rem 0;
+  }
+}
+.booking__wraper__resoult__car__right__bottom__spec__box {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 2rem 1fr;
+}
+.booking__wraper__resoult__car__right__bottom__spec__box__top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media only screen and (max-width: 56.25em) {
+  .booking__wraper__resoult__car__right__bottom__spec__box__top {
+    align-items: flex-start;
+  }
+  .booking__wraper__resoult__car__right__bottom__spec__box__top h1 {
+    font-weight: bolder;
+  }
+}
+.booking__wraper__resoult__car__right__bottom__spec__box__bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.booking__wraper__resoult__car__right__bottom__spec__box__bottom__person {
+  width: 3rem;
+  height: 3rem;
+  background-color: black;
+  border-radius: 0.4rem;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+}
+.booking__wraper__resoult__car__right__bottom__book {
+  padding: 0.3rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media only screen and (max-width: 56.25em) {
+  .booking__wraper__resoult__car__right__bottom__book {
+    padding: 0;
+  }
+}
+.booking__wraper__resoult__car__right__bottom__book button {
+  border: none;
+  outline: none;
+  width: 10rem;
+  height: 95%;
+  background-color: #28a745;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 1rem 0;
+  color: white;
+}
+.booking__wraper__resoult__car__right__bottom__book button span {
+  text-transform: capitalize;
+  font-weight: bolder;
+}
+@media only screen and (max-width: 56.25em) {
+  .booking__wraper__resoult__car__right__bottom__book button span {
+    font-size: 1.3rem;
+  }
+}
+.booking__wraper__resoult__car__right__bottom__book button data {
+  font-size: 1.3rem;
+  font-weight: bolder;
+}
+@media only screen and (max-width: 56.25em) {
+  .booking__wraper__resoult__car__right__bottom__book button data {
+    font-size: 1.4rem;
+  }
+}
+@media only screen and (max-width: 56.25em) {
+  .booking__wraper__resoult__car__right__bottom__book button {
+    height: 100%;
+  }
+}
+.booking__quote {
+  width: 35rem;
+  background-color: skyblue;
+  border-radius: 0.7rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(9, 5rem);
+  grid-gap: 1rem;
+  padding: 1rem 1rem;
+}
+.booking__quote h1 {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  font-size: 2rem;
+  color: var(--color1);
+  line-height: 50%;
+}
+.booking__quote__way {
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-gap: 1rem;
+  transition: 0.1s linear;
+}
+.booking__quote__way button {
+  border: none;
+  outline: none;
+  font-size: 1.3rem;
+  padding: 0.5rem 1rem;
+  background-color: #8eb98f;
+  text-transform: capitalize;
+  color: black;
+  font-weight: bolder;
+}
+.booking__quote__way button.active {
+  background-color: var(--active);
+}
+.booking__quote__pickup {
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: 1fr 0.2fr;
+  grid-template-rows: 1fr;
+  grid-gap: 1rem;
+  align-content: space-between;
+}
+.booking__quote__pickup input {
+  border: none;
+  outline: none;
+  background-color: #8eb98f;
+  padding: 0 1rem;
+  font-size: 1.3rem;
+}
+.booking__quote__pickup input::-moz-placeholder {
+  color: black;
+  font-weight: bolder;
+}
+.booking__quote__pickup input::placeholder {
+  color: black;
+  font-weight: bolder;
+}
+.booking__quote__pickup button {
+  width: 7rem;
+  border: none;
+  outline: none;
+  font-size: 1.3rem;
+  padding: 0.5rem 1rem;
+  text-transform: capitalize;
+  background-color: #8eb98f;
+  color: black;
+  font-weight: bolder;
+}
+.booking__quote__via {
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: 1fr 0.2fr;
+  grid-template-rows: 1fr;
+  grid-gap: 1rem;
+  align-content: space-between;
+}
+.booking__quote__via input {
+  border: none;
+  outline: none;
+  background-color: #8eb98f;
+  padding: 0 1rem;
+  font-size: 1.3rem;
+}
+.booking__quote__via input::-moz-placeholder {
+  color: black;
+  font-weight: bolder;
+}
+.booking__quote__via input::placeholder {
+  color: black;
+  font-weight: bolder;
+}
+.booking__quote__via button {
+  width: 7rem;
+  border: none;
+  outline: none;
+  font-size: 1.3rem;
+  padding: 0.5rem 1rem;
+  text-transform: capitalize;
+  background-color: #8eb98f;
+  color: red;
+}
+.booking__quote__destination {
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  grid-gap: 1rem;
+  align-content: space-between;
+}
+.booking__quote__destination input {
+  border: none;
+  outline: none;
+  background-color: #8eb98f;
+  padding: 0 1rem;
+  font-size: 1.3rem;
+}
+.booking__quote__destination input::-moz-placeholder {
+  color: black;
+  font-weight: bolder;
+}
+.booking__quote__destination input::placeholder {
+  color: black;
+  font-weight: bolder;
+}
+.booking__quote__date {
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+.booking__quote__date input {
+  border: none;
+  outline: none;
+  background-color: #8eb98f;
+  padding: 0 1rem;
+}
+.booking__quote__date input#datetime-input {
+  font-size: 1.3rem;
+  color: black;
+  font-weight: bolder;
+}
+.booking__quote__return {
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+.booking__quote__return input {
+  border: none;
+  outline: none;
+  background-color: #8eb98f;
+  padding: 0 1rem;
+}
+.booking__quote__return input#datetime-input {
+  font-size: 1.3rem;
+  color: black;
+  font-weight: bolder;
+}
+.booking__quote__passengers {
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-gap: 1rem;
+}
+.booking__quote__passengers__select-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.booking__quote__passengers__select-wrapper select {
+  width: 100%;
+  height: 100%;
+  padding: 0 1rem;
+  font-size: 1.3rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: #8eb98f;
+  border: none;
+  position: relative !important;
+  z-index: 1;
+  color: black;
+  font-weight: bolder;
+}
+.booking__quote__passengers__select-wrapper::before {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: 9 !important;
+  top: 50%;
+  right: 5%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  border-left: 0.5rem solid transparent;
+  border-right: 0.5rem solid transparent;
+  border-top: 0.5rem solid black; /* This creates the triangle (arrow) */
+  pointer-events: none; /* Prevent interaction with the arrow */
+}
+.booking__quote__greet {
+  display: grid;
+  justify-items: space-between;
+  align-items: center;
+  grid-template-columns: 1rem 1fr;
+  grid-template-rows: 1fr;
+  padding: 0 1rem;
+  text-wrap: balance;
+  grid-gap: 2rem;
+  cursor: pointer;
+}
+.booking__quote__greet input {
+  -webkit-appearance: none; /* Remove default appearance */
+  -moz-appearance: none;
+       appearance: none; /* Remove default appearance */
+  width: 20px; /* Set desired width */
+  height: 20px; /* Set desired height */
+  border: 2px solid var(--active); /* Add a border */
+  border-radius: 3px; /* Optional: make it rounded */
+  position: relative; /* Required for the custom checkmark */
+  cursor: pointer; /* Change cursor to pointer */
+}
+.booking__quote__greet input:checked {
+  background-color: var(--active); /* Change background on checked */
+  border: 2px solid var(--active); /* Match border color */
+}
+.booking__quote__greet label {
+  display: inline-block;
+  text-wrap: pretty;
+  font-size: 1.3rem;
+  color: black;
+  font-weight: bolder;
+  cursor: pointer;
+}
+.booking__quote__get {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
+  background-color: #8eb98f;
+  cursor: pointer;
+}
+.booking__quote__get h1 {
+  font-size: 2rem;
+  text-transform: capitalize;
+}/*# sourceMappingURL=car-detail-price.component.css.map */

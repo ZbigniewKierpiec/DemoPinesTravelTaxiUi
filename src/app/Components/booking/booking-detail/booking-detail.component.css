@@ -1,0 +1,179 @@
+.booking {
+  width: 120vh;
+  height: 55vh;
+  height: 60vh;
+  background-color: #f0f0f0;
+  position: absolute;
+  top: 50%; /* Centers vertically */
+  left: 150%; /* Start off-screen to the right */
+  transform: translateY(-50%); /* Adjust vertically to keep it centered */
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: left 0.3s linear; /* Use left for horizontal movement */
+  border-radius: 0.5rem;
+  z-index: 10000000000000000000000000;
+}
+@media only screen and (max-width: 56.25em) {
+  .booking {
+    height: auto;
+    width: 100vw;
+  }
+}
+.booking.active {
+  left: 50%; /* Move to the horizontal center */
+  transform: translateY(-50%); /* Keep it vertically centered */
+  transform: translate(-50%, -50%);
+}
+@media only screen and (max-width: 56.25em) {
+  .booking.active {
+    margin-top: 20rem;
+    transform: translate(-50%, -100%);
+  }
+}
+.booking__detail {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 2rem 15rem 1fr 7rem;
+  grid-template-rows: 5rem 15rem 1fr;
+  padding: 0 2rem;
+}
+@media only screen and (max-width: 56.25em) {
+  .booking__detail {
+    grid-template-rows: 1fr 30rem 1fr 1fr;
+    align-items: center;
+  }
+}
+.booking__detail__tittle {
+  font-size: 3rem;
+  text-transform: capitalize;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media only screen and (max-width: 56.25em) {
+  .booking__detail__tittle {
+    height: auto;
+  }
+}
+.booking__detail__quote {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-gap: 1rem;
+}
+@media only screen and (max-width: 56.25em) {
+  .booking__detail__quote {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
+}
+.booking__detail__quote__left {
+  display: grid;
+  grid-template-columns: 12rem 1fr;
+  grid-template-rows: 1fr;
+  border: 1px solid grey;
+  border-radius: 0.3rem;
+}
+.booking__detail__quote__left__label {
+  background-color: gray;
+  color: white;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(7, 1fr);
+  align-items: center;
+  padding: 0.6rem 0.3rem;
+  font-size: 1.2rem;
+  text-transform: capitalize;
+}
+.booking__detail__quote__left__details {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(7, 1fr);
+  align-items: center;
+  padding: 0.6rem 0.3rem;
+  font-size: 1.3rem;
+  text-transform: capitalize;
+}
+.booking__detail__quote__right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.booking__detail__info {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 5rem 5rem 7rem;
+  grid-gap: 1rem;
+}
+.booking__detail__info__name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.booking__detail__info__name input {
+  flex-grow: 1;
+  height: 80%;
+  padding: 0 1rem;
+  font-size: 1.7rem;
+  background-color: rgb(60, 57, 57);
+  color: white;
+  border-radius: 0.5rem;
+}
+.booking__detail__info__name input::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.487);
+}
+.booking__detail__info__name input::placeholder {
+  color: rgba(255, 255, 255, 0.487);
+}
+.booking__detail__info__mobile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 1rem;
+}
+.booking__detail__info__mobile input {
+  flex-grow: 1;
+  height: 80%;
+  padding: 0 1rem;
+  font-size: 1.7rem;
+  background-color: rgb(60, 57, 57);
+  color: white;
+  border-radius: 0.5rem;
+}
+.booking__detail__info__mobile input::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.487);
+}
+.booking__detail__info__mobile input::placeholder {
+  color: rgba(255, 255, 255, 0.487);
+}
+.booking__detail__info__instruction {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.booking__detail__info__instruction textarea {
+  flex-grow: 1;
+  padding: 0 1rem;
+  padding-top: 0.7rem;
+  font-size: 1.7rem;
+  height: 80%;
+  resize: none;
+  overflow-y: auto; /* Enables vertical scrolling */
+  overflow-x: hidden; /* Prevents horizontal scroll */
+  border: none;
+  outline: none;
+  background-color: rgb(60, 57, 57);
+  color: white;
+  border-radius: 0.5rem;
+}
+.booking__detail__info__instruction textarea::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.487);
+}
+.booking__detail__info__instruction textarea::placeholder {
+  color: rgba(255, 255, 255, 0.487);
+}/*# sourceMappingURL=booking-detail.component.css.map */

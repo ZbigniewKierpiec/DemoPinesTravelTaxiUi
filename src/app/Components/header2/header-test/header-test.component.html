@@ -11,8 +11,7 @@
       </a>
     </div>
 
-
-    <ng-container *ngIf="user">
+    <ng-container *ngIf="user?.roles?.includes('Reader')">
       <a
         [routerLink]="['bracknellTaxis/user/dashboard/home']"
         class="banner__dashboard"
@@ -20,23 +19,18 @@
         <i class="fa-solid fa-gauge-high"></i>
       </a>
     </ng-container>
-
-
-
-
+    <!-- banner__contact__email -->
     <div class="banner__contact__email">
       <a class="mainHeader__mail__a" href="mailto:pinesbracknelltaxi">
         <span>
-          <span>
-            <i class="fa fa-envelope" aria-hidden="true"></i>
-            bookingtaxi.online
-          </span>
+          <i class="fa fa-envelope" aria-hidden="true"></i>
+          bookingtaxi.online
         </span>
       </a>
     </div>
   </div>
 
- <!-- *ngIf="user !== undefined && (user?.roles?.includes('Writer') || user?.roles?.includes('Reader'))"   -->
+  <!-- *ngIf="user !== undefined && (user?.roles?.includes('Writer') || user?.roles?.includes('Reader'))"   -->
 
   <div class="banner__social">
     <ul class="mainHeader__social__list">
@@ -81,7 +75,11 @@
       >
     </li>
 
-    <li #listItem (click)="selectLi(2)">
+    <li
+      *ngIf="!user || user?.roles?.includes('Reader')"
+      #listItem
+      (click)="selectLi(2)"
+    >
       <a
         class="header__list__item"
         [routerLink]="['/bracknellTaxis/booking']"
@@ -139,7 +137,11 @@
           "Nav_Airport" | translate
         }}</a>
       </li>
-      <li class="mobile__nav__menu__item" (click)="toggleMenu()">
+      <li
+        *ngIf="!user || user?.roles?.includes('Reader')"
+        class="mobile__nav__menu__item"
+        (click)="toggleMenu()"
+      >
         <a [routerLink]="['/bracknellTaxis/booking']">{{
           "Nav_Book" | translate
         }}</a>
@@ -148,16 +150,17 @@
         <a>{{ "Nav_Contact" | translate }}</a>
       </li>
 
-
-
-
       <li
         [class.active]="isCorporate === 'Corporate Account'"
         class="mobile__nav__menu__item mobile__nav__menu__item--corporate"
         (click)="toggleSubmenu('Corporate Account')"
       >
         <a class="mobile__nav__menu__item--corporate--link">
-          Corporate Account
+          {{
+            user?.roles?.includes("Driver")
+              ? "Driver Account"
+              : "Corporate Account"
+          }}
           <i
             class="fa-solid fa-caret-down"
             [@rotateAnimation]="isSubmenuOpen ? 'up' : 'down'"
@@ -170,32 +173,37 @@
         *ngIf="isSubmenuOpen"
         @submenuAnimation
       >
-        <li (click)="submenu('get-a-quote')"><a>Get a Quote</a></li>
-        <li (click)="submenu('make-booking')"><a>Make a booking</a></li>
-        <li *ngIf="!user && !token" (click)="submenu('open-account')">
-          <a>Open an Account</a>
+        <span *ngIf="user === undefined || !user?.roles?.includes('Driver')">
+          <li (click)="submenu('get-a-quote')"><a>Get a Quote</a></li>
+          <li (click)="submenu('make-booking')"><a>Make a booking</a></li>
+          <li *ngIf="!user && !token" (click)="submenu('open-account')">
+            <a>Open an Account</a>
+          </li>
+        </span>
+
+        <li
+          *ngIf="
+            user !== undefined &&
+            (user?.roles?.includes('Writer') || user?.roles?.includes('Driver'))
+          "
+          (click)="submenu('driver')"
+        >
+          <a> Driver</a>
         </li>
 
+        <ng-container *ngIf="user == undefined; else showMobileLogout">
+          <li (click)="submenu('')">
+            <a [routerLink]="['/bracknellTaxis/login']" style="display: block"
+              >login</a
+            >
+          </li>
+        </ng-container>
 
-<ng-container  *ngIf="user == undefined ; else showMobileLogout "   >
-  <li  (click)="submenu('')">
-
-    <a [routerLink]="['/bracknellTaxis/login']" style="display: block"
-    >login</a
-  >
-
-
-  </li>
-</ng-container>
-
-<ng-template #showMobileLogout>
-  <li  (click)="submenu('')" (click)="logOut()">
-    <a>LogOut</a>
-  </li>
-</ng-template>
-
-<li> <a  [routerLink]="['/bracknellTaxis/driver']"    >Driver</a>    </li>
-
+        <ng-template #showMobileLogout>
+          <li (click)="submenu('')" (click)="logOut()">
+            <a>LogOut</a>
+          </li>
+        </ng-template>
       </ul>
     </ul>
   </nav>

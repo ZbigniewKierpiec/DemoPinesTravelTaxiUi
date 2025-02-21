@@ -1,0 +1,27 @@
+.box {
+  width: 90%;
+  margin: 0 auto;
+}
+
+thead {
+  background-color: lightgray;
+  font-family: monospace;
+  text-transform: capitalize;
+  font-size: 1.5rem;
+  font-weight: bolder;
+}
+
+tr, th, td {
+  padding: 1rem 1rem;
+}
+
+tbody, tr {
+  cursor: pointer;
+}
+tbody :hover, tr :hover {
+  background-color: rgba(241, 234, 234, 0.601);
+}
+
+tbody tr td {
+  text-align: center;
+}/*# sourceMappingURL=booking-list.component.css.map */

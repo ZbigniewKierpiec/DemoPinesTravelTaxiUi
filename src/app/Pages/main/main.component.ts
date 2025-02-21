@@ -28,7 +28,8 @@ import { LogoutnotifComponent } from './logoutnotif/logoutnotif.component';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { BirthdayComponent } from './birthday/birthday.component';
-import { DashboardSidenavComponent } from "../dashboard/dashboard-sidenav/dashboard-sidenav.component";
+import { DashboardSidenavComponent } from '../dashboard/dashboard-sidenav/dashboard-sidenav.component';
+import { DriverNotificationComponent } from './driver-notification/driver-notification.component';
 
 @Component({
   selector: 'app-main',
@@ -50,8 +51,9 @@ import { DashboardSidenavComponent } from "../dashboard/dashboard-sidenav/dashbo
     LogoutnotifComponent,
     CommonModule,
     BirthdayComponent,
-    DashboardSidenavComponent
-],
+    DashboardSidenavComponent,
+    DriverNotificationComponent,
+  ],
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss',
 })
@@ -60,20 +62,16 @@ export class MainComponent implements OnInit, OnDestroy {
   childComponent!: LogingWelcomeNotiComponent;
   @ViewChild(LogoutnotifComponent, { static: false })
   childComponent2!: LogoutnotifComponent;
+  @ViewChild(DriverNotificationComponent, { static: false })
+  driverNotification!: DriverNotificationComponent;
+
   isActive: any;
   displayName: any = null;
   isLoggedOut = false;
   happyBirthday: boolean = false;
-  birthdayTime:number=9000;
+  birthdayTime: number = 9000;
   private logoutSubscription?: Subscription;
   private profileSubscription?: Subscription;
-  triggerNotificationFromParent(message: string) {
-    this.childComponent.addNotification(message); // Calls addNotification() in child
-  }
-
-  triggerNotificationFromParent2(message: string) {
-    this.childComponent.addNotification(message); // Calls addNotification() in child
-  }
 
   constructor(
     private profileService: BookingService,
@@ -82,24 +80,35 @@ export class MainComponent implements OnInit, OnDestroy {
     private rout: Router,
     private cdr: ChangeDetectorRef
   ) {}
-
+  private driverNotificationShown = sessionStorage.getItem(
+    'driverNotificationShown'
+  );
   ngOnInit(): void {
-    let b = this.auth.getUser();
-    console.log(b?.email);
     let userEmail = localStorage.getItem('user-email');
     let userName = localStorage.getItem('user-name');
     this.isActive = !!userEmail;
 
     if (!this.isActive) {
       console.log('User just logged out');
-      // alert('You just log out')
       this.isLoggedOut = false;
-
       return;
     }
 
-    // If the user is logged in, proceed with fetching the profile and showing the notification
     let notificationShown = sessionStorage.getItem('notificationShown');
+    let driverNotificationShown = sessionStorage.getItem(
+      'driverNotificationShown'
+    );
+    console.log(this.auth.getUser());
+    // if (!driverNotificationShown) {
+    //   const userRoles = this.auth.getUser()?.roles || [];
+    //   if (userRoles.includes('Driver')) {
+    //     console.log('✅ User is a driver, preparing notification...');
+    //     // Delay the notification until the view is initialized (in ngAfterViewInit)
+
+    //   } else {
+    //     console.warn('❌ User is NOT a driver, skipping notification.');
+    //   }
+    // }
 
     if (!notificationShown) {
       this.profileSubscription = this.profileService
@@ -108,102 +117,100 @@ export class MainComponent implements OnInit, OnDestroy {
           let displayName = data.firstName ? data.firstName : userEmail;
           this.displayName = displayName;
 
-          console.log(
-            `To jest z Loging Component Info z User Profile ${
-              data.firstName ? data.firstName + ' ' + data.surname : userName
-            }`
-          );
-
-          this.triggerNotificationFromParent(
+          this.triggerNotificationsForAll(
             `${this.generateRandomMessage()} ${displayName}! ${this.generateWelcomeMessage()}`
           );
-          ///////////////////////////////////
+
           if (data.birthday) {
-            // Uzyskujemy dzisiejszą datę
-            const today = new Date();
-
-            // Parsujemy datę urodzin w formacie "YYYY-MM-DD"
-            const birthdayArray = data.birthday.split('-'); // Dzielimy datę na tablicę [rok, miesiąc, dzień]
-
-            // Tworzymy datę urodzin na podstawie danych, ale w sposób kontrolowany
-            const birthdayYear = parseInt(birthdayArray[0]); // Rok
-            const birthdayMonth = parseInt(birthdayArray[1]) - 1; // Miesiąc (w JavaScript jest 0-indexed)
-            const birthdayDay = parseInt(birthdayArray[2]); // Dzień
-
-            // Tworzymy datę urodzin na przyszły rok, jeśli urodziny już miały miejsce w bieżącym
-            let birthday = new Date(
-              today.getFullYear(),
-              birthdayMonth,
-              birthdayDay
-            );
-
-            // Jeśli urodziny już miały miejsce w tym roku, ustawiamy je na przyszły rok
-            if (birthday < today) {
-              birthday.setFullYear(today.getFullYear() + 1);
-            }
-
-            // Ustawiamy godziny, minuty, sekundy i milisekundy na 0, aby porównać tylko daty
-            birthday.setHours(0, 0, 0, 0);
-            today.setHours(0, 0, 0, 0);
-
-            // Obliczamy różnicę w czasie w milisekundach
-            const timeDiff = birthday.getTime() - today.getTime();
-
-            // Obliczamy liczbę dni pozostałych do urodzin (dzieląc przez milisekundy na dzień)
-            // const daysLeft = Math.ceil(timeDiff / (1000 * 3600 * 24));
-            const daysLeft = Math.floor(timeDiff / (1000 * 3600 * 24)); // Używamy Math.floor zamiast Math.ceil
-            //   if (today.getDate() === birthday.getDate() && today.getMonth() === birthday.getMonth()) {
-            //   alert("Happy Birthday!");
-            //  }
-
-            // this.triggerNotificationFromParent(
-            //   `Do twoich urodzin zostało ${daysLeft} dni`
-            // );
-
-            // Sprawdzamy, czy dzisiaj są Twoje urodziny
-            if (
-              today.getDate() === birthday.getDate() &&
-              today.getMonth() === birthday.getMonth()
-            ) {
-              this.triggerNotificationFromParent(`Happy Birthday! `);
-
-              setTimeout(() => {
-                this.happyBirthday = true;
-              }, this.birthdayTime);
-            } else {
-              // Jeśli to nie Twoje urodziny, wyświetlamy ile dni pozostało
-                 this.happyBirthday=false;
-              this.triggerNotificationFromParent(
-                // `Your birthday is in ${daysLeft} ${message}`
-                `Your birthday is in ${daysLeft} day${
-                  daysLeft === 1 ? '' : 's'
-                }`
-              );
-            }
+            this.handleBirthdayNotification(data.birthday);
           }
 
-          //////////////////////////////////
-
-          // Zapisz w sessionStorage, aby uniknąć ponownego wyświetlania powiadomienia
           sessionStorage.setItem('notificationShown', 'true');
         });
     }
   }
 
-
-
-
-  onChildClick(){
-    this.happyBirthday=false;
+  ngAfterViewInit(): void {
+    const userRoles = this.auth.getUser()?.roles || [];
+    // Check if the user is a driver and if the driver notification has not been shown yet
+    if (userRoles.includes('Driver') && !this.driverNotificationShown) {
+      console.log('✅ User is a driver, sending notification...');
+      this.triggerDriverNotification(this.generateDriverWelcomeMessage());
+      this.cdr.detectChanges(); // Force view update after adding notification
+      sessionStorage.setItem('driverNotificationShown', 'true'); // Mark the notification as shown
+    } else {
+      console.log(
+        '❌ User is not a driver or driver notification already shown.'
+      );
+    }
   }
 
+  triggerNotificationsForAll(message: string) {
+    console.log('Triggering notifications for all components: ', message);
+    this.childComponent.addNotification(message);
+    if (this.driverNotification) {
+      console.log('Driver notification component exists.');
+      this.driverNotification.addNotification(message);
+    } else {
+      console.warn('Driver notification component is not found!');
+    }
+  }
 
+  triggerDriverNotification(message: string) {
+    console.log('Triggering driver notification: ', message);
+    if (this.driverNotification) {
+      this.driverNotification.addNotification(message);
+    } else {
+      console.warn('Driver notification component is not available!');
+    }
+  }
 
+  handleBirthdayNotification(birthday: string) {
+    const today = new Date();
+    const birthdayArray = birthday.split('-');
+    const birthdayYear = parseInt(birthdayArray[0]);
+    const birthdayMonth = parseInt(birthdayArray[1]) - 1;
+    const birthdayDay = parseInt(birthdayArray[2]);
+    let birthdayDate = new Date(
+      today.getFullYear(),
+      birthdayMonth,
+      birthdayDay
+    );
 
+    if (birthdayDate < today) {
+      birthdayDate.setFullYear(today.getFullYear() + 1);
+    }
 
+    birthdayDate.setHours(0, 0, 0, 0);
+    today.setHours(0, 0, 0, 0);
 
+    const timeDiff = birthdayDate.getTime() - today.getTime();
+    const daysLeft = Math.floor(timeDiff / (1000 * 3600 * 24));
 
+    if (
+      today.getDate() === birthdayDate.getDate() &&
+      today.getMonth() === birthdayDate.getMonth()
+    ) {
+      console.log('Today is the birthday!');
+      this.triggerNotificationsForAll(`Happy Birthday! 🎉`);
+      setTimeout(() => {
+        this.happyBirthday = true;
+      }, this.birthdayTime);
+    } else {
+      console.log(`Birthday in ${daysLeft} day(s)`);
+      this.happyBirthday = false;
+      this.triggerNotificationsForAll(
+        `Your birthday is in ${daysLeft} day${daysLeft === 1 ? '' : 's'}`
+      );
+    }
 
+    // Zapisz w sessionStorage, aby uniknąć ponownego wyświetlania powiadomienia
+    sessionStorage.setItem('notificationShown', 'true');
+  }
+
+  onChildClick() {
+    this.happyBirthday = false;
+  }
 
   generateRandomMessage() {
     const messages = [
@@ -436,8 +443,61 @@ export class MainComponent implements OnInit, OnDestroy {
     return welcomeMessages[Math.floor(Math.random() * welcomeMessages.length)];
   }
 
+  generateDriverWelcomeMessage() {
+    const welcomeMessages = [
+      'Welcome back, driver! Let’s hit the road and make today amazing! 🚗💨',
+      'Glad to have you back, driver! Let’s make this journey unforgettable! 🌟',
+      'Ready to drive to success? Let’s do this, driver! 🚘💪',
+      'Welcome back to the wheel, driver! The road is waiting for you! 🛣️',
+      'The road is calling! Let’s get started and make today epic, driver! 🎯',
+      'Buckle up, driver! Another adventure begins today! 🚦',
+      'You’re back, driver! Let’s make today an exciting ride! 🎉',
+      'The engine’s roaring and so are we! Let’s crush this, driver! ⚡',
+      'Driver on the road again! Time to make today amazing! 🚗💥',
+      'Get ready for an amazing journey today, driver! 🌍',
+      'Welcome back, driver! The road ahead is waiting for us! 🛤️',
+      'You bring the power to the road today, driver! Let’s go! ⚡🚘',
+      'It’s your time to drive success, driver! Let’s make today legendary! ✨',
+      'Another day, another adventure on the road, driver! 🚗💨',
+      'Your journey begins now, driver! Let’s make it count! 🎯',
+      'Welcome back, driver! Let’s take on the road and make today epic! 🛣️',
+      'The road is ours today, driver! Ready to rock and roll? 🚙🔥',
+      'Let’s make today one for the road, driver! 🏆',
+      'It’s time for another adventure, driver! Let’s get going! 🌟',
+      'Drive safe, drive smart, and let’s make today amazing, driver! 🚗💨',
+      'Welcome back, driver! Let’s hit the road and make every moment count! ⏱️',
+      'Ready for another adventure on the road, driver? Let’s go! 🚘💥',
+      'You’re the driver we’ve been waiting for! Let’s get started! 🚦',
+      'The journey is ours today, driver! Let’s take it on! 🛤️',
+      'Today’s ride is going to be epic, driver! Let’s do this! 🌍',
+      'Let’s drive forward, driver! The road awaits! 🚗💨',
+      'Welcome back, driver! Time to roll and make today amazing! 🚙✨',
+      'Your journey starts now, driver! Let’s hit the road! 🛣️',
+      'Back on the road, driver! Let’s make today unforgettable! 💥',
+      'You’re the key to an epic journey today, driver! Let’s go! 🔑🚘',
+      'The road is our playground today, driver! Let’s make it incredible! 🛤️',
+      'Welcome back, driver! Your journey to greatness starts now! 🚗🌟',
+      'Today is yours, driver! Let’s make every mile count! 🌍🚙',
+      'Ready to take on the road? Let’s make today legendary, driver! 🚦',
+      'Your ride, your rules, driver! Let’s make it epic! 🚘🎉',
+      'Get in, driver! Let’s take this journey to the next level! 🚗💪',
+      'The adventure continues today, driver! Ready for another epic ride? 🌟',
+      'You bring the drive to the road, driver! Let’s make today unforgettable! ⚡🚙',
+      'Buckle up, driver! Let’s make today legendary! 🚗💥',
+      'Your journey to greatness starts now, driver! Let’s go! 🌍✨',
+      'Time to drive success, driver! Let’s make today amazing! 💪',
+      'Another day, another adventure on the road, driver! Let’s do this! 🛣️',
+      'The road is calling, driver! Let’s answer it with success! 🚘🌍',
+      'Welcome back, driver! Let’s drive towards greatness today! 🚦✨',
+      'Your journey starts now, driver! Let’s hit the road and make it epic! 🚗💨',
+      'Time to drive into greatness, driver! Let’s make today unforgettable! 💥🚙',
+      'Another amazing day on the road, driver! Let’s make it count! 🌟',
+    ];
+    return welcomeMessages[Math.floor(Math.random() * welcomeMessages.length)];
+  }
+
   ngOnDestroy(): void {
-    this.logoutSubscription?.unsubscribe();
+    // this.logoutSubscription?.unsubscribe();
     this.profileSubscription?.unsubscribe();
   }
 }

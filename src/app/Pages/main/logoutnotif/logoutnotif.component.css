@@ -1,0 +1,34 @@
+.box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 300px;
+  padding: 2rem 1rem;
+  box-shadow: 10px 10px 13px -10px rgba(0, 0, 0, 0.75);
+  background: linear-gradient(to right, rgb(243, 226, 199) 0%, rgb(193, 158, 103) 0%, rgb(233, 212, 179) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#f3e2c7", endColorstr="#e9d4b3", GradientType=1 );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.7s linear;
+  font-size: 1.3rem;
+  border-radius: 0.4rem;
+}
+@media only screen and (max-width: 37.5em) {
+  .box {
+    min-width: 20rem;
+    width: 80%;
+    height: auto;
+    font-size: 2rem;
+  }
+}
+.box.active {
+  transition: all 0.7s linear;
+  display: block;
+  visibility: visible;
+  opacity: 1;
+}/*# sourceMappingURL=logoutnotif.component.css.map */

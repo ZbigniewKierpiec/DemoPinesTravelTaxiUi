@@ -1,0 +1,15 @@
+.box {
+  width: 40rem;
+  height: 40rem;
+}
+@media only screen and (max-width: 56.25em) {
+  .box {
+    width: 100%;
+    order: -1;
+  }
+}
+.box.active {
+  width: 50rem;
+  height: 40rem;
+  display: block;
+}/*# sourceMappingURL=map-display.component.css.map */

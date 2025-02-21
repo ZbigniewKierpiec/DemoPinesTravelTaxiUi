@@ -1,0 +1,198 @@
+.box {
+  min-height: 100vh;
+  max-height: -moz-max-content;
+  max-height: max-content;
+  height: auto;
+  padding: 7rem;
+  background-color: lightblue;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 40rem;
+}
+@media only screen and (max-width: 37.5em) {
+  .box {
+    padding: 1rem 1rem;
+    width: 100%;
+    grid-template-columns: 1fr;
+    grid-template-rows: 10rem 20rem;
+    grid-row-gap: 5rem;
+  }
+}
+.box__title {
+  height: 10rem;
+  font-size: 3rem;
+}
+.box__info {
+  background-color: white;
+  border-radius: 1rem 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 18rem 1fr;
+  padding: 2rem;
+}
+@media only screen and (max-width: 37.5em) {
+  .box__info {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 12rem;
+    padding: 0;
+  }
+}
+.box__info__top {
+  position: relative;
+  background-color: #c0c0c0;
+  border-radius: 0.7rem 0.7rem;
+}
+.box__info__top span {
+  font-size: 1.3rem;
+  font-weight: bolder;
+}
+.box__info__top__image-box {
+  position: absolute;
+  left: 3rem;
+  bottom: -45%;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+@media only screen and (max-width: 37.5em) {
+  .box__info__top__image-box {
+    left: 50%;
+    transform: translateX(-50%);
+    top: -12rem;
+  }
+}
+.box__info__top__image-box__image {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  outline-color: white;
+  outline-width: 0.5rem;
+  outline-style: solid;
+}
+.box__info__top__image-box img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+  border-radius: 50%;
+}
+.box__info__bottom {
+  background-color: white;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 0.5fr;
+}
+@media only screen and (max-width: 37.5em) {
+  .box__info__bottom {
+    grid-template-rows: 1fr 5rem;
+  }
+}
+.box__info__bottom__bookings {
+  display: grid;
+  grid-template-columns: repeat(3, 12rem);
+  grid-template-rows: 1fr;
+  justify-content: flex-end;
+  background-color: white;
+  color: white;
+  font-size: 1.7rem;
+}
+@media only screen and (max-width: 37.5em) {
+  .box__info__bottom__bookings {
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+  }
+}
+.box__info__bottom__bookings__count {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  color: black;
+  line-height: 0.1;
+}
+.box__info__bottom__bookings__count span:nth-child(1) {
+  font-size: 3rem;
+}
+.box__info__bottom__bookings__count--border {
+  position: relative;
+}
+.box__info__bottom__bookings__count--border::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  width: 1px;
+  height: 60%;
+  background-color: rgba(0, 0, 0, 0.17);
+}
+.box__info__bottom__nav {
+  background-color: #eaedf7;
+  border-radius: 0.5rem 0.5rem;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0 3rem;
+}
+@media only screen and (max-width: 37.5em) {
+  .box__info__bottom__nav {
+    padding: 0;
+  }
+}
+.box__info__bottom__nav ul {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+  font-size: 1.4rem;
+}
+@media only screen and (max-width: 37.5em) {
+  .box__info__bottom__nav ul {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    justify-items: center;
+    grid-gap: 0;
+  }
+}
+.box__info__bottom__nav ul .slide {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transition: all 0.2s linear;
+  width: 100%;
+  height: 2px;
+  background-color: black;
+}
+.box__info__bottom__nav ul li {
+  position: relative;
+  font-weight: bolder;
+  text-transform: capitalize;
+  transition: all 0.2s linear;
+  border-bottom: 1px solid transparent;
+  cursor: pointer;
+}
+.box__info__bottom__nav ul li.active {
+  color: white;
+  border-bottom: 1px solid;
+}
+.box__display {
+  width: 100%;
+  margin-top: 2rem;
+  padding: 4rem;
+  border-radius: 1rem 1rem;
+  background-color: white;
+}
+@media only screen and (max-width: 37.5em) {
+  .box__display {
+    padding: 0;
+    background-color: transparent;
+  }
+}/*# sourceMappingURL=profile.component.css.map */

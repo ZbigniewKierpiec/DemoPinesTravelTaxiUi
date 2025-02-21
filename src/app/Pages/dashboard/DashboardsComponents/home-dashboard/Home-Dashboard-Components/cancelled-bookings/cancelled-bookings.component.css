@@ -1,0 +1,41 @@
+.box {
+  width: 100%;
+  margin: 0 auto;
+  height: auto; /* Ensures dynamic content can make the box grow */
+  max-height: -moz-fit-content;
+  max-height: fit-content; /* Limits the height to the content size */
+}
+.box h1 {
+  font-size: 2rem;
+}
+
+thead {
+  background-color: black;
+  color: white;
+  text-transform: capitalize;
+  font-size: 0.8rem;
+  font-family: Georgia, "Times New Roman", Times, serif !important;
+  font-weight: bolder;
+}
+
+tr, th, td {
+  padding: 1rem 1rem;
+}
+
+tbody, tr {
+  cursor: pointer;
+}
+
+tbody tr td {
+  text-align: center;
+}
+
+.confirmed {
+  color: green;
+  font-weight: bold;
+}
+
+.not-confirmed {
+  color: red;
+  font-weight: bold;
+}/*# sourceMappingURL=cancelled-bookings.component.css.map */

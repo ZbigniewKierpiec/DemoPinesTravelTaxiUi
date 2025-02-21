@@ -1,0 +1,95 @@
+/* Form container */
+form {
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Form group */
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* Label styling */
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+/* Input fields */
+input, select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-bottom: 8px;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+
+/* Input focus state */
+input:focus, select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Error state */
+input.ng-touched.ng-invalid, select.ng-touched.ng-invalid {
+  border-color: red;
+}
+
+/* Button styling */
+button {
+  background-color: #007bff;
+  color: white;
+  padding: 12px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s;
+}
+
+/* Button hover effect */
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Small error message */
+small {
+  color: red;
+  font-size: 12px;
+  display: block;
+  margin-top: 5px;
+}
+
+/* Section headers */
+.box__container__info__top {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.box__container__info__bottom {
+  margin-bottom: 20px;
+}
+
+.box__edit__top {
+  font-size: 3rem;
+}
+
+.image-preview {
+  border-radius: 50%; /* Make the image circular */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow around the image */
+  transition: box-shadow 0.3s ease-in-out; /* Smooth transition for shadow on hover */
+}
+
+.image-preview:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Slightly larger shadow on hover */
+}/*# sourceMappingURL=edit-profile.component.css.map */

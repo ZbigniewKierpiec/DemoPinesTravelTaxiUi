@@ -1,0 +1,69 @@
+.box {
+  position: fixed;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30rem;
+  height: -moz-max-content;
+  height: max-content;
+  transition: all 0.4s linear;
+  z-index: 999 !important;
+}
+
+button {
+  position: relative;
+  padding: 0.4rem 1rem;
+  text-transform: uppercase;
+  border: none;
+  outline: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.notification {
+  position: relative;
+  transition: transform 0.4s linear;
+  width: 100%;
+  padding: 2rem;
+  background: rgb(243, 226, 199);
+  background: -webkit-gradient(left top, right top, color-stop(0%, rgb(243, 226, 199)), color-stop(0%, rgb(193, 158, 103)), color-stop(100%, rgb(233, 212, 179)));
+  background: linear-gradient(to right, rgb(243, 226, 199) 0%, rgb(193, 158, 103) 0%, rgb(233, 212, 179) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#f3e2c7", endColorstr="#e9d4b3", GradientType=1 );
+  margin-bottom: 2rem;
+  font-family: monospace;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.3rem;
+  border-radius: 0.4rem;
+  color: black;
+  color: #4E3B26;
+  font-weight: bolder;
+  box-shadow: 10px 10px 13px -10px rgba(0, 0, 0, 0.75);
+}
+@media only screen and (max-width: 56.25em) {
+  .notification {
+    font-size: 1.5rem;
+    text-wrap: pretty;
+  }
+}
+.notification::before {
+  content: "";
+  position: absolute;
+  top: -18px;
+  left: 34px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 17px 21px 17px;
+  border-color: transparent transparent #c5a36f transparent;
+}
+
+.length {
+  width: 4rem;
+  height: 4rem;
+  background-color: black;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}/*# sourceMappingURL=notification.component.css.map */

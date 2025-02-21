@@ -152,6 +152,7 @@
 
       border-radius: 10px / 50%;
       animation: shadow-pulse 2.5s infinite;
+
     }
   }
 
@@ -389,11 +390,15 @@
         }
 
         &--corporate {
+          position: relative;
+          pointer-events: all !important;
           &.active {
             background-color: whitesmoke;
           }
           &--link {
+            position:relative;
             display: flex !important;
+            z-index: 9999;
             justify-content: space-between;
             align-items: center;
             padding-right: 4rem;
@@ -404,7 +409,8 @@
 
       &__submenu {
         list-style: none;
-
+        position:relative;
+        z-index: 9999;
         padding: 0;
         margin: 0;
         display: flex;
@@ -414,13 +420,15 @@
           padding: 10px;
           border-bottom: 1px solid #ddd;
           a {
+            position: relative;
             padding: 10px;
             display: block;
             font-size: 2rem;
             text-transform: capitalize;
             text-decoration: none;
             color: black;
-            z-index: 99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999 !important;
+
+
           }
         }
       }
@@ -443,9 +451,4 @@
     box-shadow: 0 0 0 10px rgba(54, 113, 236, 0);
   }
 }
-@include respond(phone) {
 
-
-
-
-}

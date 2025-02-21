@@ -241,6 +241,11 @@ export class HeaderTestComponent {
           // Przekierowanie do strony konta użytkownika (np. profil)
           this.router.navigate(['bracknellTaxis/account']);
           break;
+          case 'driver':
+            // Przekierowanie do strony konta użytkownika (np. profil)
+            this.router.navigate(['bracknellTaxis/driver']);
+            break;
+
         default:
           console.log('Unknown option');
       }

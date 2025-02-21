@@ -1,0 +1,127 @@
+/* You can add global styles to this file, and also import other style files */
+@import "@fortawesome/fontawesome-free/css/all.css";
+::-moz-selection {
+  background-color: transparent !important;
+}
+::selection {
+  background-color: transparent !important;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: monospace;
+  overflow-x: hidden !important;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+}
+* ::-webkit-scrollbar {
+  display: none !important;
+}
+* button {
+  cursor: pointer;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  -webkit-tap-highlight-color: transparent;
+  -moz-backface-visibility: hidden;
+}
+
+html {
+  font-size: 62.5%;
+}
+@media only screen and (max-width: 75em) {
+  html {
+    font-size: 56.25%;
+    font-size: 42.25%;
+  }
+}
+@media only screen and (max-width: 56.25em) {
+  html {
+    font-size: 50%;
+  }
+}
+@media only screen and (min-width: 112.5em) {
+  html {
+    font-size: 75%;
+  }
+}
+
+ul {
+  list-style: none;
+}
+
+/* Tailwind CSS base, components, and utilities */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+* {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style-type: none;
+}
+
+:root {
+  --color1: #1e1f20;
+}
+
+.crisp-client {
+  bottom: 2250px; /* Distance from the bottom */
+  right: 130px; /* Distance from the right */
+  /* Add any additional styles here */
+}
+
+input[type=datetime-local] {
+  width: 100%;
+  box-sizing: border-box; /* Ensures padding doesn't exceed 100% width */
+}
+
+input {
+  border: none;
+  outline: none;
+}
+input :active {
+  border: none;
+}
+input :focus {
+  border: none;
+}
+
+textarea {
+  border: none;
+  outline: none;
+  background-color: rgb(60, 57, 57);
+  color: white;
+}
+textarea::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.487);
+}
+textarea::placeholder {
+  color: rgba(255, 255, 255, 0.487);
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}/*# sourceMappingURL=styles.css.map */

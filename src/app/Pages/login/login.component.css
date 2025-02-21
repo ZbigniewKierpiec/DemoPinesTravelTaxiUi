@@ -1,0 +1,165 @@
+@charset "UTF-8";
+img {
+  width: 40px;
+  height: 40px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+  position: relative;
+}
+
+.outer {
+  height: 80vh;
+  background: linear-gradient(to top, #c9c9ff 50%, #6e6ef6 90%) no-repeat;
+}
+
+.linia2 {
+  margin: 0 auto;
+}
+
+.panel-heading {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+#forget {
+  min-width: 100px;
+  margin-left: auto;
+  text-decoration: none;
+  cursor: pointer;
+}
+#forget:hover {
+  text-decoration: none;
+}
+
+.form-inline label {
+  padding-left: 10px;
+  margin: 0;
+  cursor: pointer;
+}
+
+.btn {
+  margin-top: 20px;
+  border-radius: 15px;
+}
+
+.panel {
+  min-height: 380px;
+  box-shadow: 20px 20px 80px rgb(218, 218, 218);
+  border-radius: 12px;
+  margin-top: 100px;
+}
+
+.input-field {
+  border-radius: 5px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  color: #4343ff;
+}
+
+.input-field-error {
+  border: 1px solid red;
+  color: red;
+}
+
+input[type=text],
+input[type=password] {
+  border: none;
+  outline: none;
+  box-shadow: none;
+  width: 100%;
+}
+
+.fa-eye-slash.btn {
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+.bordert {
+  border-top: 1px solid #aaa;
+  position: relative;
+}
+
+.bordert::after {
+  content: "or connect with";
+  position: absolute;
+  top: -13px;
+  left: 37%;
+  background-color: white;
+  padding: 0 8px;
+}
+
+.error {
+  border: 1px solid red;
+}
+
+.custom-snackbar {
+  position: fixed;
+  top: 50vh;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4caf50;
+  color: white;
+  padding: 16px;
+  border-radius: 8px;
+  text-align: center;
+  min-width: 300px;
+  max-width: 500px;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 10px; /* Mniejsze paddingi na małych ekranach */
+  }
+  .panel {
+    padding: 15px; /* Zmniejszamy padding panelu na mobile */
+  }
+  .panel-heading h3 {
+    font-size: 20px; /* Mniejszy tytuł na mobilnych ekranach */
+  }
+  .input-field input {
+    font-size: 18px; /* Większy rozmiar czcionki w inputach na mobile */
+    padding: 14px 40px 14px 12px; /* Większa przestrzeń w polach wejściowych */
+  }
+  .btn {
+    padding: 16px; /* Większe przyciski na małych ekranach */
+    font-size: 18px; /* Większy rozmiar czcionki w przycisku */
+  }
+  .fa {
+    font-size: 2rem;
+  }
+  .text-danger {
+    font-size: 1.3rem;
+  }
+  .form-inline {
+    font-size: 1.3rem;
+  }
+  .account {
+    font-size: 1.5rem;
+  }
+}
+/* Media Queries - style dla jeszcze mniejszych ekranów (telefony w pionie) */
+@media (max-width: 576px) {
+  .panel {
+    padding: 10px; /* Zmniejszamy padding na bardzo małych ekranach */
+  }
+  .panel-heading h3 {
+    font-size: 18px; /* Mniejszy nagłówek na telefonach w pionie */
+  }
+  .input-field input {
+    font-size: 16px; /* Dostosowanie rozmiaru tekstu w inputach */
+    padding: 12px 30px 12px 12px; /* Większa przestrzeń na wejściu */
+  }
+  .btn {
+    padding: 14px; /* Zmniejszenie paddingu przycisku */
+    font-size: 16px; /* Zmniejszenie czcionki przycisku */
+  }
+}/*# sourceMappingURL=login.component.css.map */

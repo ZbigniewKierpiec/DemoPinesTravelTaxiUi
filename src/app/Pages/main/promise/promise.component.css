@@ -1,0 +1,205 @@
+.promise {
+  position: relative;
+  height: 100vh;
+  background-image: url(/assets/mercsrodek.png);
+  background-position-x: 40%;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+}
+@media only screen and (max-width: 56.25em) {
+  .promise {
+    background-image: none;
+    min-height: 100vh;
+  }
+}
+.promise__text {
+  width: 80%;
+  height: 80%;
+  background-color: rgba(0, 0, 0, 0.718);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 0 7rem;
+  border-radius: 1rem;
+}
+@media only screen and (max-width: 56.25em) {
+  .promise__text {
+    width: 85%;
+    height: 80%;
+    padding: 0 0.1rem;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+  }
+}
+.promise__text__h1 {
+  font-size: 4.7rem;
+  color: whitesmoke;
+  text-align: center;
+}
+@media only screen and (max-width: 56.25em) {
+  .promise__text__h1 {
+    font-size: 3rem;
+    text-wrap: pretty;
+    color: rgba(0, 0, 0, 0.777);
+  }
+}
+.promise__text__h2 {
+  font-size: 3rem;
+  color: white;
+  font-style: italic;
+}
+@media only screen and (max-width: 56.25em) {
+  .promise__text__h2 {
+    font-size: 2.3rem;
+    font-family: "Roboto", sans-serif;
+    text-align: center;
+    color: black;
+    font-weight: 600;
+  }
+}
+.promise__text__h3 {
+  color: white;
+  font-size: 2.8rem;
+  line-height: 1.5;
+  font-weight: 100;
+  text-indent: 3rem;
+}
+@media only screen and (max-width: 56.25em) {
+  .promise__text__h3 {
+    color: black;
+    text-wrap: balance;
+    text-align: left;
+    line-height: 1.6;
+    margin-left: 2rem;
+    font-size: 2.3rem;
+    font-weight: 500;
+  }
+}
+.promise__text__a {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 1.7rem;
+  padding: 2rem;
+  position: relative;
+  text-transform: uppercase;
+  background-color: rgba(0, 0, 0, 0.836);
+  color: white;
+  overflow: hidden;
+  box-shadow: 8px 8px 10px 3px black;
+  font-family: monospace;
+  font-weight: bolder;
+}
+@media only screen and (max-width: 56.25em) {
+  .promise__text__a {
+    display: inline-block;
+    font-size: 1.5rem;
+    box-shadow: 5px 5px 9px 1px black;
+  }
+}
+
+.animation span:nth-child(1) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, #0c002b, #efc050);
+  animation: animate1 2s linear infinite;
+  animation-delay: 1s;
+}
+
+@keyframes animate1 {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+.animation span:nth-child(2) {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to bottom, #0c002b, #efc050);
+  animation: animate2 2s linear infinite;
+}
+
+@keyframes animate2 {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+.animation span:nth-child(3) {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to left, #0c002b, #efc050);
+  animation: animate3 2s linear infinite;
+  animation-delay: 1s;
+}
+
+@keyframes animate3 {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+.animation span:nth-child(4) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to top, #0c002b, #efc050);
+  animation: animate4 2s linear infinite;
+  animation-delay: 2s;
+}
+
+@keyframes animate4 {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+@keyframes animatedBackground {
+  0% {
+    background-position: 0 100%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 100%;
+  }
+}
+@keyframes animatedBk {
+  0% {
+    background-position: 100% 100%;
+  }
+  50% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}/*# sourceMappingURL=promise.component.css.map */

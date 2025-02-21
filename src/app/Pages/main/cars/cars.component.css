@@ -1,0 +1,258 @@
+img {
+  width: 2rem;
+}
+
+.cars {
+  --desktop-h1: 3rem;
+  --mobile-h1: 2.2rem;
+  --desktop-h2: 2.5rem;
+  --mobile-h2: 2.1rem;
+  --font-weight-h2: 600;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  background-color: #8EB98F;
+}
+.cars__mercedes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  padding: 4rem 3rem;
+}
+@media only screen and (max-width: 56.25em) {
+  .cars__mercedes {
+    grid-template-columns: 1fr;
+    grid-template-rows: 30rem 1fr;
+    padding: 1rem 1rem;
+  }
+}
+.cars__mercedes__photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cars__mercedes__photo img {
+  display: block;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 50%;
+}
+@media only screen and (max-width: 56.25em) {
+  .cars__mercedes__photo img {
+    width: 60%;
+  }
+}
+.cars__mercedes__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+@media only screen and (max-width: 56.25em) {
+  .cars__mercedes__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 3rem;
+  }
+}
+.cars__mercedes__text h1 {
+  font-size: var(--desktop-h1);
+  margin-bottom: 2rem;
+  font-family: "Roboto Slab", serif;
+}
+@media only screen and (max-width: 56.25em) {
+  .cars__mercedes__text h1 {
+    font-size: var(--mobile-h1);
+    font-weight: bolder;
+    display: block;
+    text-align: center;
+    margin-bottom: 3rem;
+    text-wrap: pretty;
+  }
+}
+.cars__mercedes__text h2 {
+  font-size: var(--desktop-h2);
+  font-family: "Roboto Slab", serif;
+  line-height: 3.9rem;
+}
+@media only screen and (max-width: 56.25em) {
+  .cars__mercedes__text h2 {
+    padding: 0 20px;
+    font-size: 1.9rem;
+    font-size: var(--mobile-h2);
+    font-weight: var(--font-weight-h2);
+    font-family: "Roboto Slab", serif;
+    word-spacing: 0.25rem;
+    line-height: 1.9em;
+    text-wrap: pretty;
+  }
+}
+.cars__hyundai {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 4rem 3rem;
+}
+@media only screen and (max-width: 56.25em) {
+  .cars__hyundai {
+    grid-template-columns: 1fr;
+    grid-template-rows: 30rem 1fr;
+    padding: 1rem 1rem;
+  }
+}
+.cars__hyundai__photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  order: 2;
+}
+@media only screen and (max-width: 56.25em) {
+  .cars__hyundai__photo {
+    order: 1;
+  }
+}
+.cars__hyundai__photo img {
+  display: block;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 50%;
+}
+@media only screen and (max-width: 56.25em) {
+  .cars__hyundai__photo img {
+    width: 60%;
+  }
+}
+.cars__hyundai__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 3rem;
+  order: 1;
+}
+.cars__hyundai__text h1 {
+  font-size: var(--desktop-h1);
+  font-family: "Roboto Slab", serif;
+  display: block;
+  text-align: center;
+  margin-bottom: 2rem;
+  text-wrap: pretty;
+  font-weight: bolder;
+}
+@media only screen and (max-width: 56.25em) {
+  .cars__hyundai__text h1 {
+    font-size: var(--mobile-h1);
+    display: block;
+    text-align: center;
+    margin-bottom: 3rem;
+    text-wrap: pretty;
+  }
+}
+.cars__hyundai__text h2 {
+  font-size: var(--desktop-h2);
+  font-family: "Roboto Slab", serif;
+  line-height: 3.9rem;
+}
+@media only screen and (max-width: 56.25em) {
+  .cars__hyundai__text h2 {
+    padding: 0 20px;
+    font-size: 1.9rem;
+    font-size: var(--mobile-h2);
+    font-family: "Roboto Slab", serif;
+    word-spacing: 0.25rem;
+    line-height: 1.9em;
+    text-wrap: pretty;
+    font-weight: var(--font-weight-h2);
+  }
+}
+.cars__vito {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 4rem 3rem;
+}
+@media only screen and (max-width: 56.25em) {
+  .cars__vito {
+    grid-template-columns: 1fr;
+    grid-template-rows: 30rem 1fr;
+    padding: 1rem 1rem;
+  }
+}
+.cars__vito__photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cars__vito__photo img {
+  display: block;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 50%;
+}
+@media only screen and (max-width: 56.25em) {
+  .cars__vito__photo img {
+    width: 60%;
+  }
+}
+.cars__vito__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 3rem;
+}
+@media only screen and (max-width: 56.25em) {
+  .cars__vito__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 3rem;
+  }
+}
+.cars__vito__text h1 {
+  font-size: var(--desktop-h1);
+  margin-bottom: 2rem;
+  font-family: "Roboto Slab", serif;
+}
+@media only screen and (max-width: 56.25em) {
+  .cars__vito__text h1 {
+    font-size: var(--mobile-h1);
+    font-weight: bolder;
+    display: block;
+    text-align: center;
+    margin-bottom: 3rem;
+    text-wrap: pretty;
+  }
+}
+.cars__vito__text h2 {
+  font-size: var(--desktop-h2);
+  font-family: "Roboto Slab", serif;
+  line-height: 3.9rem;
+}
+@media only screen and (max-width: 56.25em) {
+  .cars__vito__text h2 {
+    padding: 0 20px;
+    font-size: 1.9rem;
+    font-size: var(--mobile-h2);
+    font-family: "Roboto Slab", serif;
+    word-spacing: 0.25rem;
+    font-weight: var(--font-weight-h2);
+    line-height: 1.9em;
+    text-wrap: pretty;
+  }
+}
+
+.line {
+  height: 1px;
+  border: 0;
+  box-shadow: 0px -4px 201px 200px rgba(0, 172, 250, 0.7);
+  -webkit-box-shadow: 0px -4px 201px 200px rgba(0, 172, 250, 0.7);
+  -moz-box-shadow: 0px -4px 201px 200px rgba(0, 172, 250, 0.7);
+}
+@media only screen and (max-width: 56.25em) {
+  .line {
+    display: none;
+  }
+}/*# sourceMappingURL=cars.component.css.map */

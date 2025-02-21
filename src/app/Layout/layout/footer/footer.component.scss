@@ -1,4 +1,3 @@
-
 @mixin respond($breakpoint) {
   @if $breakpoint == phone {
     @media only screen and (max-width: 37.5em) {
@@ -70,32 +69,56 @@
   }
 }
 
-
-
 .card-1 {
   position: relative;
-  width: 100vw;
+  // width: 100vw;
   height: 30vh;
   background-color: black;
-  display: flex;
-  justify-content: space-evenly;
+  // display: flex;
+  // justify-content: space-around;
+  padding-top: 4rem;
   overflow: hidden;
   z-index: 2 !important;
+
+  @include respond(tab-port) {
+    padding-top: 0;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // justify-content: space-around;
+  }
+}
+
+.wraper {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  justify-items: center;
+
+  @include respond(tab-port) {
+    height: max-content;
+  }
 }
 
 .card__links {
-  width: 20%;
-  // height: 100%;
-  margin-top: 0.7em;
+  width: max-content;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-h2{
-  margin-bottom: 3rem;
-}
 
+  @include respond(tab-port) {
+    height: max-content;
+
+    justify-content: flex-start;
+  }
+  h2 {
+    margin-bottom: 3rem;
+  }
 }
 .links__link {
   list-style: none;
@@ -119,15 +142,32 @@ h2{
   text-transform: uppercase;
   font-family: monospace;
   font-size: 1.5rem;
+
+
+  @include respond(tab-port) {
+  font-size: 1.4rem;
+  }
+
+
 }
 
 .card__pay {
-  width: 20%;
+  width: 50%;
   height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   text-align: center;
-  img{
+
+  @include respond(tab-port) {
+   width: 100%;
+    height: max-content;
+
+
+
+
+  }
+  img {
     visibility: hidden;
   }
 }
@@ -145,6 +185,11 @@ h2{
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
+
+  @include respond(tab-port) {
+   height: 75%;
+  }
+
 }
 
 .pay__credit {
@@ -154,10 +199,16 @@ h2{
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
+
+  @include respond(tab-port) {
+
+   }
+
+
 }
 .card__social {
   // width: 20%;
-  height: 100%;
+  height: max-content;
   color: white;
   display: flex;
   flex-direction: column;
@@ -165,11 +216,18 @@ h2{
   justify-content: center;
 
   @include respond(tab-port) {
-   font-size: .5rem;
+    font-size: 1.2rem;
+  }
+}
+.card__social__h2{
+  font-size: 1.5rem;
+
+  @include respond(tab-port) {
+        font-size: 1.4rem;
   }
 
-}
 
+}
 #social__list {
   list-style-type: none;
   display: flex;
@@ -182,19 +240,32 @@ h2{
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @include respond(phone) {
+    width: 50px;
+    height: 50px;
+  }
 }
 #social__list .list__li i {
   font-size: 3.5rem;
   color: white;
+
+  @include respond(phone) {
+    font-size: 2.7rem;
+  }
 }
 .mainFooter {
   width: 100vw;
-  height: 20vh;
+  height: max-content;
   background-color: black;
   text-align: center;
   // line-height: 10vh;
 
   position: relative;
+
+  @include respond(tab-port) {
+    height: 20vh;
+  }
 
   &__h1 {
     color: white;

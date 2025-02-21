@@ -1,0 +1,31 @@
+.box {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  min-height: 100vh !important;
+  height: auto;
+  min-height: auto; /* Allow height to adjust based on content */
+  height: auto; /* Ensures dynamic content can make the box grow */
+  max-height: -moz-fit-content;
+  max-height: fit-content; /* Limits the height to the content size */
+}
+
+.main {
+  width: 100%;
+  z-index: 0;
+  transition: all 0.3s linear;
+}
+.main.active {
+  left: 240px;
+}
+.main.isMobile {
+  left: 0;
+  min-width: 100%;
+  max-width: 100%;
+}
+
+.dashboard {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}/*# sourceMappingURL=dashboard.component.css.map */

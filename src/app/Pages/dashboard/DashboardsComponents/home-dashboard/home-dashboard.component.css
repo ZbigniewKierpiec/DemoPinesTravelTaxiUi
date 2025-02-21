@@ -1,0 +1,165 @@
+.box {
+  width: 100%;
+  min-height: 100vh;
+  height: auto; /* Ensures dynamic content can make the box grow */
+  max-height: -moz-fit-content;
+  max-height: fit-content; /* Limits the height to the content size */
+  padding: 7rem;
+  position: relative;
+  flex-grow: 1;
+}
+@media only screen and (max-width: 37.5em) {
+  .box {
+    padding: 7rem 3rem;
+  }
+}
+.box__inner {
+  width: 100%;
+  height: auto;
+}
+.box__inner__user {
+  display: flex;
+  align-items: center;
+  grid-gap: 2rem;
+}
+.box__inner__user__image {
+  width: 5rem;
+  height: 5rem;
+}
+@media only screen and (max-width: 37.5em) {
+  .box__inner__user__image {
+    width: 7rem;
+    height: 7rem;
+  }
+}
+.box__inner__user__image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+}
+@media only screen and (max-width: 37.5em) {
+  .box__inner__user__text {
+    font-size: 1.7rem;
+  }
+}
+.box__inner__status {
+  margin-top: 84px;
+  width: 100%;
+  height: 12rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-gap: 2rem;
+}
+@media only screen and (max-width: 37.5em) {
+  .box__inner__status {
+    margin-top: 7rem;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: center;
+    grid-template-rows: 1fr;
+    grid-gap: 1rem;
+  }
+}
+.box__inner__status a {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  text-decoration: none;
+  transition: all 0.2s linear;
+  border: 2px solid rgba(0, 0, 0, 0.089);
+  border-radius: 2rem;
+}
+@media only screen and (max-width: 37.5em) {
+  .box__inner__status a {
+    height: 7rem;
+    border-radius: 1rem;
+  }
+}
+.box__inner__status__item {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+@media only screen and (max-width: 37.5em) {
+  .box__inner__status__item {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    grid-gap: 1rem;
+    font-size: 1rem;
+  }
+}
+.box__inner__status__item__top {
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-transform: capitalize;
+}
+@media only screen and (max-width: 37.5em) {
+  .box__inner__status__item__top span {
+    display: none;
+  }
+}
+.box__inner__status__item__top div {
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media only screen and (max-width: 37.5em) {
+  .box__inner__status__item__top div {
+    width: 20px;
+    height: 20px;
+  }
+}
+.box__inner__status__item__top div img {
+  width: 100%;
+  display: block;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.box__inner__status__item__bottom {
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media only screen and (max-width: 37.5em) {
+  .box__inner__status__item__bottom {
+    line-height: 1;
+  }
+  .box__inner__status__item__bottom span {
+    font-size: 1.5rem;
+    margin-top: -0.6rem;
+  }
+}
+.box__inner__display {
+  position: relative;
+  width: 100%;
+  min-height: auto; /* Allow height to adjust based on content */
+  height: auto; /* Ensures dynamic content can make the box grow */
+  max-height: -moz-fit-content;
+  max-height: fit-content; /* Limits the height to the content size */
+  margin-top: 5rem;
+}
+@media only screen and (max-width: 37.5em) {
+  .box__inner__display {
+    margin-top: 2rem;
+    position: relative;
+  }
+}
+
+.active-link {
+  border: 2px solid lightgreen !important;
+  border-radius: 2rem;
+}/*# sourceMappingURL=home-dashboard.component.css.map */

@@ -1,0 +1,62 @@
+.Timer {
+  height: 100vh;
+  background-image: url(/assets/clouds-2517653_1920.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  justify-content: center;
+}
+@media only screen and (max-width: 56.25em) {
+  .Timer {
+    height: 100vh;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+}
+.Timer__div {
+  margin: 0 30px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 20%;
+  height: 30%;
+  border-radius: 10%;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.589);
+  box-shadow: 11px -9px 26px 3px rgba(8, 8, 8, 0.87);
+  -webkit-box-shadow: 11px -9px 26px 3px rgba(8, 8, 8, 0.87);
+  -moz-box-shadow: 11px -9px 26px 3px rgba(8, 8, 8, 0.87);
+}
+@media only screen and (max-width: 56.25em) {
+  .Timer__div {
+    width: 18rem;
+    height: 18rem;
+    font-size: 2rem;
+    font-weight: thin;
+    background-color: rgba(0, 0, 0, 0.84);
+  }
+}
+.Timer__div h1 {
+  font-size: 3rem;
+}
+@media only screen and (max-width: 56.25em) {
+  .Timer__div h1 {
+    font-size: 2rem;
+    text-wrap: balance;
+  }
+}
+.Timer__div__span {
+  font-size: 5rem;
+  font-family: monospace;
+}
+@media only screen and (max-width: 56.25em) {
+  .Timer__div__span {
+    font-size: 4rem;
+  }
+}/*# sourceMappingURL=timer.component.css.map */

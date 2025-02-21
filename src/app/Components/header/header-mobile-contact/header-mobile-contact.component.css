@@ -1,0 +1,39 @@
+.contact {
+  display: none;
+}
+@media only screen and (max-width: 56.25em) {
+  .contact {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+    width: 25rem;
+    height: 25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+  }
+}
+.contact__phone {
+  font-size: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black !important;
+}
+.contact__phone p {
+  color: #28a745;
+}
+.contact__email {
+  font-size: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+.contact__email p {
+  color: #007bff;
+}/*# sourceMappingURL=header-mobile-contact.component.css.map */

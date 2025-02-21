@@ -1,0 +1,101 @@
+.space {
+  width: 100%;
+  box-shadow: 0px 200px 214px 81px rgba(212, 115, 115, 0.43);
+  -webkit-box-shadow: 0px 200px 214px 81px rgba(212, 115, 115, 0.43);
+  -moz-box-shadow: 0px 200px 214px 81px rgba(212, 115, 115, 0.43);
+}
+@media only screen and (max-width: 56.25em) {
+  .space {
+    display: none;
+  }
+}
+
+.Plan {
+  width: 90%;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  margin: 0 auto;
+  justify-items: center;
+  align-items: center;
+}
+@media only screen and (max-width: 56.25em) {
+  .Plan {
+    width: 85%;
+    margin-top: 10rem;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, 1fr);
+    height: auto;
+    margin-bottom: 2rem;
+    background-color: #8EB98F;
+  }
+}
+@media only screen and (max-width: 56.25em) {
+  .Plan article {
+    height: auto;
+    margin-bottom: 3rem;
+  }
+}
+.Plan__airport {
+  width: 90%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  text-align: left;
+}
+@media only screen and (max-width: 56.25em) {
+  .Plan__airport {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr;
+    grid-template-rows: 1fr;
+    width: 100%;
+  }
+}
+.Plan__fas {
+  margin-right: 20px;
+}
+@media only screen and (max-width: 56.25em) {
+  .Plan__fas {
+    display: flex;
+    justify-content: center;
+  }
+}
+.Plan__i {
+  font-size: 5rem;
+  color: red;
+}
+.Plan__h2 {
+  font-size: 3rem;
+  font-family: monospace;
+  margin-bottom: 10px;
+}
+@media only screen and (max-width: 56.25em) {
+  .Plan__h2 {
+    text-wrap: pretty;
+  }
+}
+.Plan__p {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.9rem;
+  line-height: 1.5em;
+}
+@media only screen and (max-width: 56.25em) {
+  .Plan__p {
+    text-wrap: balance;
+  }
+}
+
+.space2 {
+  width: 100%;
+  box-shadow: 0px -127px 214px 81px rgba(212, 115, 115, 0.72);
+  -webkit-box-shadow: 0px -127px 214px 81px rgba(212, 115, 115, 0.72);
+  -moz-box-shadow: 0px -127px 214px 81px rgba(212, 115, 115, 0.72);
+}
+@media only screen and (max-width: 56.25em) {
+  .space2 {
+    display: none;
+  }
+}/*# sourceMappingURL=plan.component.css.map */
