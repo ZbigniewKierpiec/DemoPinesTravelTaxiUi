@@ -1,0 +1,40 @@
+<div class="box">
+
+  <header>
+    <div class="header-content">
+      <div class="logo">
+  <app-logo></app-logo>
+      </div>
+      <h1>Contact Us</h1>
+    </div>
+  </header>
+  <section class="contact-container">
+    <div class="contact-card contact-form">
+      <h2>Send us a message</h2>
+      <form action="#" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+    <div class="contact-card contact-info">
+      <h2>Our Location</h2>
+      <p>123 Main Street, City, Country</p>
+      <p>Email: exampleexample.com</p>
+      <p>Phone: (123) 456-7890</p>
+      <div class="map">
+        <iframe src="https://www.google.com/maps/embed?pb=...YOUR_MAP_URL..." allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+
+  <footer class="mainFooter">
+    <h1  class="mainFooter__h1">
+      &copy; {{ currentYear() }} by Pines Executive Travel
+    </h1>
+  </footer>
+
+
+</div>

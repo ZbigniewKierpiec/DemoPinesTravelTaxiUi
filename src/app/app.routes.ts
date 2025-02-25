@@ -12,6 +12,7 @@ import { DashboardComponent } from './Pages/dashboard/dashboard.component';
 import { sidenavRoutes } from './Pages/dashboard/dashboard-sidenav/Routes-SidNav/sidenav.routes';
 import { DriverComponent } from './Components/driver/driver.component';
 import { TrackDriverComponent } from './Components/driver/track-driver/track-driver.component';
+import { ContactComponent } from './Pages/contact/contact.component';
 
 // export const routes: Routes = [
 //   { path: '', redirectTo: 'bracknellTaxis/main', pathMatch: 'full' },
@@ -50,6 +51,11 @@ export const routes: Routes = [
   },
 
   {
+    path: 'bracknellTaxis/contact',
+    component: ContactComponent,
+  },
+
+  {
     path: 'bracknellTaxis/booking/admin/list',
     component: BookingListComponent,
     canActivate: [authGuard],
@@ -71,10 +77,8 @@ export const routes: Routes = [
     component: DriverComponent,
   },
 
-{
-  path:'bracknellTaxis/track-driver',
-  component:TrackDriverComponent
-}
-
-
+  {
+    path: 'bracknellTaxis/track-driver',
+    component: TrackDriverComponent,
+  },
 ];

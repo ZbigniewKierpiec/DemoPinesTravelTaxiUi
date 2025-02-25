@@ -30,6 +30,7 @@ import { Subscription } from 'rxjs';
 import { BirthdayComponent } from './birthday/birthday.component';
 import { DashboardSidenavComponent } from '../dashboard/dashboard-sidenav/dashboard-sidenav.component';
 import { DriverNotificationComponent } from './driver-notification/driver-notification.component';
+import { SliderTextComponent } from '../slider-text/slider-text.component';
 
 @Component({
   selector: 'app-main',
@@ -53,6 +54,7 @@ import { DriverNotificationComponent } from './driver-notification/driver-notifi
     BirthdayComponent,
     DashboardSidenavComponent,
     DriverNotificationComponent,
+    SliderTextComponent
   ],
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss',

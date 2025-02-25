@@ -1,0 +1,12 @@
+ <div class="logo" @letterAnimation>
+
+    <b>
+      <ng-container *ngFor="let item of letters">
+        <span *ngIf="!item.isSpace">{{ item.letter }}</span>
+        <span *ngIf="item.isSpace">&nbsp;</span> <!-- Keeps space between words -->
+      </ng-container>
+    </b>
+
+
+
+</div>

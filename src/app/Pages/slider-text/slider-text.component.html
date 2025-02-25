@@ -1,0 +1,30 @@
+ <div class="slider" [class.s--ready]="sliderReady">
+  <p  [@fadeText]      class="slider__top-heading">Wherever You Go, We Take You There!</p>
+  <div class="slider__slides">
+    <div
+      *ngFor="let slide of slides; let i = index"
+      class="slider__slide"
+      [class.s--active]="activeSlide === i"
+      [class.s--prev]="prevSlide === i"
+    >
+      <div class="slider__slide-content">
+        <h3 class="slider__slide-subheading">{{ slide.subtitle }}</h3>
+        <h2 class="slider__slide-heading">
+          <span *ngFor="let letter of slide.title.split(' ,')">{{ letter }}</span>
+        </h2>
+       <a href="#"><p class="slider__slide-readmore">Book now</p></a>
+      </div>
+      <div class="slider__slide-parts">
+        <div class="slider__slide-part" *ngFor="let i of [0,1,2,3]">
+
+          <div class="slider__slide-part-inner" [style.backgroundImage]="'linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(' + slide.img + ')'" ></div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slider__control" (click)="changeSlides(-1)"></div>
+  <div class="slider__control slider__control--right" (click)="changeSlides(1)"></div>
+</div>
+ 

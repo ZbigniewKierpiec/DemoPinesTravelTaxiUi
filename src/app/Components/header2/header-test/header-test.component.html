@@ -49,18 +49,21 @@
 
 <header class="header">
   <div class="header__logo">
-    <div class="header__logo__image">
+    <div
+      [classList]="'animate__animated animate__fadeIn header__logo__image'"
+      *ngIf="!isMobile"
+      class="header__logo__image"
+    >
       <a href="/">
         <img src="/assets/PinesTree.png" alt="Pines Executive Travel Logo" />
       </a>
     </div>
-    <div class="header__logo__text">
-      <span class="header__logo__text">pines executive travel</span>
-    </div>
+
+    <app-text></app-text>
   </div>
-  <!-- <div *ngIf="isMobile" class="header__mobile">
-    <span>pines executive travel</span>
-  </div> -->
+  <div class="header__mobile">
+    <!-- <span>pines executive travel</span> -->
+  </div>
   <ul class="header__list">
     <li #listItem (click)="selectLi(0)">
       <a class="header__list__item" [routerLink]="['/bracknellTaxis/home']">{{
@@ -87,7 +90,11 @@
       >
     </li>
     <li #listItem (click)="selectLi(3)">
-      <a class="header__list__item">{{ "Nav_Contact" | translate }}</a>
+      <a
+        [routerLink]="['/bracknellTaxis/contact']"
+        class="header__list__item"
+        >{{ "Nav_Contact" | translate }}</a
+      >
     </li>
     <div
       [ngStyle]="{ 'width.px': markerWidth }"
@@ -147,7 +154,9 @@
         }}</a>
       </li>
       <li class="mobile__nav__menu__item" (click)="toggleMenu()">
-        <a>{{ "Nav_Contact" | translate }}</a>
+        <a [routerLink]="['/bracknellTaxis/contact']">{{
+          "Nav_Contact" | translate
+        }}</a>
       </li>
 
       <li

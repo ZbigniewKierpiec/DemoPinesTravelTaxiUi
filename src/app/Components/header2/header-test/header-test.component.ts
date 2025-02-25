@@ -30,6 +30,8 @@ import {
   trigger,
 } from '@angular/animations';
 import { CookieService } from 'ngx-cookie-service';
+import { LogoComponent } from './logo/logo.component';
+import { TextComponent } from './text/text.component';
 
 @Component({
   selector: 'app-header-test',
@@ -45,6 +47,8 @@ import { CookieService } from 'ngx-cookie-service';
     FormsModule,
     HeaderMobileContactComponent,
     TranslateModule,
+    LogoComponent,
+    TextComponent
   ],
   templateUrl: './header-test.component.html',
   styleUrl: './header-test.component.scss',
@@ -87,7 +91,7 @@ export class HeaderTestComponent {
   @HostListener('window:resize', [])
   country: Country[] = Countries;
   user?: User;
-  token?:any='';
+  token?: any = '';
   constructor(
     private renderer: Renderer2,
     private el: ElementRef,
@@ -217,8 +221,6 @@ export class HeaderTestComponent {
     return /iphone|ipod|ipad|android|blackberry|windows phone/.test(userAgent);
   }
 
-
-
   submenu(option: string) {
     this.menuOpen = false;
 
@@ -241,10 +243,10 @@ export class HeaderTestComponent {
           // Przekierowanie do strony konta użytkownika (np. profil)
           this.router.navigate(['bracknellTaxis/account']);
           break;
-          case 'driver':
-            // Przekierowanie do strony konta użytkownika (np. profil)
-            this.router.navigate(['bracknellTaxis/driver']);
-            break;
+        case 'driver':
+          // Przekierowanie do strony konta użytkownika (np. profil)
+          this.router.navigate(['bracknellTaxis/driver']);
+          break;
 
         default:
           console.log('Unknown option');
@@ -260,10 +262,4 @@ export class HeaderTestComponent {
       }
     }
   }
-
-
-
-
-
-
 }

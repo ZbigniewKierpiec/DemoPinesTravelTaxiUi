@@ -1,0 +1,70 @@
+
+.logo {
+  text-align: center;
+
+  width: max-content;
+
+   user-select: none;
+}
+
+.logo b{
+  --text:white;
+
+
+   color: #ffff;
+  //  text-shadow:
+  //  0 -40px 100px, /* Large blur upward shadow */
+  //  0 0 2px,       /* Subtle edge glow */
+  //  0 0 1em var(--text), /* Glow effect with custom color */
+  //  0 0 0.5em var(--text), /* Another glow layer */
+  //  0 0 0.1em var(--text), /* Subtle second glow layer */
+  //  0 10px 3px black; /* Black shadow below the text */
+
+      min-width: 15rem;
+
+      text-align: center;
+      text-transform: capitalize;
+      font-size: 2rem;
+
+
+      font-weight:normal;
+      font-style:oblique;
+      text-wrap: pretty;
+      color: white;
+
+
+
+}
+.logo b span{
+  animation: blink linear infinite 2s;
+  font-family: "Bebas Neue", serif;
+  letter-spacing: 3px;
+  font-weight: 100;
+  font-style: normal;
+}
+.logo b span:nth-of-type(2){
+  animation: blink linear infinite 3s;
+}
+
+
+.logo {
+  display: flex;
+
+
+  gap: 2px;
+
+  white-space: nowrap;
+}
+span {
+  display: inline-block;
+  opacity: 1; /* Ensure it remains visible */
+}
+
+
+
+
+
+
+
+
+

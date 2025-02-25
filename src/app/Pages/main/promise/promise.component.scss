@@ -196,11 +196,13 @@
   justify-content: center;
   align-items: center;
   font-family: "Roboto", sans-serif;
+
   @include respond(tab-port) {
     background-image: none;
 
-     min-height: 100vh;
+    min-height: 100vh;
 
+    background-color: #8eb98f;
     // background: linear-gradient(30deg, #fff, rgb(244, 133, 68));
     // background: linear-gradient(30deg, #fff, #f0d641);
     // animation: animate 100s linear infinite;
@@ -240,15 +242,12 @@
     @include respond(tab-port) {
       width: 85%;
       height: 80%;
-      padding: 0 .1rem;
+      padding: 0 0.1rem;
 
       flex-wrap: nowrap;
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
-
-
-
 
       background-color: transparent;
     }
@@ -295,11 +294,7 @@
         margin-left: 2rem;
         font-size: 2.3rem;
         font-weight: 500;
-
-
       }
-
-
     }
     &__a {
       display: inline-block;
@@ -318,7 +313,6 @@
       font-weight: bolder;
 
       @include respond(tab-port) {
-
         display: inline-block;
         font-size: 1.5rem;
         // padding: 2.5rem 1.4rem;
@@ -328,7 +322,6 @@
     }
   }
 }
-
 
 .animation span:nth-child(1) {
   position: absolute;

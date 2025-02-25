@@ -214,19 +214,20 @@
 
   &__logo {
     width: 6rem;
+
     width: fit-content;
     height: 100%;
     line-height: 1;
 
     display: flex;
-    flex-direction: column;
+    // flex-direction: column;
     justify-content: center;
     align-items: center;
-    grid-gap: 1rem;
+    grid-gap: 2rem;
     @include respond(phone) {
       // display: none;
     }
-
+// background-color: yellow;
     &__image {
       width: 7rem;
       height: 7rem;
@@ -266,6 +267,7 @@
 
     display: inline-block; // Zapewnia, że tekst jest wyświetlany w jednej linii
     padding: 10px 0px; //
+    filter: drop-shadow(5px 5px 10px #ffff);
   }
   &__list {
     position: relative;
@@ -452,3 +454,4 @@
   }
 }
 
+////////////////////////
